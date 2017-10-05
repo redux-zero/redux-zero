@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "inlineSources": true,
+    "module": "commonjs",
+    "declaration": true,
+    "noImplicitAny": false,
+    "noStrictGenericChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "removeComments": false,
+    "sourceMap": true,
+    "target": "ES5",
+    "outDir": "./"
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ],
+  "filesGlob": [
+    "typings/index.d.ts",
+    "src/**/*"
+  ]
+}

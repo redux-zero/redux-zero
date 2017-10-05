@@ -1,0 +1,72 @@
+{
+  "name": "redux-zero",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/redux-zero.cjs.js",
+  "jsnext:main": "dist/redux-zero.es.js",
+  "module": "dist/redux-zero.es.js",
+  "typings": "index.d.ts",
+  "scripts": {
+    "compile": "tsc --pretty",
+    "lint": "tslint -c tslint.json src/**/*.ts src/**/*.tsx",
+    "test": "jest",
+    "format": "prettier --write --no-semi '{src,__tests__}/**/*.ts' '{src,__tests__}/**/*.tsx'",
+    "check": "npm run compile && npm run lint && npm run test",
+    "clean": "rimraf dist coverage",
+    "prebuild": "npm run format && npm run check && npm run clean",
+    "build:umd": "rollup --config rollup.umd.config.js",
+    "build:cjs": "rollup --config rollup.cjs.config.js",
+    "build:es": "rollup --config rollup.es.config.js",
+    "build": "npm run build:umd && npm run build:cjs && npm run build:es"
+  },
+  "author": "Matheus Lima <matheusml90@gmail.com>",
+  "license": "MIT",
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "<rootDir>/preprocessor.js"
+    },
+    "testMatch": [
+      "**/__tests__/*.(ts|tsx)"
+    ]
+  },
+  "peerDependencies": {
+    "prop-types": ">=15",
+    "react": ">=15"
+  },
+  "devDependencies": {
+    "@types/react": "^16.0.9",
+    "jest": "^21.2.1",
+    "prettier": "^1.7.4",
+    "prop-types": "^15.6.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-test-renderer": "^16.0.0",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.50.0",
+    "rollup-plugin-commonjs": "^8.2.1",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-typescript": "^0.8.1",
+    "rollup-plugin-uglify": "^2.0.1",
+    "tslint": "^5.7.0",
+    "typescript": "^2.5.3"
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "flux",
+    "state",
+    "predictable",
+    "functional",
+    "immutable",
+    "elm",
+    "lightweight",
+    "light",
+    "small",
+    "simple"
+  ]
+}
