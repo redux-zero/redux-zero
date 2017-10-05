@@ -5,7 +5,9 @@ export interface Props {
   context: object
 }
 
-export default class Provider extends React.Component<Props, null> {
+export interface State {}
+
+export default class Provider extends React.Component<Props, State> {
   static childContextTypes = {
     store: PropTypes.object
   }

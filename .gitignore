@@ -28,7 +28,9 @@ build/Release
 index.d.ts
 index.js
 index.js.map
-/extra/
+components/
+store/
+utils/
 
 # Generated directories
 .sass-cache/
