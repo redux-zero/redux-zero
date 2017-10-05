@@ -1,6 +1,6 @@
 {
   "name": "redux-zero",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "dist/redux-zero.cjs.js",
   "jsnext:main": "dist/redux-zero.es.js",
@@ -54,6 +54,7 @@
     "rollup": "0.41.6",
     "rollup-plugin-commonjs": "8.0.2",
     "rollup-plugin-node-resolve": "3.0.0",
+    "rollup-plugin-peer-deps-external": "1.0.0",
     "rollup-plugin-typescript2": "0.7.0",
     "rollup-plugin-uglify": "1.0.2",
     "tslint": "^5.7.0",
