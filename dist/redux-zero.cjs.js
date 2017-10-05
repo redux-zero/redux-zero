@@ -41,7 +41,6 @@ function createStore(state) {
     var listeners = [];
     return {
         setState: function (update) {
-            //state = (<any>Object).assign({}, state, update)
             state = __assign({}, state, update);
             listeners.forEach(function (f) { return f(state); });
         },
