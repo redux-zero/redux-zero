@@ -2,6 +2,7 @@
 logs
 *.log
 npm-debug.log*
+.rpt2_cache/
 
 # Runtime data
 pids

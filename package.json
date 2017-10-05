@@ -50,10 +50,10 @@
     "rollup": "0.41.6",
     "rollup-plugin-commonjs": "8.0.2",
     "rollup-plugin-node-resolve": "3.0.0",
-    "rollup-plugin-typescript": "0.8.1",
+    "rollup-plugin-typescript2": "0.7.0",
     "rollup-plugin-uglify": "1.0.2",
     "tslint": "^5.7.0",
-    "typescript": "^2.5.3"
+    "typescript": "2.5.3"
   },
   "keywords": [
     "react",

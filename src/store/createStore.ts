@@ -2,7 +2,7 @@ export default function createStore(state = {}) {
   const listeners = []
   return {
     setState(update) {
-      state = (<any>Object).assign({}, state, update)
+      state = { ...state, ...update }
       listeners.forEach(f => f(state))
     },
     subscribe(f) {

@@ -1,27 +1,44 @@
-const __assign = Object.assign || function (target) {
-    for (var source, i = 1; i < arguments.length; i++) {
-        source = arguments[i];
-        for (var prop in source) {
-            if (Object.prototype.hasOwnProperty.call(source, prop)) {
-                target[prop] = source[prop];
-            }
-        }
-    }
-    return target;
-};
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation. All rights reserved.
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy of the
+License at http://www.apache.org/licenses/LICENSE-2.0
+
+THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
+WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
+MERCHANTABLITY OR NON-INFRINGEMENT.
+
+See the Apache Version 2.0 License for specific language governing permissions
+and limitations under the License.
+***************************************************************************** */
+/* global Reflect, Promise */
+
+var extendStatics = Object.setPrototypeOf ||
+    ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+    function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
 
 function __extends(d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    extendStatics(d, b);
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 }
+
+var __assign = Object.assign || function __assign(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+    }
+    return t;
+};
 
 function createStore(state) {
     if (state === void 0) { state = {}; }
     var listeners = [];
     return {
         setState: function (update) {
-            state = Object.assign({}, state, update);
+            //state = (<any>Object).assign({}, state, update)
+            state = __assign({}, state, update);
             listeners.forEach(function (f) { return f(state); });
         },
         subscribe: function (f) {
@@ -2692,19 +2709,18 @@ function shallowEqual(a, b) {
 }
 
 function connect(mapToProps) {
-    return function (Child) {
-        return (function (_super) {
+    return function (Child) { return _a = /** @class */ (function (_super) {
             __extends(Connected, _super);
             function Connected() {
-                var _this = this;
-                _super.apply(this, arguments);
-                this.state = this.getProps();
-                this.update = function () {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.state = _this.getProps();
+                _this.update = function () {
                     var mapped = _this.getProps();
                     if (!shallowEqual(mapped, _this.state)) {
                         _this.setState(mapped);
                     }
                 };
+                return _this;
             }
             Connected.prototype.componentWillMount = function () {
                 this.context.store.subscribe(this.update);
@@ -2717,20 +2733,20 @@ function connect(mapToProps) {
                 return mapToProps(state, this.props);
             };
             Connected.prototype.render = function () {
-                return (undefined(Child, __assign({store: this.context.store}, this.props, this.state)));
-            };
-            Connected.contextTypes = {
-                store: undefined
+                return (undefined(Child, __assign({ store: this.context.store }, this.props, this.state)));
             };
             return Connected;
-        }(undefined));
-    };
+        }(undefined)),
+        _a.contextTypes = {
+            store: undefined
+        },
+        _a; var _a; };
 }
 
-var Provider = (function (_super) {
+var Provider = /** @class */ (function (_super) {
     __extends(Provider, _super);
     function Provider() {
-        _super.apply(this, arguments);
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     Provider.prototype.getChildContext = function () {
         return this.props.context;
