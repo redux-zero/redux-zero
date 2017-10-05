@@ -1,0 +1,13 @@
+sudo: false
+language: node_js
+node_js:
+  - "4"
+branches:
+  only:
+    - master
+before_install:
+  - npm i -g npm@^5.4.2
+before_script:
+  - npm prune
+script:
+- npm run build
