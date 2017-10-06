@@ -8,10 +8,12 @@
 - Smaller and simpler than [redux](https://github.com/reactjs/redux)
 - Written in TypeScript
 
-[![build](https://img.shields.io/travis/concretesolutions/redux-zero/master.svg)](https://travis-ci.org/concretesolutions/redux-zero)
-[![npm](https://img.shields.io/npm/v/redux-zero.svg)](https://www.npmjs.com/package/redux-zero)
-[![downloads](https://img.shields.io/npm/dm/redux-zero.svg)](https://www.npmjs.com/package/redux-zero)
 
+[![build](https://img.shields.io/travis/concretesolutions/redux-zero/master.svg?style=flat-square)](https://travis-ci.org/concretesolutions/redux-zero)
+[![npm](https://img.shields.io/npm/v/redux-zero.svg?style=flat-square)](https://www.npmjs.com/package/redux-zero)
+[![downloads](https://img.shields.io/npm/dm/redux-zero.svg?style=flat-square)](https://www.npmjs.com/package/redux-zero)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
+[![dependencies](https://img.shields.io/david/expressjs/express.svg)]()
 
 ## Installation
 
