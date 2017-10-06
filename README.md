@@ -1,6 +1,6 @@
-redux-zero
-===
-A lightweight state container based on Redux
+# redux-zero
+
+### A lightweight state container based on Redux
 
 - Single store
 - No reducers
