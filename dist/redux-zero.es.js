@@ -1,7 +1,5 @@
 import { Children, Component, createElement } from 'react';
-import * as React from 'react';
 import { object } from 'prop-types';
-import * as PropTypes from 'prop-types';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
