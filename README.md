@@ -12,8 +12,8 @@
 [![build](https://img.shields.io/travis/concretesolutions/redux-zero/master.svg?style=flat-square)](https://travis-ci.org/concretesolutions/redux-zero)
 [![npm](https://img.shields.io/npm/v/redux-zero.svg?style=flat-square)](https://www.npmjs.com/package/redux-zero)
 [![downloads](https://img.shields.io/npm/dm/redux-zero.svg?style=flat-square)](https://www.npmjs.com/package/redux-zero)
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
-[![dependencies](https://img.shields.io/david/expressjs/express.svg)]()
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)]()
+[![dependencies](https://img.shields.io/david/expressjs/express.svg?style=flat-square)]()
 
 ## Installation
 
