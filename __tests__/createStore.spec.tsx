@@ -62,7 +62,11 @@ describe("redux-zero", () => {
   test("Provider - connect with child components", () => {
     store.setState({ message: "hello" })
 
-    const Comp = ({ message, children }) => <div>parent {message} {children}</div>
+    const Comp = ({ message, children }) => (
+      <div>
+        parent {message} {children}
+      </div>
+    )
     const ChildComponent = ({ message }) => <span>child {message}</span>
 
     const mapToProps = ({ message }) => ({ message })
@@ -80,7 +84,9 @@ describe("redux-zero", () => {
 
     const wrapper = mount(<App />)
 
-    expect(wrapper.html()).toBe("<div>parent hello <span>child hello</span></div>")
+    expect(wrapper.html()).toBe(
+      "<div>parent hello <span>child hello</span></div>"
+    )
 
     store.setState({ message: "bye" })
 
