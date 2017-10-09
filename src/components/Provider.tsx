@@ -1,21 +1,17 @@
 import * as React from "react"
-import * as PropTypes from "prop-types"
 
-export interface Props {
-  context: object
-}
+import Props from "../interfaces/Props"
 
-export interface State {}
-
-export default class Provider extends React.Component<Props, State> {
-  static childContextTypes = {
-    store: PropTypes.object
-  }
-  getChildContext() {
-    return this.props.context
-  }
+export default class Provider extends React.Component<Props, {}> {
   render() {
-    const { children } = this.props
-    return React.Children.only(children)
+    const { children, store } = this.props
+
+    // Passing the store down to the children without using the context API
+    const childrenWithProps = React.cloneElement(
+      children as React.ReactElement<any>,
+      { store }
+    )
+
+    return React.Children.only(childrenWithProps)
   }
 }

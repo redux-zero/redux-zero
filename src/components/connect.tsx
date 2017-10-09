@@ -1,23 +1,20 @@
 import * as React from "react"
-import * as PropTypes from "prop-types"
 import shallowEqual from "../utils/shallowEqual"
+
+import Props from "../interfaces/Props"
 
 export default function connect(mapToProps) {
   return Child =>
-    class Connected extends React.Component {
-      static contextTypes = {
-        store: PropTypes.object
-      }
+    class Connected extends React.Component<Props, {}> {
       state = this.getProps()
       componentWillMount() {
-        this.context.store.subscribe(this.update)
+        this.props.store.subscribe(this.update)
       }
       componentWillUnmount() {
-        this.context.store.unsubscribe(this.update)
+        this.props.store.unsubscribe(this.update)
       }
       getProps() {
-        const state =
-          (this.context.store && this.context.store.getState()) || {}
+        const state = (this.props.store && this.props.store.getState()) || {}
         return mapToProps(state, this.props)
       }
       update = () => {
@@ -28,7 +25,7 @@ export default function connect(mapToProps) {
       }
       render() {
         return (
-          <Child store={this.context.store} {...this.props} {...this.state} />
+          <Child store={this.props.store} {...this.props} {...this.state} />
         )
       }
     }
