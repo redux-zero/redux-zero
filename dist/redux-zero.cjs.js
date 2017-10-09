@@ -3,7 +3,6 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var React = require('react');
-var PropTypes = require('prop-types');
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -72,6 +71,13 @@ function shallowEqual(a, b) {
     return true;
 }
 
+function propsValidation(props, propName, componentName) {
+    if (typeof props === "object") {
+        return null;
+    }
+    return new Error("Invalid prop " + propName + " supplied to " + componentName);
+}
+
 function connect(mapToProps) {
     return function (Child) { return _a = /** @class */ (function (_super) {
             __extends(Connected, _super);
@@ -102,7 +108,7 @@ function connect(mapToProps) {
             return Connected;
         }(React.Component)),
         _a.contextTypes = {
-            store: PropTypes.object
+            store: propsValidation
         },
         _a; var _a; };
 }
@@ -120,7 +126,7 @@ var Provider = /** @class */ (function (_super) {
         return React.Children.only(children);
     };
     Provider.childContextTypes = {
-        store: PropTypes.object
+        store: propsValidation
     };
     return Provider;
 }(React.Component));

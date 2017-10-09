@@ -30,8 +30,9 @@ index.d.ts
 index.js
 index.js.map
 components/
-store/
-utils/
+/store/
+/utils/
+/interfaces/
 
 # Generated directories
 .sass-cache/
