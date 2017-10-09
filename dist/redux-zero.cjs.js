@@ -3,7 +3,6 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var React = require('react');
-var PropTypes = require('prop-types');
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -73,7 +72,8 @@ function shallowEqual(a, b) {
 }
 
 function connect(mapToProps) {
-    return function (Child) { return _a = /** @class */ (function (_super) {
+    return function (Child) {
+        return /** @class */ (function (_super) {
             __extends(Connected, _super);
             function Connected() {
                 var _this = _super !== null && _super.apply(this, arguments) || this;
@@ -87,24 +87,21 @@ function connect(mapToProps) {
                 return _this;
             }
             Connected.prototype.componentWillMount = function () {
-                this.context.store.subscribe(this.update);
+                this.props.store.subscribe(this.update);
             };
             Connected.prototype.componentWillUnmount = function () {
-                this.context.store.unsubscribe(this.update);
+                this.props.store.unsubscribe(this.update);
             };
             Connected.prototype.getProps = function () {
-                var state = (this.context.store && this.context.store.getState()) || {};
+                var state = (this.props.store && this.props.store.getState()) || {};
                 return mapToProps(state, this.props);
             };
             Connected.prototype.render = function () {
-                return (React.createElement(Child, __assign({ store: this.context.store }, this.props, this.state)));
+                return (React.createElement(Child, __assign({ store: this.props.store }, this.props, this.state)));
             };
             return Connected;
-        }(React.Component)),
-        _a.contextTypes = {
-            store: PropTypes.object
-        },
-        _a; var _a; };
+        }(React.Component));
+    };
 }
 
 var Provider = /** @class */ (function (_super) {
@@ -112,15 +109,11 @@ var Provider = /** @class */ (function (_super) {
     function Provider() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    Provider.prototype.getChildContext = function () {
-        return this.props.context;
-    };
     Provider.prototype.render = function () {
-        var children = this.props.children;
-        return React.Children.only(children);
-    };
-    Provider.childContextTypes = {
-        store: PropTypes.object
+        var _a = this.props, children = _a.children, store = _a.store;
+        // Passing the store down to the children without using the context API
+        var childrenWithProps = React.cloneElement(children, { store: store });
+        return React.Children.only(childrenWithProps);
     };
     return Provider;
 }(React.Component));

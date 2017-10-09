@@ -1,10 +1,10 @@
 export default interface Props {
-  store: Store,
+  store: Store
 }
 
 export interface Store {
-  setState: Function,
-  subscribe: Function,
-  unsubscribe: Function,
-  getState: Function,
+  setState: Function
+  subscribe: Function
+  unsubscribe: Function
+  getState: Function
 }
