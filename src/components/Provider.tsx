@@ -1,7 +1,8 @@
 import * as React from "react"
 
-import Props, { Store } from "../interfaces/Props"
-import propValidation from "../utils/propValidation"
+import Props from "../interfaces/Props"
+import Store from "../interfaces/Store"
+import propValidation from "../utils/propsValidation"
 
 export default class Provider extends React.Component<Props, {}> {
   static childContextTypes = {

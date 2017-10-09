@@ -71,7 +71,7 @@ function shallowEqual(a, b) {
     return true;
 }
 
-function propValidation(props, propName, componentName) {
+function propsValidation(props, propName, componentName) {
     if (typeof props === "object") {
         return null;
     }
@@ -108,7 +108,7 @@ function connect(mapToProps) {
             return Connected;
         }(React.Component)),
         _a.contextTypes = {
-            store: propValidation
+            store: propsValidation
         },
         _a; var _a; };
 }
@@ -126,7 +126,7 @@ var Provider = /** @class */ (function (_super) {
         return React.Children.only(children);
     };
     Provider.childContextTypes = {
-        store: propValidation
+        store: propsValidation
     };
     return Provider;
 }(React.Component));
