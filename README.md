@@ -139,7 +139,7 @@ Here's the full version: [https://codesandbox.io/s/n5orzr5mxj](https://codesandb
 
 ## Docs
 
-* [Contributing](https://github.com/concretesolutions/redux-zero.js/blob/master/CONTRIBUTING.md)
-* [Changelog](https://github.com/concretesolutions/redux-zero.js/blob/master/CHANGELOG.md)
-* [Code of Conduct](https://github.com/concretesolutions/redux-zero.js/blob/master/CODE_OF_CONDUCT.md)
-* [License](https://github.com/concretesolutions/redux-zero.js/blob/master/LICENSE.md)
+* [Contributing](https://github.com/concretesolutions/redux-zero/blob/master/CONTRIBUTING.md)
+* [Changelog](https://github.com/concretesolutions/redux-zero/blob/master/CHANGELOG.md)
+* [Code of Conduct](https://github.com/concretesolutions/redux-zero/blob/master/CODE_OF_CONDUCT.md)
+* [License](https://github.com/concretesolutions/redux-zero/blob/master/LICENSE.md)
