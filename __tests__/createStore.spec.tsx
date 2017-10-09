@@ -1,5 +1,6 @@
 import * as React from "react"
-import * as ReactTestRenderer from "react-test-renderer"
+import { mount } from "enzyme"
+
 import { createStore, Provider, connect } from "../src/index"
 
 describe("redux-zero", () => {
@@ -49,16 +50,46 @@ describe("redux-zero", () => {
       </Provider>
     )
 
-    const wrapper = ReactTestRenderer.create(<App />)
+    const wrapper = mount(<App />)
 
-    expect(wrapper.toJSON().type).toEqual("h1")
-    expect(wrapper.toJSON().props).toEqual({})
-    expect(wrapper.toJSON().children).toEqual(["hello"])
+    expect(wrapper.html()).toBe("<h1>hello</h1>")
 
     store.setState({ message: "bye" })
 
-    expect(wrapper.toJSON().type).toEqual("h1")
-    expect(wrapper.toJSON().props).toEqual({})
-    expect(wrapper.toJSON().children).toEqual(["bye"])
+    expect(wrapper.html()).toBe("<h1>bye</h1>")
+  })
+
+  test("Provider - connect with child components", () => {
+    store.setState({ message: "hello" })
+
+    const Comp = ({ message, children }) => (
+      <div>
+        parent {message} {children}
+      </div>
+    )
+    const ChildComponent = ({ message }) => <span>child {message}</span>
+
+    const mapToProps = ({ message }) => ({ message })
+
+    const ConnectedComp = connect(mapToProps)(Comp)
+    const ConnectedChildComp = connect(mapToProps)(ChildComponent)
+
+    const App = () => (
+      <Provider context={{ store }}>
+        <ConnectedComp>
+          <ConnectedChildComp />
+        </ConnectedComp>
+      </Provider>
+    )
+
+    const wrapper = mount(<App />)
+
+    expect(wrapper.html()).toBe(
+      "<div>parent hello <span>child hello</span></div>"
+    )
+
+    store.setState({ message: "bye" })
+
+    expect(wrapper.html()).toBe("<div>parent bye <span>child bye</span></div>")
   })
 })
