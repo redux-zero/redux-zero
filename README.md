@@ -5,9 +5,9 @@
 - Single store
 - No reducers
 - Less boilerplate
+- No PropTypes
 - Smaller and simpler than [redux](https://github.com/reactjs/redux)
 - Written in TypeScript
-
 
 [![build](https://img.shields.io/travis/concretesolutions/redux-zero/master.svg?style=flat-square)](https://travis-ci.org/concretesolutions/redux-zero)
 [![npm](https://img.shields.io/npm/v/redux-zero.svg?style=flat-square)](https://www.npmjs.com/package/redux-zero)

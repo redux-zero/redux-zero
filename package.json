@@ -1,6 +1,6 @@
 {
   "name": "redux-zero",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "description": "",
   "main": "dist/redux-zero.cjs.js",
   "jsnext:main": "dist/redux-zero.es.js",
@@ -42,7 +42,6 @@
     ]
   },
   "peerDependencies": {
-    "prop-types": ">=15",
     "react": ">=15"
   },
   "devDependencies": {
@@ -51,7 +50,6 @@
     "enzyme-adapter-react-16": "1.0.1",
     "jest": "^21.2.1",
     "prettier": "^1.7.4",
-    "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-test-renderer": "^16.0.0",

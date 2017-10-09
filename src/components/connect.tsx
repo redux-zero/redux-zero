@@ -1,12 +1,13 @@
 import * as React from "react"
-import * as PropTypes from "prop-types"
+
 import shallowEqual from "../utils/shallowEqual"
+import propValidation from "../utils/propValidation"
 
 export default function connect(mapToProps) {
   return Child =>
     class Connected extends React.Component {
       static contextTypes = {
-        store: PropTypes.object
+        store: propValidation
       }
       state = this.getProps()
       componentWillMount() {

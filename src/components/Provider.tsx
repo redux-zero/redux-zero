@@ -1,15 +1,11 @@
 import * as React from "react"
-import * as PropTypes from "prop-types"
 
-export interface Props {
-  context: object
-}
+import Props, { Store } from "../interfaces/Props"
+import propValidation from "../utils/propValidation"
 
-export interface State {}
-
-export default class Provider extends React.Component<Props, State> {
+export default class Provider extends React.Component<Props, {}> {
   static childContextTypes = {
-    store: PropTypes.object
+    store: propValidation
   }
   getChildContext() {
     return this.props.context
