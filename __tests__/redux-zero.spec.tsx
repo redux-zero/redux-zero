@@ -44,7 +44,7 @@ describe("redux-zero", () => {
     const ConnectedComp = connect(mapToProps)(Comp)
 
     const App = () => (
-      <Provider context={{ store }}>
+      <Provider store={store}>
         <ConnectedComp />
       </Provider>
     )
