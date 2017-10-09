@@ -1,6 +1,6 @@
 {
   "name": "redux-zero",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "",
   "main": "dist/redux-zero.cjs.js",
   "jsnext:main": "dist/redux-zero.es.js",
@@ -31,6 +31,9 @@
       "tsx",
       "js"
     ],
+    "setupFiles": [
+      "<rootDir>/__tests__/testSetup.js"
+    ],
     "transform": {
       "^.+\\.(ts|tsx)$": "<rootDir>/preprocessor.js"
     },
@@ -44,6 +47,8 @@
   },
   "devDependencies": {
     "@types/react": "^16.0.9",
+    "enzyme": "3.1.0",
+    "enzyme-adapter-react-16": "1.0.1",
     "jest": "^21.2.1",
     "prettier": "^1.7.4",
     "prop-types": "^15.6.0",
