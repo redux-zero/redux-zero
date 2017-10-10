@@ -115,7 +115,8 @@ var Provider = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Provider.prototype.getChildContext = function () {
-        return this.props.context;
+        var store = this.props.store;
+        return { store: store };
     };
     Provider.prototype.render = function () {
         var children = this.props.children;

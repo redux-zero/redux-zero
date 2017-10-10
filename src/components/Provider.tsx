@@ -9,7 +9,8 @@ export default class Provider extends React.Component<Props, {}> {
     store: propValidation
   }
   getChildContext() {
-    return this.props.context
+    const { store } = this.props
+    return { store }
   }
   render() {
     const { children } = this.props
