@@ -38,9 +38,7 @@ import { createStore, Provider, connect } from 'redux-zero'
 **CommonJS:**
 
 ```js
-var createStore = require('redux-zero').createStore;
-var Provider = require('redux-zero').Provider;
-var connect = require('redux-zero').connect;
+const { createStore, Provider, connect } = require('redux-zero');
 ```
 
 **UMD:**
