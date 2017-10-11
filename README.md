@@ -1,7 +1,10 @@
-# ![Redux Zero Logo](https://s1.postimg.org/7p3dmmc3nz/logo_redux_zero.png)
+<h1 align="center">
+  <img src="https://s1.postimg.org/7p3dmmc3nz/logo_redux_zero.png" alt="redux zero logo" title="redux zero logo">
+  <br>
+</h1>
+<p align="center" style="font-size: 1.2rem;">A lightweight state container based on Redux</p>
 
-
-### A lightweight state container based on Redux
+> Read [the intro blog post](https://medium.com/@matheusml/introducing-redux-zero-bea42214c7ee)
 
 - Single store
 - No reducers
@@ -9,8 +12,6 @@
 - No PropTypes
 - Smaller and simpler than [redux](https://github.com/reactjs/redux)
 - Written in TypeScript
-
-> Read the [intro blog post](https://medium.com/@matheusml/introducing-redux-zero-bea42214c7ee)
 
 ![](http://img.badgesize.io/concretesolutions/redux-zero/master/dist/redux-zero.min.js?style=flat-square)
 ![](http://img.badgesize.io/concretesolutions/redux-zero/master/dist/redux-zero.min.js?compression=gzip&style=flat-square)
