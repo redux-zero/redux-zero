@@ -16,10 +16,17 @@ describe("redux-zero", () => {
     const state = { one: { two: { three: "four" } }, five: "six" }
     store.setState(state)
     expect(store.getState()).toEqual(state)
+    store.setState(state => state)
+    expect(store.getState()).toEqual(state)
     store.setState({ five: "seven" })
     expect(store.getState()).toEqual({
       one: { two: { three: "four" } },
       five: "seven"
+    })
+    store.setState(state => ({ five: "eight" }))
+    expect(store.getState()).toEqual({
+      one: { two: { three: "four" } },
+      five: "eight"
     })
   })
 
