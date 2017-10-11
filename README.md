@@ -6,6 +6,8 @@
 
 > Read [the intro blog post](https://medium.com/@matheusml/introducing-redux-zero-bea42214c7ee)
 
+<hr />
+
 ![](http://img.badgesize.io/concretesolutions/redux-zero/master/dist/redux-zero.min.js?style=flat-square)
 ![](http://img.badgesize.io/concretesolutions/redux-zero/master/dist/redux-zero.min.js?compression=gzip&style=flat-square)
 [![build](https://img.shields.io/travis/concretesolutions/redux-zero/master.svg?style=flat-square)](https://travis-ci.org/concretesolutions/redux-zero)
