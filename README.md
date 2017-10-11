@@ -136,7 +136,8 @@ Here's the full version: [https://codesandbox.io/s/n5orzr5mxj](https://codesandb
 
 ## Roadmap
 - Improve integration with Preact
-- Remove the context API
+- (try to) Remove the context API
+- Add more use case examples (including unit tests)
 
 ## Docs
 
