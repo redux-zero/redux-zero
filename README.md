@@ -1,5 +1,6 @@
 # Redux Zero
 
+
 ### A lightweight state container based on Redux
 
 - Single store
@@ -9,6 +10,8 @@
 - Smaller and simpler than [redux](https://github.com/reactjs/redux)
 - Written in TypeScript
 
+> Read the [intro blog post](https://medium.com/@matheusml/introducing-redux-zero-bea42214c7ee)
+
 ![](http://img.badgesize.io/concretesolutions/redux-zero/master/dist/redux-zero.min.js?style=flat-square)
 ![](http://img.badgesize.io/concretesolutions/redux-zero/master/dist/redux-zero.min.js?compression=gzip&style=flat-square)
 [![build](https://img.shields.io/travis/concretesolutions/redux-zero/master.svg?style=flat-square)](https://travis-ci.org/concretesolutions/redux-zero)
@@ -16,6 +19,7 @@
 [![downloads](https://img.shields.io/npm/dm/redux-zero.svg?style=flat-square)](https://www.npmjs.com/package/redux-zero)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)]()
 [![dependencies](https://img.shields.io/david/expressjs/express.svg?style=flat-square)]()
+
 
 ## Installation
 
@@ -51,7 +55,7 @@ const { createStore, Provider, connect } = require('redux-zero');
 
 Let's make an increment/decrement simple application:
 
-First create your store. This is where your application state will live:
+First, create your store. This is where your application state will live:
 
 ```js
 /* store.js */
@@ -63,7 +67,7 @@ const store = createStore(initialState);
 export default store;
 ```
 
-Then create your actions. This is where you change the state from your store:
+Then, create your actions. This is where you change the state from your store:
 
 ```js
 /* actions.js */
