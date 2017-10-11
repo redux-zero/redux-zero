@@ -1,4 +1,4 @@
-# redux-zero
+# Redux Zero
 
 ### A lightweight state container based on Redux
 
@@ -82,7 +82,7 @@ export const decrement = () => {
 }
 ```
 
-Now create your component. With **redux-zero** your component can focus 100% on the UI and just call the actions that will automatically update the state:
+Now create your component. With **Redux Zero** your component can focus 100% on the UI and just call the actions that will automatically update the state:
 
 ```js
 /* Counter.js */
@@ -128,7 +128,7 @@ render(<App />, document.getElementById("root"));
 Here's the full version: [https://codesandbox.io/s/n5orzr5mxj](https://codesandbox.io/s/n5orzr5mxj)
 
 ## Inspiration
-**redux-zero** was based on this [gist](https://gist.github.com/developit/55c48d294abab13a146eac236bae3219) by [@developit](https://github.com/developit)
+**Redux Zero** was based on this [gist](https://gist.github.com/developit/55c48d294abab13a146eac236bae3219) by [@developit](https://github.com/developit)
 
 ## Roadmap
 - Improve integration with Preact
