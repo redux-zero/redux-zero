@@ -59,7 +59,7 @@ First, create your store. This is where your application state will live:
 
 ```js
 /* store.js */
-import { createStore } from 'redux-zero';
+import { createStore } from "redux-zero";
 
 const initialState = { count: 1 };
 const store = createStore(initialState);
