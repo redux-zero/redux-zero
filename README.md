@@ -1,4 +1,4 @@
-# Redux Zero
+# ![Redux Zero Logo](https://s1.postimg.org/7p3dmmc3nz/logo_redux_zero.png)
 
 
 ### A lightweight state container based on Redux
