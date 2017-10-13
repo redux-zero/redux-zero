@@ -139,7 +139,7 @@ Here's the full version: [https://codesandbox.io/s/n5orzr5mxj](https://codesandb
 **Redux Zero** was based on this [gist](https://gist.github.com/developit/55c48d294abab13a146eac236bae3219) by [@developit](https://github.com/developit)
 
 ## Roadmap
-- Extract 'connect' so that Redux Zero can be use with multiple frameworks
+- Extract 'connect' so that Redux Zero can be used with multiple frameworks
 - Add more use case examples (including unit tests)
 
 ## Docs
