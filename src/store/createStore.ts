@@ -2,9 +2,10 @@ export default function createStore(state = {}) {
   const listeners = []
   return {
     setState(update) {
-      state = typeof update === "function" ?
-        { ...state, ...update(state) } :
-        { ...state, ...update }
+      state =
+        typeof update === "function"
+          ? { ...state, ...update(state) }
+          : { ...state, ...update }
 
       listeners.forEach(f => f(state))
     },

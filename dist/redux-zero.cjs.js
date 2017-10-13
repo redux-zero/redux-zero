@@ -43,7 +43,9 @@ function createStore(state) {
     var listeners = [];
     return {
         setState: function (update) {
-            state = __assign({}, state, update);
+            state =
+                typeof update === "function"
+                    ? __assign({}, state, update(state)) : __assign({}, state, update);
             listeners.forEach(function (f) { return f(state); });
         },
         subscribe: function (f) {
