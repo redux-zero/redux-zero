@@ -1,6 +1,6 @@
 {
   "name": "redux-zero",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "",
   "main": "dist/redux-zero.cjs.js",
   "jsnext:main": "dist/redux-zero.es.js",
@@ -20,6 +20,7 @@
     "build": "npm run build:umd && npm run build:cjs && npm run build:es"
   },
   "author": "Matheus Lima <matheusml90@gmail.com>",
+  "files": ["dist", "typings"],
   "license": "MIT",
   "repository": {
     "type": "git",
