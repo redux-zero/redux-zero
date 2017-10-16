@@ -1,6 +1,6 @@
 {
   "name": "redux-zero",
-  "version": "2.1.3",
+  "version": "3.0.0",
   "description": "",
   "main": "dist/redux-zero.cjs.js",
   "jsnext:main": "dist/redux-zero.es.js",

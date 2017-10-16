@@ -6,10 +6,11 @@ import { createStore, Provider, connect } from "../src/index"
 describe("redux-zero", () => {
   const listener = jest.fn()
   let store
+  let unsubscribe
   beforeEach(() => {
     store = createStore({})
     listener.mockReset()
-    store.subscribe(listener)
+    unsubscribe = store.subscribe(listener)
   })
 
   test("setState - getState", () => {
@@ -30,14 +31,12 @@ describe("redux-zero", () => {
     })
   })
 
-  test("subscribe", () => {
+  test("subscribe / unsubscribe", () => {
     expect(listener).not.toBeCalled()
     store.setState({ a: "key" })
     expect(listener).toBeCalledWith({ a: "key" })
-  })
 
-  test("unsubscribe", () => {
-    store.unsubscribe(listener)
+    unsubscribe(listener)
     store.setState({ a: "key" })
     expect(listener).not.toBeCalledWith()
   })

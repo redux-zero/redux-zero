@@ -11,11 +11,8 @@ export default function createStore(state = {}) {
     },
     subscribe(f) {
       listeners.push(f)
-    },
-    unsubscribe(f) {
-      const i = listeners.indexOf(f)
-      if (i > -1) {
-        listeners.splice(i, 1)
+      return () => {
+        listeners.splice(listeners.indexOf(f))
       }
     },
     getState() {
