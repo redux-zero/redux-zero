@@ -9,12 +9,13 @@ export default function connect(mapToProps) {
       static contextTypes = {
         store: propValidation
       }
+      unsubscribe
       state = this.getProps()
       componentWillMount() {
-        this.context.store.subscribe(this.update)
+        this.unsubscribe = this.context.store.subscribe(this.update)
       }
       componentWillUnmount() {
-        this.context.store.unsubscribe(this.update)
+        this.unsubscribe(this.update)
       }
       getProps() {
         const state =
