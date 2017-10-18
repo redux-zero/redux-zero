@@ -26,9 +26,9 @@ coverage
 build/Release
 
 # Generated code
-index.d.ts
-index.js
-index.js.map
+# index.d.ts
+# index.js
+# index.js.map
 /components/
 /store/
 /utils/
@@ -41,7 +41,7 @@ _site/
 
 # Dependency directory
 node_modules
-dist
+# dist
 
 # Optional npm cache directory
 .npm
