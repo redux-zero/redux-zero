@@ -8,8 +8,6 @@
 
 <hr />
 
-![](http://img.badgesize.io/https://unpkg.com/redux-zero/dist/redux-zero.min.js?style=flat-square)
-![](http://img.badgesize.io/https://unpkg.com/redux-zero/dist/redux-zero.min.js?style=flat-square&compression=gzip)
 [![build](https://img.shields.io/travis/concretesolutions/redux-zero/master.svg?style=flat-square)](https://travis-ci.org/concretesolutions/redux-zero)
 [![npm](https://img.shields.io/npm/v/redux-zero.svg?style=flat-square)](https://www.npmjs.com/package/redux-zero)
 [![downloads](https://img.shields.io/npm/dm/redux-zero.svg?style=flat-square)](https://www.npmjs.com/package/redux-zero)
@@ -40,30 +38,30 @@ This assumes that you’re using [npm](https://www.npmjs.com/) with a module bun
 **ES2015+ or TypeScript:**
 
 ```js
-import { createStore, Provider, connect } from 'redux-zero'
+import createStore from "redux-zero"
+import { Provider, connect } from "redux-zero/react"
 ```
 
 **CommonJS:**
 
 ```js
-const { createStore, Provider, connect } = require('redux-zero');
+const createStore = require("redux-zero")
+const { Provider, connect } = require('redux-zero/react')
 ```
 
 **UMD:**
 
-```html
-<script src="https://unpkg.com/redux-zero/dist/redux-zero.min.js"></script>
-```
+Work in Progress
 
 ## Example
 
-Let's make an increment/decrement simple application:
+Let's make an increment/decrement simple application with React:
 
 First, create your store. This is where your application state will live:
 
 ```js
 /* store.js */
-import { createStore } from "redux-zero";
+import createStore from "redux-zero";
 
 const initialState = { count: 1 };
 const store = createStore(initialState);
@@ -95,7 +93,7 @@ Now create your component. With **Redux Zero** your component can focus 100% on 
 ```js
 /* Counter.js */
 import React from "react";
-import { connect } from "redux-zero";
+import { connect } from "redux-zero/react";
 
 import { increment, decrement } from "./actions";
 
@@ -118,7 +116,7 @@ Last but not least, plug the whole thing in your index file:
 /* index.js */
 import React from "react";
 import { render } from "react-dom";
-import { Provider } from "redux-zero";
+import { Provider } from "redux-zero/react";
 
 import store from "./store";
 
@@ -139,8 +137,8 @@ Here's the full version: [https://codesandbox.io/s/n5orzr5mxj](https://codesandb
 **Redux Zero** was based on this [gist](https://gist.github.com/developit/55c48d294abab13a146eac236bae3219) by [@developit](https://github.com/developit)
 
 ## Roadmap
-- Extract 'connect' so that Redux Zero can be used with multiple frameworks
 - Add more use case examples (including unit tests)
+- Add (Provider, connect) to Preact
 
 ## Docs
 

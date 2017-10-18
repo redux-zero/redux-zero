@@ -20,6 +20,7 @@ const config = {
     format,
   },
   plugins: [
+    multiEntries(),
     peerDeps(),
     typescript(),
     resolve({
@@ -28,7 +29,6 @@ const config = {
       browser: true,
     }),
     commonjs(),
-    multiEntries(),
   ],
 }
 
