@@ -46,7 +46,7 @@ import { Provider, connect } from "redux-zero/react"
 
 ```js
 const createStore = require("redux-zero")
-const { Provider, connect } = require('redux-zero/react')
+const { Provider, connect } = require("redux-zero/react")
 ```
 
 **UMD:**
