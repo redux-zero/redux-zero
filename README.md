@@ -51,9 +51,10 @@ const { Provider, connect } = require("redux-zero/react")
 
 **UMD:**
 
-Work in Progress
-
-## Example
+```html
+<script src="https://unpkg.com/redux-zero/dist/redux-zero.min.js"></script>
+<script src="https://unpkg.com/redux-zero/dist/react/redux-zero.min.js"></script>
+```
 
 Let's make an increment/decrement simple application with React:
 
