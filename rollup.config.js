@@ -9,7 +9,7 @@ const format = process.env.NODE_ENV
 const file = `dist/redux-zero.${format}.js`
 
 const config = {
-  input: './src/index.ts',
+  input: ['./src/index.ts', './src/react/index.ts'],
   name: 'redux-zero',
   sourcemap: true,
   output: {
