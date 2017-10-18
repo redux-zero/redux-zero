@@ -33,6 +33,7 @@ components/
 /store/
 /utils/
 /interfaces/
+/react/
 
 # Generated directories
 .sass-cache/

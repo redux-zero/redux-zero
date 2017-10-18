@@ -1,16 +1,18 @@
-import typescript from 'rollup-plugin-typescript2';
-import resolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
-import uglify from 'rollup-plugin-uglify';
-import filesize from 'rollup-plugin-filesize';
-import peerDeps from 'rollup-plugin-peer-deps-external';
+import typescript from 'rollup-plugin-typescript2'
+import resolve from 'rollup-plugin-node-resolve'
+import commonjs from 'rollup-plugin-commonjs'
+import uglify from 'rollup-plugin-uglify'
+import filesize from 'rollup-plugin-filesize'
+import peerDeps from 'rollup-plugin-peer-deps-external'
 
-const format = process.env.NODE_ENV;
-const isUmd = format === 'umd';
+import multiEntries from './src/build/multiEntries'
+
+const format = process.env.NODE_ENV
+const isUmd = format === 'umd'
 const file = `dist/redux-zero.${isUmd ? 'min' : format}.js`
 
 const config = {
-  input: './src/index.ts',
+  input: ['./src/index.ts', './src/react/index.ts'],
   name: 'redux-zero',
   sourcemap: true,
   output: {
@@ -26,9 +28,10 @@ const config = {
       browser: true,
     }),
     commonjs(),
+    multiEntries(),
   ],
-};
+}
 
-isUmd && config.plugins.push(uglify(), filesize());
+isUmd && config.plugins.push(uglify(), filesize())
 
-export default config;
+export default config

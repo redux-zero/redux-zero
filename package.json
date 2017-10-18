@@ -1,6 +1,6 @@
 {
   "name": "redux-zero",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "",
   "main": "dist/redux-zero.cjs.js",
   "jsnext:main": "dist/redux-zero.es.js",
@@ -21,7 +21,10 @@
     "prepublish": "npm run build"
   },
   "author": "Matheus Lima <matheusml90@gmail.com>",
-  "files": ["dist", "typings"],
+  "files": [
+    "dist",
+    "typings"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -52,6 +55,7 @@
     "enzyme": "3.1.0",
     "enzyme-adapter-react-16": "1.0.1",
     "jest": "^21.2.1",
+    "matched": "1.0.2",
     "prettier": "^1.7.4",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",

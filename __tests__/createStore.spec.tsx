@@ -1,7 +1,8 @@
 import * as React from "react"
 import { mount } from "enzyme"
 
-import { createStore, Provider, connect } from "../src/index"
+import createStore from "../src/index"
+import { Provider, connect } from "../src/react/index"
 
 describe("redux-zero", () => {
   const listener = jest.fn()
