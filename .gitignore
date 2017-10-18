@@ -41,7 +41,7 @@ _site/
 
 # Dependency directory
 node_modules
-dist
+#dist
 
 # Optional npm cache directory
 .npm
