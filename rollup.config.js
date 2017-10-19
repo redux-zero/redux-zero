@@ -11,8 +11,6 @@ const isUmd = format === 'umd'
 function getFileName(file) {
   if (isUmd) {
     return `${file}.min.js`
-  } else if (format === 'es') {
-    return `${file}.mjs`
   }
   return `${file}.js`
 }

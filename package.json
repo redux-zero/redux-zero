@@ -3,8 +3,6 @@
   "version": "4.0.0",
   "description": "",
   "main": "dist/redux-zero.js",
-  "jsnext:main": "dist/redux-zero.mjs",
-  "module": "dist/redux-zero.mjs",
   "typings": "index.d.ts",
   "scripts": {
     "compile": "tsc --pretty",
@@ -16,8 +14,7 @@
     "prebuild": "npm run format && npm run check && npm run clean",
     "build:umd": "cross-env NODE_ENV=umd rollup --config",
     "build:cjs": "cross-env NODE_ENV=cjs rollup --config",
-    "build:es": "cross-env NODE_ENV=es rollup --config",
-    "build": "npm run build:umd && npm run build:cjs && npm run build:es",
+    "build": "npm run build:umd && npm run build:cjs",
     "prepublish": "npm run build"
   },
   "author": "Matheus Lima <matheusml90@gmail.com>",
