@@ -2,9 +2,9 @@
   "name": "redux-zero",
   "version": "4.0.0",
   "description": "",
-  "main": "dist/redux-zero.cjs.js",
-  "jsnext:main": "dist/redux-zero.es.js",
-  "module": "dist/redux-zero.es.js",
+  "main": "dist/redux-zero.js",
+  "jsnext:main": "dist/redux-zero.mjs",
+  "module": "dist/redux-zero.mjs",
   "typings": "index.d.ts",
   "scripts": {
     "compile": "tsc --pretty",

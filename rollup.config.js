@@ -8,13 +8,22 @@ import filesize from 'rollup-plugin-filesize'
 const format = process.env.NODE_ENV
 const isUmd = format === 'umd'
 
+function getFileName(file) {
+  if (isUmd) {
+    return `${file}.min.js`
+  } else if (format === 'es') {
+    return `${file}.mjs`
+  }
+  return `${file}.js`
+}
+
 function getConfig(input, file) {
   const conf = {
     input,
     name: 'redux-zero',
     sourcemap: true,
     output: {
-      file: `${file}.${isUmd ? 'min' : format}.js`,
+      file: getFileName(file),
       format,
     },
     plugins: [
@@ -36,7 +45,7 @@ function getConfig(input, file) {
 
 const config = [
   getConfig('./src/index.ts', 'dist/redux-zero'),
-  getConfig('./src/react/index.ts', 'dist/react/redux-zero'),
+  getConfig('./src/react/index.ts', 'dist/react/index'),
 ]
 
 export default config
