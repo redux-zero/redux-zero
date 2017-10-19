@@ -23,7 +23,7 @@
   "author": "Matheus Lima <matheusml90@gmail.com>",
   "files": [
     "dist",
-    "typings"
+    "index.d.ts"
   ],
   "license": "MIT",
   "repository": {
