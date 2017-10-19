@@ -1,7 +1,7 @@
 import * as React from "react"
 
-import shallowEqual from "../utils/shallowEqual"
-import propValidation from "../utils/propsValidation"
+import shallowEqual from "../../utils/shallowEqual"
+import propValidation from "../../utils/propsValidation"
 
 export default function connect(mapToProps) {
   return Child =>

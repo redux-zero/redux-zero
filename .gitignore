@@ -25,15 +25,6 @@ coverage
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
 
-# Generated code
-index.d.ts
-index.js
-index.js.map
-components/
-/store/
-/utils/
-/interfaces/
-
 # Generated directories
 .sass-cache/
 _site/
@@ -41,6 +32,7 @@ _site/
 # Dependency directory
 node_modules
 dist
+react
 
 # Optional npm cache directory
 .npm

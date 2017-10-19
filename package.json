@@ -1,11 +1,9 @@
 {
   "name": "redux-zero",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "",
-  "main": "dist/redux-zero.cjs.js",
-  "jsnext:main": "dist/redux-zero.es.js",
-  "module": "dist/redux-zero.es.js",
-  "typings": "index.d.ts",
+  "main": "dist/redux-zero.js",
+  "typings": "dist/index.d.ts",
   "scripts": {
     "compile": "tsc --pretty",
     "lint": "tslint -c tslint.json src/**/*.ts src/**/*.tsx",
@@ -16,12 +14,14 @@
     "prebuild": "npm run format && npm run check && npm run clean",
     "build:umd": "cross-env NODE_ENV=umd rollup --config",
     "build:cjs": "cross-env NODE_ENV=cjs rollup --config",
-    "build:es": "cross-env NODE_ENV=es rollup --config",
-    "build": "npm run build:umd && npm run build:cjs && npm run build:es",
+    "build": "npm run build:umd && npm run build:cjs",
     "prepublish": "npm run build"
   },
   "author": "Matheus Lima <matheusml90@gmail.com>",
-  "files": ["dist", "typings"],
+  "files": [
+    "dist",
+    "react"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -59,7 +59,7 @@
     "rimraf": "^2.6.2",
     "rollup": "0.50.0",
     "rollup-plugin-commonjs": "8.2.1",
-    "rollup-plugin-filesize": "^1.4.2",
+    "rollup-plugin-filesize": "1.4.2",
     "rollup-plugin-node-resolve": "3.0.0",
     "rollup-plugin-peer-deps-external": "1.0.0",
     "rollup-plugin-typescript2": "0.7.0",

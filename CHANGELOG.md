@@ -1,5 +1,14 @@
 # Changelog
 
+### 4.0.0
+
+- Separating `Provider` and `connect` from `createStore`. With this we'll be able to build for different frameworks:
+
+```javascript
+import createStore from 'redux-zero'
+import { Provider, connect } from 'redux-zero/react'
+```
+
 ### 3.0.0
 
 - Removing `unsubscribe` function from createStore. Now `subscribe` returns `unsubscribe`:
