@@ -9,7 +9,7 @@
     "removeComments": false,
     "sourceMap": true,
     "target": "ES5",
-    "outDir": "./"
+    "outDir": "./dist"
   },
   "include": [
     "src/**/*"

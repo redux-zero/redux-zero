@@ -20,7 +20,7 @@
   "author": "Matheus Lima <matheusml90@gmail.com>",
   "files": [
     "dist",
-    "index.d.ts"
+    "react"
   ],
   "license": "MIT",
   "repository": {

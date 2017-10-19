@@ -1,2 +1,3 @@
-import createStore from "./store/createStore";
-export default createStore;
+import connect from "./components/connect";
+import Provider from "./components/Provider";
+export { connect, Provider };

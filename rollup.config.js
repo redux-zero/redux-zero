@@ -43,7 +43,7 @@ function getConfig(input, file) {
 
 const config = [
   getConfig('./src/index.ts', 'dist/redux-zero'),
-  getConfig('./src/react/index.ts', 'dist/react/index'),
+  getConfig('./src/react/index.ts', 'react/index'),
 ]
 
 export default config
