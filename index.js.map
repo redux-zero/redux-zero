@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","sourceRoot":"","sources":["src/index.ts"],"names":[],"mappings":";;AAAA,mDAA6C;AAE7C,kBAAe,qBAAW,CAAA","sourcesContent":["import createStore from \"./store/createStore\"\n\nexport default createStore\n"]}
