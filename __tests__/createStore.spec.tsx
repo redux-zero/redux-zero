@@ -37,9 +37,14 @@ describe("redux-zero", () => {
     store.setState({ a: "key" })
     expect(listener).toBeCalledWith({ a: "key" })
 
+    const otherListener = jest.fn()
+    store.subscribe(otherListener)
+    listener.mockReset()
+
     unsubscribe(listener)
     store.setState({ a: "key" })
-    expect(listener).not.toBeCalledWith()
+    expect(listener).not.toBeCalled()
+    expect(otherListener).toBeCalledWith({ a: "key" })
   })
 
   test("Provider - connect", () => {

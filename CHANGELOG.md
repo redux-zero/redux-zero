@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.0.1
+
+- Fixed bug where unsubscribing a listener made listeners ahead be also removed.
+
 ### 4.0.0
 
 - Separating `Provider` and `connect` from `createStore`. With this we'll be able to build for different frameworks:
