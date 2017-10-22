@@ -2,7 +2,7 @@ import * as React from "react"
 import { mount } from "enzyme"
 
 import createStore from "../src/index"
-import { Provider, connect } from "../src/react/index"
+import { Provider, Connect, connect } from "../src/react/index"
 
 describe("redux-zero", () => {
   const listener = jest.fn()
@@ -71,6 +71,32 @@ describe("redux-zero", () => {
     expect(wrapper.html()).toBe("<h1>bye</h1>")
   })
 
+  test("Provider - Connect component", () => {
+    store.setState({ message: "hello" })
+
+    const mapToProps = ({ message }) => ({ message })
+
+    const ConnectedComp = () => (
+      <Connect mapToProps={mapToProps}>
+        {({ message }) => <h1>{message}</h1>}
+      </Connect>
+    )
+
+    const App = () => (
+      <Provider store={store}>
+        <ConnectedComp />
+      </Provider>
+    )
+
+    const wrapper = mount(<App />)
+
+    expect(wrapper.html()).toBe("<h1>hello</h1>")
+
+    store.setState({ message: "bye" })
+
+    expect(wrapper.html()).toBe("<h1>bye</h1>")
+  })
+
   test("Provider - connect with child components", () => {
     store.setState({ message: "hello" })
 
@@ -85,6 +111,45 @@ describe("redux-zero", () => {
 
     const ConnectedComp = connect(mapToProps)(Comp)
     const ConnectedChildComp = connect(mapToProps)(ChildComponent)
+
+    const App = () => (
+      <Provider store={store}>
+        <ConnectedComp>
+          <ConnectedChildComp />
+        </ConnectedComp>
+      </Provider>
+    )
+
+    const wrapper = mount(<App />)
+
+    expect(wrapper.html()).toBe(
+      "<div>parent hello <span>child hello</span></div>"
+    )
+
+    store.setState({ message: "bye" })
+
+    expect(wrapper.html()).toBe("<div>parent bye <span>child bye</span></div>")
+  })
+
+  test("Provider - Connect component with Connect child components", () => {
+    store.setState({ message: "hello" })
+
+    const mapToProps = ({ message }) => ({ message })
+
+    const ConnectedComp = ({ children }) => (
+      <Connect mapToProps={mapToProps}>
+        {({ message }) => (
+          <div>
+            parent {message} {children}
+          </div>
+        )}
+      </Connect>
+    )
+    const ConnectedChildComp = () => (
+      <Connect mapToProps={mapToProps}>
+        {({ message }) => <span>child {message}</span>}
+      </Connect>
+    )
 
     const App = () => (
       <Provider store={store}>
