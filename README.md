@@ -138,8 +138,12 @@ Here's the full version: [https://codesandbox.io/s/n5orzr5mxj](https://codesandb
 **Redux Zero** was based on this [gist](https://gist.github.com/developit/55c48d294abab13a146eac236bae3219) by [@developit](https://github.com/developit)
 
 ## Roadmap
-- Add more use case examples (including unit tests)
-- Add (Provider, connect) to Preact
+- Add more use case examples (including unit tests, SSR, etc)
+- Add Preact bindings
+
+## Tools
+These are unofficial tools, maintained by the community:
+- [Redux-Zero Tools](https://github.com/nyteshade/rzero-tools)
 
 ## Docs
 

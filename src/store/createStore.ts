@@ -12,7 +12,7 @@ export default function createStore(state = {}) {
     subscribe(f) {
       listeners.push(f)
       return () => {
-        listeners.splice(listeners.indexOf(f))
+        listeners.splice(listeners.indexOf(f), 1)
       }
     },
     getState() {
