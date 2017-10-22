@@ -111,34 +111,6 @@ export default connect(mapToProps)(({ count }) => (
 ));
 ```
 
-You also have the option of using the Connect component via render props rather than the connect HOC
-
-```js
-/* Counter.js */
-import React from "react";
-import { Connect } from "redux-zero/react";
-
-import { increment, decrement } from "./actions";
-
-const mapToProps = ({ count }) => ({ count });
-
-const Counter = () => (
-  <Connect mapToProps={mapToProps}>
-    {({ count }) => (
-      <div>
-        <h1>{count}</h1>
-        <div>
-          <button onClick={increment}>increment</button>
-          <button onClick={decrement}>decrement</button>
-        </div>
-      </div>
-    )}
-  </Connect>
-);
-
-export default Counter;
-```
-
 Last but not least, plug the whole thing in your index file:
 
 ```js

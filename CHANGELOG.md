@@ -1,5 +1,24 @@
 # Changelog
 
+### 4.1.0
+
+- Include `Connect` component that can be used with a render callback as an alternative to the `connect` HOC
+
+```javascript
+import { Connect } from 'redux-zero/react'
+
+// ...
+
+render() {
+  return (
+    <Connect mapToProps={({ count }) => ({ count })}>
+      {({ count }) => <span>{count}</span>}
+    </Connect>
+  )
+}
+
+```
+
 ### 4.0.0
 
 - Separating `Provider` and `connect` from `createStore`. With this we'll be able to build for different frameworks:
