@@ -122,7 +122,7 @@ import { increment, decrement } from "./actions";
 
 const mapToProps = ({ count }) => ({ count });
 
-export default () => (
+const Counter = () => (
   <Connect mapToProps={mapToProps}>
     {({ count }) => (
       <div>
@@ -135,6 +135,8 @@ export default () => (
     )}
   </Connect>
 );
+
+export default Counter;
 ```
 
 Last but not least, plug the whole thing in your index file:
