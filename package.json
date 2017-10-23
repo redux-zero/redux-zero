@@ -34,10 +34,10 @@
       "js"
     ],
     "setupFiles": [
-      "<rootDir>/testSetup.js"
+      "<rootDir>/config/testSetup.js"
     ],
     "transform": {
-      "^.+\\.(ts|tsx)$": "<rootDir>/preprocessor.js"
+      "^.+\\.(ts|tsx)$": "<rootDir>/config/preprocessor.js"
     },
     "testMatch": [
       "<rootDir>/src/**/*.spec.(ts|tsx)"
