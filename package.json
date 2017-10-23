@@ -8,7 +8,7 @@
     "compile": "tsc --pretty",
     "lint": "tslint -c tslint.json src/**/*.ts src/**/*.tsx",
     "test": "jest",
-    "format": "prettier --write --no-semi '{src,__tests__}/**/*.ts' '{src,__tests__}/**/*.tsx'",
+    "format": "prettier --write --no-semi 'src/**/*.ts' 'src/**/*.tsx'",
     "check": "npm run compile && npm run lint && npm run test",
     "clean": "rimraf dist coverage",
     "prebuild": "npm run format && npm run check && npm run clean",
@@ -34,7 +34,7 @@
       "js"
     ],
     "setupFiles": [
-      "<rootDir>/__tests__/testSetup.js"
+      "<rootDir>/testSetup.js"
     ],
     "transform": {
       "^.+\\.(ts|tsx)$": "<rootDir>/preprocessor.js"

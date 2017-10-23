@@ -16,7 +16,8 @@
   ],
   "exclude": [
     "node_modules",
-    "**/*.spec.ts"
+    "**/*.spec.ts",
+    "**/*.spec.tsx"
   ],
   "filesGlob": [
     "typings/index.d.ts",
