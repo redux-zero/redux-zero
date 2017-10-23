@@ -27,7 +27,7 @@ export class Connect extends React.Component<any> {
     }
   }
   render() {
-    return this.props.children(this.state)
+    return this.props.children({ store: this.context.store, ...this.state })
   }
 }
 

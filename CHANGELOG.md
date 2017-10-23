@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.1.1
+
+- Fixes drawback from the latest release by making `connect` HOC and `Connect` component provide the store as a prop
+
 ### 4.1.0
 
 - Include `Connect` component that can be used with a render callback as an alternative to the `connect` HOC
