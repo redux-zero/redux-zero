@@ -32,7 +32,7 @@ _site/
 # Dependency directory
 node_modules
 dist
-react
+./react
 
 # Optional npm cache directory
 .npm
