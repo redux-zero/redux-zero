@@ -1,6 +1,4 @@
-import { mount } from "enzyme"
-
-import createStore from "../src/index"
+import createStore from "./createStore"
 
 describe("redux-zero - the store", () => {
   const listener = jest.fn()
