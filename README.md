@@ -31,7 +31,7 @@ To install the stable version:
 npm install --save redux-zero
 ```
 
-This assumes that you’re using [npm](https://www.npmjs.com/) with a module bundler like [Webpack](http://webpack.github.io)
+This assumes that you’re using [npm](https://www.npmjs.com/) with a module bundler like [Webpack](https://webpack.js.org/)
 
 ## How
 
@@ -80,13 +80,13 @@ import store from "./store";
 
 export const increment = () => {
   store.setState({
-    count: store.getState().count + 1
+	count: store.getState().count + 1
   })
 }
 
 export const decrement = () => {
   store.setState({
-    count: store.getState().count - 1
+	count: store.getState().count - 1
   })
 }
 ```
@@ -104,11 +104,11 @@ const mapToProps = ({ count }) => ({ count });
 
 export default connect(mapToProps)(({ count }) => (
   <div>
-    <h1>{count}</h1>
-    <div>
-      <button onClick={increment}>increment</button>
-      <button onClick={decrement}>decrement</button>
-    </div>
+	<h1>{count}</h1>
+	<div>
+	  <button onClick={increment}>increment</button>
+	  <button onClick={decrement}>decrement</button>
+	</div>
   </div>
 ));
 ```
@@ -127,7 +127,7 @@ import Counter from "./Counter";
 
 const App = () => (
   <Provider store={store}>
-    <Counter />
+	<Counter />
   </Provider>
 );
 
