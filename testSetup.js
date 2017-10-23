@@ -8,10 +8,10 @@ global.shallow = Enzyme.shallow
 global.render = Enzyme.render
 global.mount = Enzyme.mount
 
-global.requestAnimationFrame = function (callback) {
-  setTimeout(callback, 0);
+global.requestAnimationFrame = function(callback) {
+  setTimeout(callback, 0)
 }
 
 console.error = message => {
   throw new Error(message)
-};
+}

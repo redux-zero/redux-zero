@@ -30,9 +30,9 @@ build/Release
 _site/
 
 # Dependency directory
-node_modules
-dist
-react
+node_modules/
+dist/
+react/
 
 # Optional npm cache directory
 .npm
