@@ -1,12 +1,12 @@
-import typescript from 'rollup-plugin-typescript2'
-import resolve from 'rollup-plugin-node-resolve'
-import commonjs from 'rollup-plugin-commonjs'
-import peerDeps from 'rollup-plugin-peer-deps-external'
-import uglify from 'rollup-plugin-uglify'
-import filesize from 'rollup-plugin-filesize'
+import typescript from "rollup-plugin-typescript2"
+import resolve from "rollup-plugin-node-resolve"
+import commonjs from "rollup-plugin-commonjs"
+import peerDeps from "rollup-plugin-peer-deps-external"
+import uglify from "rollup-plugin-uglify"
+import filesize from "rollup-plugin-filesize"
 
 const format = process.env.NODE_ENV
-const isUmd = format === 'umd'
+const isUmd = format === "umd"
 
 function getFileName(file) {
   if (isUmd) {
@@ -18,11 +18,11 @@ function getFileName(file) {
 function getConfig(input, file) {
   const conf = {
     input,
-    name: 'redux-zero',
+    name: "redux-zero",
     sourcemap: true,
     output: {
       file: getFileName(file),
-      format,
+      format
     },
     plugins: [
       peerDeps(),
@@ -30,10 +30,10 @@ function getConfig(input, file) {
       resolve({
         jsnext: true,
         main: true,
-        browser: true,
+        browser: true
       }),
-      commonjs(),
-    ],
+      commonjs()
+    ]
   }
 
   isUmd && conf.plugins.push(uglify(), filesize())
@@ -42,8 +42,9 @@ function getConfig(input, file) {
 }
 
 const config = [
-  getConfig('./src/index.ts', 'dist/redux-zero'),
-  getConfig('./src/react/index.ts', 'react/index'),
+  getConfig("./src/index.ts", "dist/redux-zero"),
+  getConfig("./src/react/index.ts", "react/index"),
+  getConfig("./src/preact/index.ts", "preact/index")
 ]
 
 export default config
