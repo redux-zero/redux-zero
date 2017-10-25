@@ -2,6 +2,7 @@ import * as React from "react"
 
 import shallowEqual from "../../utils/shallowEqual"
 import propValidation from "../../utils/propsValidation"
+import bindActions from "../../utils/bindActions"
 
 export class Connect extends React.Component<any> {
   static contextTypes = {
@@ -9,6 +10,7 @@ export class Connect extends React.Component<any> {
   }
   unsubscribe
   state = this.getProps()
+  actions = this.getActions()
   componentWillMount() {
     this.unsubscribe = this.context.store.subscribe(this.update)
   }
@@ -20,6 +22,13 @@ export class Connect extends React.Component<any> {
     const state = (this.context.store && this.context.store.getState()) || {}
     return mapToProps(state, this.props)
   }
+  getActions() {
+    const { actions } = this.props
+    return bindActions(
+      typeof actions === "function" ? actions(this.context.store) : actions,
+      this.context.store
+    )
+  }
   update = () => {
     const mapped = this.getProps()
     if (!shallowEqual(mapped, this.state)) {
@@ -27,13 +36,17 @@ export class Connect extends React.Component<any> {
     }
   }
   render() {
-    return this.props.children({ store: this.context.store, ...this.state })
+    return this.props.children({
+      store: this.context.store,
+      ...this.state,
+      ...this.actions
+    })
   }
 }
 
-export default function connect(mapToProps) {
+export default function connect(mapToProps, actions = {}) {
   return Child => props => (
-    <Connect mapToProps={mapToProps}>
+    <Connect mapToProps={mapToProps} actions={actions}>
       {mappedProps => <Child {...mappedProps} {...props} />}
     </Connect>
   )

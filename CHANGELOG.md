@@ -1,5 +1,23 @@
 # Changelog
 
+### 4.2.0
+
+- Binding actions instead of coupling them to the store.
+
+Right now, actions must import an instance of the store in order to invoke `setState()`, as discussed [here](https://github.com/concretesolutions/redux-zero/issues/16). This version solved that problem. Now it's way easier to test the actions, because they are simply pure functions:
+
+```javascript
+const createActions = store => ({
+  increment: state => ({ count: state.count + 1 }),
+})
+
+const App = connect(mapToProps, createActions)(
+  ({ count, increment }) => (
+    <button onClick={increment}>{count}</button>
+  )
+)
+```
+
 ### 4.1.1
 
 - Fixes drawback from the latest release by making `connect` HOC and `Connect` component provide the store as a prop

@@ -38,6 +38,37 @@ describe("redux-zero - react bindings", () => {
       expect(wrapper.html()).toBe("<h1>bye</h1>")
     })
 
+    it("should provide the actions and subscribe to changes", () => {
+      store.setState({ count: 0 })
+
+      const Comp = ({ count, increment }) => (
+        <h1 onClick={increment}>{count}</h1>
+      )
+
+      const mapToProps = ({ count }) => ({ count })
+
+      const actions = store => ({
+        increment: state => ({ count: state.count + 1 })
+      })
+
+      const ConnectedComp = connect(mapToProps, actions)(Comp)
+
+      const App = () => (
+        <Provider store={store}>
+          <ConnectedComp />
+        </Provider>
+      )
+
+      const wrapper = mount(<App />)
+
+      expect(wrapper.html()).toBe("<h1>0</h1>")
+
+      wrapper.children().simulate("click")
+      wrapper.children().simulate("click")
+
+      expect(wrapper.html()).toBe("<h1>2</h1>")
+    })
+
     it("should provide the store as a prop", () => {
       const Comp = ({ store }) => <h1>{String(!!store)}</h1>
 
@@ -118,6 +149,37 @@ describe("redux-zero - react bindings", () => {
       store.setState({ message: "bye" })
 
       expect(wrapper.html()).toBe("<h1>bye</h1>")
+    })
+
+    it("should provide the actions and subscribe to changes", () => {
+      store.setState({ count: 0 })
+
+      const mapToProps = ({ count }) => ({ count })
+
+      const actions = store => ({
+        increment: state => ({ count: state.count + 1 })
+      })
+
+      const ConnectedComp = () => (
+        <Connect mapToProps={mapToProps} actions={actions}>
+          {({ count, increment }) => <h1 onClick={increment}>{count}</h1>}
+        </Connect>
+      )
+
+      const App = () => (
+        <Provider store={store}>
+          <ConnectedComp />
+        </Provider>
+      )
+
+      const wrapper = mount(<App />)
+
+      expect(wrapper.html()).toBe("<h1>0</h1>")
+
+      wrapper.children().simulate("click")
+      wrapper.children().simulate("click")
+
+      expect(wrapper.html()).toBe("<h1>2</h1>")
     })
 
     it("should provide the store as a prop", () => {
