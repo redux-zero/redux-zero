@@ -76,20 +76,13 @@ Then, create your actions. This is where you change the state from your store:
 
 ```js
 /* actions.js */
-import store from "./store";
-
-export const increment = () => {
-  store.setState({
-    count: store.getState().count + 1
-  })
-}
-
-export const decrement = () => {
-  store.setState({
-    count: store.getState().count - 1
-  })
-}
+export const actions = store => ({
+  increment: state => ({ count: state.count + 1 }),
+  decrement: state => ({ count: state.count - 1 })
+})
 ```
+
+By the way, because the actions are bound to the store, they are just pure functions :)
 
 Now create your component. With **Redux Zero** your component can focus 100% on the UI and just call the actions that will automatically update the state:
 
@@ -98,16 +91,16 @@ Now create your component. With **Redux Zero** your component can focus 100% on 
 import React from "react";
 import { connect } from "redux-zero/react";
 
-import { increment, decrement } from "./actions";
+import actions from "./actions";
 
 const mapToProps = ({ count }) => ({ count });
 
-export default connect(mapToProps)(({ count }) => (
+export default connect(mapToProps, actions)(({ count, increment, decrement }) => (
   <div>
     <h1>{count}</h1>
     <div>
-      <button onClick={increment}>increment</button>
       <button onClick={decrement}>decrement</button>
+      <button onClick={increment}>increment</button>
     </div>
   </div>
 ));
