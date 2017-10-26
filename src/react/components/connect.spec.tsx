@@ -69,6 +69,55 @@ describe("redux-zero - react bindings", () => {
       expect(wrapper.html()).toBe("<h1>2</h1>")
     })
 
+    it("should peform async actions correctly", done => {
+      store.setState({ count: 0 })
+
+      const Comp = ({ count, increment }) => (
+        <h1 onClick={increment}>{count}</h1>
+      )
+
+      const mapToProps = ({ count }) => ({ count })
+
+      const actions = ({ getState, setState }) => ({
+        increment: state => {
+          Promise.resolve()
+            .then(() => {
+              setState({ pending: false, count: getState().count + 1 })
+            })
+            .then(() => {
+              setState({ count: getState().count + 1 })
+
+              const [state0, state1, state2, state3] = listener.mock.calls.map(
+                ([c]) => c
+              )
+
+              expect(state0.count).toBe(0)
+              expect(state1.pending).toBe(true)
+              expect(state1.count).toBe(0)
+              expect(state2.pending).toBe(false)
+              expect(state2.count).toBe(1)
+              expect(state3.count).toBe(2)
+
+              done()
+            })
+
+          return { pending: true }
+        }
+      })
+
+      const ConnectedComp = connect(mapToProps, actions)(Comp)
+
+      const App = () => (
+        <Provider store={store}>
+          <ConnectedComp />
+        </Provider>
+      )
+
+      const wrapper = mount(<App />)
+
+      wrapper.children().simulate("click")
+    })
+
     it("should provide the store as a prop", () => {
       const Comp = ({ store }) => <h1>{String(!!store)}</h1>
 
@@ -180,6 +229,59 @@ describe("redux-zero - react bindings", () => {
       wrapper.children().simulate("click")
 
       expect(wrapper.html()).toBe("<h1>2</h1>")
+    })
+
+    it("should peform async actions correctly", done => {
+      store.setState({ count: 0 })
+
+      const Comp = ({ count, increment }) => (
+        <h1 onClick={increment}>{count}</h1>
+      )
+
+      const mapToProps = ({ count }) => ({ count })
+
+      const actions = ({ getState, setState }) => ({
+        increment: state => {
+          Promise.resolve()
+            .then(() => {
+              setState({ pending: false, count: getState().count + 1 })
+            })
+            .then(() => {
+              setState({ count: getState().count + 1 })
+
+              const [state0, state1, state2, state3] = listener.mock.calls.map(
+                ([c]) => c
+              )
+
+              expect(state0.count).toBe(0)
+              expect(state1.pending).toBe(true)
+              expect(state1.count).toBe(0)
+              expect(state2.pending).toBe(false)
+              expect(state2.count).toBe(1)
+              expect(state3.count).toBe(2)
+
+              done()
+            })
+
+          return { pending: true }
+        }
+      })
+
+      const ConnectedComp = () => (
+        <Connect mapToProps={mapToProps} actions={actions}>
+          {({ count, increment }) => <h1 onClick={increment}>{count}</h1>}
+        </Connect>
+      )
+
+      const App = () => (
+        <Provider store={store}>
+          <ConnectedComp />
+        </Provider>
+      )
+
+      const wrapper = mount(<App />)
+
+      wrapper.children().simulate("click")
     })
 
     it("should provide the store as a prop", () => {
