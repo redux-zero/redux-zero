@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'redux-zero/react';
 import { StyleSheet, Text, View, Button } from 'react-native';
-import { increment, decrement } from './actions';
+import actions from './actions';
 
 const mapToProps = ({ count }) => ({ count });
 
 class Counter extends Component {
   render() {
-    const { count } = this.props;
+    const { count, increment, decrement } = this.props;
     return (
       <View style={styles.container}>
         <Text style={styles.counter}>
@@ -20,7 +20,7 @@ class Counter extends Component {
   }
 }
 
-export default connect(mapToProps)(Counter);
+export default connect(mapToProps, actions)(Counter);
 
 const styles = StyleSheet.create({
   container: {
