@@ -129,13 +129,15 @@ render(<App />, document.getElementById("root"));
 
 Here's the full version: [https://codesandbox.io/s/n5orzr5mxj](https://codesandbox.io/s/n5orzr5mxj)
 
-**More on [examples](examples) folder**
+### More examples
+- [React Native](https://github.com/concretesolutions/redux-zero/tree/master/examples/react-native/counter)
 
 ## Inspiration
 **Redux Zero** was based on this [gist](https://gist.github.com/developit/55c48d294abab13a146eac236bae3219) by [@developit](https://github.com/developit)
 
 ## Roadmap
-- Add more use case examples (including unit tests, SSR, etc)
+- Add more examples (including unit tests, SSR, etc)
+- Add middleware
 - Add Preact bindings
 
 ## Tools
