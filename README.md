@@ -129,6 +129,8 @@ render(<App />, document.getElementById("root"));
 
 Here's the full version: [https://codesandbox.io/s/n5orzr5mxj](https://codesandbox.io/s/n5orzr5mxj)
 
+**More on [examples](examples) folder**
+
 ## Inspiration
 **Redux Zero** was based on this [gist](https://gist.github.com/developit/55c48d294abab13a146eac236bae3219) by [@developit](https://github.com/developit)
 
