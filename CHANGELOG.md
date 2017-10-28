@@ -1,5 +1,21 @@
 # Changelog
 
+### 4.2.1
+
+- Let `mapToProps` function optional
+
+If you don't pass `mapToProps` function to `connect` HOC or `Connect` component, it will inject all state as props at the connected component.
+
+```javascript
+const store = createStore({ message: 'Hey' })
+
+const App = connect()(
+  ({ message }) => (
+    <h1>{message}</h1>
+  )
+)
+```
+
 ### 4.2.0
 
 - Binding actions instead of coupling them to the store.
