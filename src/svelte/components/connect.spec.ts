@@ -24,10 +24,6 @@ const Svelte = () => ({
     }
   },
 
-  destroy: function() {
-    
-  },
-
   toObject(m) {
     return Array.from(m).reduce((obj, [key, value]) => (
       Object.assign(obj, { [key]: value })
@@ -102,23 +98,4 @@ describe("redux-zero - svelte bindings", () => {
     increment()
     expect(svt.get('count')).toEqual(newState.count)
   })
-
-  // test("unsubscribe", () => {
-  //   // expect(listener).not.toBeCalled()
-  //   // store.setState({ a: "key" })
-  //   // expect(listener).toBeCalledWith({ a: "key" })
-
-  //   // const otherListener = jest.fn()
-  //   // store.subscribe(otherListener)
-  //   // listener.mockReset()
-    
-  //   const svt = Svelte()
-  //   const mapToProps = ({ count }) => ({ count })
-  //   const state = { count: 1 }
-
-  //   store.setState(state)
-  //   connect(svt, store, mapToProps)
-
-  //   expect(svt.unsubscribe).toEqual(unsubscribe)
-  // })
 })
