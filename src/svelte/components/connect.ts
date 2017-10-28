@@ -9,10 +9,15 @@ export function getActions(store, actions) {
 }
 
 function getDiff(newData, oldData) {
+  console.log('getDiff(newData, oldData)', newData, oldData)
   const diff = {}
   let changed = false
   for (let key in newData) {
-    if (!shallowEqual(oldData[key], newData[key])) {
+    // if (!shallowEqual(oldData[key], newData[key])) {
+    //   changed = true
+    //   diff[key] = newData[key]
+    // }
+    if (oldData[key] !== newData[key]) {
       changed = true
       diff[key] = newData[key]
     }
@@ -30,6 +35,7 @@ export function connect(component, store, mapToProps) {
     )
     if (changed) {
       component.set(diff)
+      console.log('connect - diff', diff)
     }
   }
 }
