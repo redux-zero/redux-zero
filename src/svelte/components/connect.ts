@@ -1,3 +1,4 @@
+import shallowEqual from "../../utils/shallowEqual"
 import bindActions from "../../utils/bindActions"
 
 export function getActions(store, actions) {
@@ -8,10 +9,10 @@ export function getActions(store, actions) {
 }
 
 function getDiff(newData, oldData) {
-    const diff = {}
+    const diff = { }
     let changed = false
-    for (let key in newData) {
-        if (oldData[key] !== newData[key]) {
+    for (let key in newData) {        
+        if (!shallowEqual(oldData[key], newData[key])) {
             changed = true
             diff[key] = newData[key]
         }
