@@ -77,8 +77,16 @@ Then, create your actions. This is where you change the state from your store:
 ```js
 /* actions.js */
 export const actions = store => ({
-  increment: state => ({ count: state.count + 1 }),
-  decrement: state => ({ count: state.count - 1 })
+  increment: state => {
+    store.setState({
+      count: state.count + 1
+    });
+  },
+  decrement: state => {
+    store.setState({
+      count: state.count - 1
+    });
+  }
 })
 ```
 
