@@ -19,7 +19,7 @@ function getDiff(newData, oldData) {
     return { diff, changed }
 }
 
-export function connect(component, store, mapToProps, actions?) {
+export function connect(component, store, mapToProps) {
     update()
     component.on("destroy", store.subscribe(update))
     function update() {
@@ -27,8 +27,5 @@ export function connect(component, store, mapToProps, actions?) {
         if (changed) {
             component.set(diff)
         }
-    }
-    if (actions) {
-        Object.assign(component, getActions(store, actions))
     }
 }

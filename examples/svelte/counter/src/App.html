@@ -1,0 +1,16 @@
+<div>
+    Name: <input bind:value="name" type="text">
+	<HelloComponent name={{name}} />
+	<HelloComponent name="Kiho" />
+</div>
+
+<script lang="ts">
+import HelloComponent from "./components/Hello.html";
+
+export default {
+	components: {
+		HelloComponent
+	},
+	data: () => ({ name: "World" }),
+}
+</script>
