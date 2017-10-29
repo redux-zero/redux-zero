@@ -20,7 +20,7 @@ export class Connect extends React.Component<any> {
   getProps() {
     const { mapToProps } = this.props
     const state = (this.context.store && this.context.store.getState()) || {}
-    return mapToProps(state, this.props)
+    return mapToProps ? mapToProps(state, this.props) : state
   }
   getActions() {
     const { actions } = this.props
