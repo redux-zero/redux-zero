@@ -1,3 +1,4 @@
+import shallowEqual from "../../utils/shallowEqual"
 import bindActions from "../../utils/bindActions"
 
 // TODO - clean up console.log
@@ -9,7 +10,10 @@ export function getActions(store, actions) {
 }
 
 function differs(a, b) {
-  return a !== b || ((a && typeof a === "object") || typeof a === "function")
+  if (a && typeof a === "object") {
+    return !shallowEqual(a, b)
+  }
+  return a !== b
 }
 
 function getDiff(newData, oldData) {

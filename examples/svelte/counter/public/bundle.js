@@ -200,6 +200,12 @@ var proto = {
 	_unmount: _unmount
 };
 
+function shallowEqual(a, b) {
+  for (const i in a) if (a[i] !== b[i]) return false
+  for (const i in b) if (!(i in a)) return false
+  return true
+}
+
 function bindActions(actions, store) {
   let bound = {};
   for (let name in actions) {
@@ -211,34 +217,47 @@ function bindActions(actions, store) {
   return bound
 }
 
+// TODO - clean up console.log
 function getActions(store, actions) {
-    return bindActions(
-        typeof actions === "function" ? actions(store) : actions,
-        store
-    )
+  return bindActions(
+    typeof actions === "function" ? actions(store) : actions,
+    store
+  )
+}
+
+function differs$1(a, b) {
+  if (a && typeof a === "object") {
+    return !shallowEqual(a, b)
+  }
+  return a !== b
 }
 
 function getDiff(newData, oldData) {
-    const diff = {};
-    let changed = false;
-    for (let key in newData) {
-        if (oldData[key] !== newData[key]) {
-            changed = true;
-            diff[key] = newData[key];
-        }
+  console.log("getDiff(newData, oldData)", newData, oldData);
+  const diff = {};
+  let changed = false;
+  for (let key in newData) {
+    if (differs$1(oldData[key], newData[key])) {
+      changed = true;
+      diff[key] = newData[key];
     }
-    return { diff, changed }
+  }
+  return { diff, changed }
 }
 
 function connect(component, store, mapToProps) {
-    update();
-    component.on("destroy", store.subscribe(update));
-    function update() {
-        const { diff, changed } = getDiff(mapToProps(store.getState()), component.get());
-        if (changed) {
-            component.set(diff);
-        }
+  update();
+  component.on("destroy", store.subscribe(update));
+  function update() {
+    const { diff, changed } = getDiff(
+      mapToProps(store.getState()),
+      component.get()
+    );
+    if (changed) {
+      component.set(diff);
+      console.log("connect - diff", diff);
     }
+  }
 }
 
 'use strict';
