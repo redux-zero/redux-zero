@@ -1,22 +1,31 @@
 import createStore from "../.."
 import { connect, getActions } from "../index"
 
-const Svelte = function() {
+const Svelte = function(options) {
   return {
-    _map: new Map(),
+    _state: (options ? options.data : null) || {},
 
     unsubscribe: null,
 
-    set: function (obj) {
-      Object.keys(obj).reduce((map, key) => 
-        map.set(key, obj[key]), this._map);
+    set: function (newState) {
+      this._set(this.assign({}, newState));
+    },
+
+    _set: function(newState) {
+      var oldState = this._state,
+        changed = {},
+        dirty = false;
+    
+      for (var key in newState) {
+        if (this.differs(newState[key], oldState[key])) changed[key] = dirty = true;
+      }
+      if (!dirty) return;
+    
+      this._state = this.assign({}, oldState, newState);
     },
 
     get: function(key) {
-      if (!key) {
-        return this.toObject(this._map)
-      }
-      return this._map.get(key);
+      return key ? this._state[key] : this._state;
     },
 
     on: function(eventName, eventHandler) {
@@ -25,10 +34,21 @@ const Svelte = function() {
       }
     },
 
-    toObject(m) {
-      return Array.from(m).reduce((obj, [key, value]) => (
-        Object.assign(obj, { [key]: value })
-      ), {});
+    differs: function(a, b) {
+      return a !== b || ((a && typeof a === 'object') || typeof a === 'function');
+    },
+
+    assign: function (target) {
+      var k,
+        source,
+        i = 1,
+        len = arguments.length;
+      for (; i < len; i++) {
+        source = arguments[i];
+        for (k in source) target[k] = source[k];
+      }
+    
+      return target;
     }
   }
 }
@@ -139,7 +159,7 @@ describe("redux-zero - svelte bindings", () => {
     
     const newState = { count: 2 }    
     increment()
-    
+
     expect(svt.get('count')).toEqual(newState.count)
     expect(svt.get('count')).toEqual(store.getState().count)
     expect(svt.get()).toEqual(store.getState())

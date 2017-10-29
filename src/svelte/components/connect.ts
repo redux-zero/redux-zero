@@ -8,16 +8,16 @@ export function getActions(store, actions) {
   )
 }
 
+function differs(a, b) {
+  return a !== b || ((a && typeof a === 'object') || typeof a === 'function')
+}
+
 function getDiff(newData, oldData) {
   console.log('getDiff(newData, oldData)', newData, oldData)
   const diff = {}
   let changed = false
   for (let key in newData) {
-    // if (!shallowEqual(oldData[key], newData[key])) {
-    //   changed = true
-    //   diff[key] = newData[key]
-    // }
-    if (oldData[key] !== newData[key]) {
+    if (differs(oldData[key], newData[key])) {
       changed = true
       diff[key] = newData[key]
     }
