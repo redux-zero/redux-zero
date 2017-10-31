@@ -1,7 +1,6 @@
 import shallowEqual from "../../utils/shallowEqual"
 import bindActions from "../../utils/bindActions"
 
-// TODO - clean up console.log
 export function getActions(store, actions) {
   return bindActions(
     typeof actions === "function" ? actions(store) : actions,
@@ -17,7 +16,6 @@ function differs(a, b) {
 }
 
 function getDiff(newData, oldData) {
-  console.log("getDiff(newData, oldData)", newData, oldData)
   const diff = {}
   let changed = false
   for (let key in newData) {
@@ -39,7 +37,6 @@ export function connect(component, store, mapToProps) {
     )
     if (changed) {
       component.set(diff)
-      console.log("connect - diff", diff)
     }
   }
 }

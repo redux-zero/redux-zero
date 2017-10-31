@@ -173,7 +173,7 @@ describe("redux-zero - react bindings", () => {
     })
 
     it("should connect return all state when mapToProps is not passed", () => {
-      store.setState({ message: 'Hey!' })
+      store.setState({ message: "Hey!" })
       const Comp = ({ message }) => <h1>{message}</h1>
       const ConnectedComp = connect()(Comp)
 

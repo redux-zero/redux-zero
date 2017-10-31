@@ -1,60 +1,6 @@
 import createStore from "../.."
 import { connect, getActions } from "../index"
-
-const Svelte = function(options) {
-  return {
-    _state: (options ? options.data : null) || {},
-
-    unsubscribe: null,
-
-    set: function(newState) {
-      this._set(this.assign({}, newState))
-    },
-
-    _set: function(newState) {
-      let oldState = this._state,
-        changed = {},
-        dirty = false
-
-      for (let key in newState) {
-        if (this.differs(newState[key], oldState[key]))
-          changed[key] = dirty = true
-      }
-      if (!dirty) return
-
-      this._state = this.assign({}, oldState, newState)
-    },
-
-    get: function(key) {
-      return key ? this._state[key] : this._state
-    },
-
-    on: function(eventName, eventHandler) {
-      if (eventName === "destroy") {
-        this.unsubscribe = eventHandler
-      }
-    },
-
-    differs: function(a, b) {
-      return (
-        a !== b || ((a && typeof a === "object") || typeof a === "function")
-      )
-    },
-
-    assign: function(target) {
-      let k,
-        source,
-        i = 1,
-        len = arguments.length
-      for (; i < len; i++) {
-        source = arguments[i]
-        for (k in source) target[k] = source[k]
-      }
-
-      return target
-    }
-  }
-}
+import Svelte from "./svelte.spec"
 
 describe("redux-zero - svelte bindings", () => {
   const listener = jest.fn()
