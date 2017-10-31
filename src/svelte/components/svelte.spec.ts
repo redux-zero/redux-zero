@@ -66,6 +66,20 @@ describe("redux-zero - svelte fake component", () => {
     expect(svt.get("message")).toEqual(state.message)
     expect(svt.get()).toEqual(state)
   })
+
+  test("update state", () => {
+    const svt = Svelte()
+    const mapToProps = ({ message }) => ({ message })
+    const state = { message: "hello" }
+
+    svt.set(state)
+
+    const newState = { message: "hello world" }
+    svt.set(newState)
+
+    expect(svt.get("message")).toEqual(newState.message)
+    expect(svt.get()).toEqual(newState)
+  })
 })
 
 export default Svelte
