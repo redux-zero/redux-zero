@@ -66,8 +66,7 @@
     "rollup-plugin-typescript2": "0.7.0",
     "rollup-plugin-uglify": "2.0.1",
     "tslint": "^5.7.0",
-    "typescript": "2.5.3",
-    "uglify-es": "3.1.5"
+    "typescript": "2.5.3"
   },
   "keywords": [
     "react",

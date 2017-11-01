@@ -1,4 +1,4 @@
-import shallowEqual from "../../utils/shallowEqual"
+import getDiff from "../../utils/getDiff"
 import bindActions from "../../utils/bindActions"
 
 export function getActions(store, actions) {
@@ -6,25 +6,6 @@ export function getActions(store, actions) {
     typeof actions === "function" ? actions(store) : actions,
     store
   )
-}
-
-function differs(a, b) {
-  if (a && typeof a === "object") {
-    return !shallowEqual(a, b)
-  }
-  return a !== b
-}
-
-function getDiff(newData, oldData) {
-  const diff = {}
-  let changed = false
-  for (let key in newData) {
-    if (differs(oldData[key], newData[key])) {
-      changed = true
-      diff[key] = newData[key]
-    }
-  }
-  return { diff, changed }
 }
 
 export function connect(component, store, mapToProps) {
