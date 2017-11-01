@@ -33,7 +33,7 @@ _site/
 node_modules/
 dist/
 react/
-svelte/
+/svelte/
 
 # Optional npm cache directory
 .npm
