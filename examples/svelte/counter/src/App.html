@@ -1,16 +1,13 @@
 <div>
-    Name: <input bind:value="name" type="text">
-	<HelloComponent name={{name}} />
-	<HelloComponent name="Kiho" />
+	<CounterComponent/>
 </div>
 
-<script lang="ts">
-import HelloComponent from "./components/Hello.html";
+<script>
+import CounterComponent from "./components/Counter.html";
 
 export default {
 	components: {
-		HelloComponent
+		CounterComponent
 	},
-	data: () => ({ name: "World" }),
 }
 </script>
