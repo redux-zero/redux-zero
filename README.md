@@ -131,6 +131,7 @@ Here's the full version: [https://codesandbox.io/s/n5orzr5mxj](https://codesandb
 
 ### More examples
 - [React Native](https://github.com/concretesolutions/redux-zero/tree/master/examples/react-native/counter)
+- [Svelte](https://github.com/concretesolutions/redux-zero/tree/master/examples/svelte/counter)
 
 ## Inspiration
 **Redux Zero** was based on this [gist](https://gist.github.com/developit/55c48d294abab13a146eac236bae3219) by [@developit](https://github.com/developit)
