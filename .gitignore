@@ -32,8 +32,8 @@ _site/
 # Dependency directory
 node_modules/
 dist/
-react/
-svelte/
+/react/
+/svelte/
 
 # Optional npm cache directory
 .npm
