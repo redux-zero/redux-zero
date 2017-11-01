@@ -96,12 +96,12 @@ describe("redux-zero - svelte bindings", () => {
 
     expect(svt.get()).toEqual(store.getState())
 
-    const newState = { arr:  { nested: [3, 4] } }
+    const newState = { arr: { nested: [3, 4] } }
     store.setState(newState)
     newState.arr.nested = [5, 6]
 
     expect(newState).toEqual(store.getState())
-    expect(svt.get('arr').nested[1]).toEqual(6)
+    expect(svt.get("arr").nested[1]).toEqual(6)
     expect(svt.get()).toEqual(store.getState())
   })
 

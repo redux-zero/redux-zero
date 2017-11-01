@@ -26,8 +26,6 @@ const plugins = [
     })
 ];
 
-console.log('NODE_ENV: ', nodeEnv);
-
 export default {
 	input: './src/main.ts',
 	output: {
