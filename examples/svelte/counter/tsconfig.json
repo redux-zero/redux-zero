@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2015",
+    "declaration": true,
+    "noImplicitAny": false,
+    "allowJs": false,
+    "sourceMap": true,
+    "outDir": "build/js/",
+    "noImplicitReturns": true,
+    "allowSyntheticDefaultImports": true,
+    "lib": [ "dom", "es2015" ],
+    "typeRoots": [
+      "./node_modules/@types"
+    ]
+  },
+  "exclude": [
+    "node_modules",
+    "public"
+  ],
+  "include": [
+    "src/**/*.ts"
+  ]
+}

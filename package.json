@@ -1,6 +1,6 @@
 {
   "name": "redux-zero",
-  "version": "4.2.1",
+  "version": "4.3.0",
   "description": "",
   "main": "dist/redux-zero.js",
   "typings": "dist/index.d.ts",
@@ -8,7 +8,7 @@
     "compile": "tsc --pretty",
     "lint": "tslint -c tslint.json src/**/*.ts src/**/*.tsx",
     "test": "jest",
-    "format": "prettier --write --no-semi 'src/**/*.ts' 'src/**/*.tsx'",
+    "format": "prettier --write --no-semi \"src/**/*.ts\" \"src/**/*.tsx\"",
     "check": "npm run compile && npm run lint && npm run test",
     "clean": "rimraf dist coverage",
     "prebuild": "npm run format && npm run check && npm run clean",
@@ -20,7 +20,8 @@
   "author": "Matheus Lima <matheusml90@gmail.com>",
   "files": [
     "dist",
-    "react"
+    "react",
+    "svelte"
   ],
   "license": "MIT",
   "repository": {

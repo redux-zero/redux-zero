@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.3.0
+
+- Add connect function for Svelte and usage example.
+
 ### 4.2.1
 
 - Let `mapToProps` function optional
