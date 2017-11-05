@@ -76,10 +76,12 @@ Then, create your actions. This is where you change the state from your store:
 
 ```js
 /* actions.js */
-export const actions = store => ({
+const actions = store => ({
   increment: state => ({ count: state.count + 1 }),
   decrement: state => ({ count: state.count - 1 })
-})
+});
+
+export default actions;
 ```
 
 By the way, because the actions are bound to the store, they are just pure functions :)
@@ -130,6 +132,7 @@ render(<App />, document.getElementById("root"));
 Here's the full version: [https://codesandbox.io/s/n5orzr5mxj](https://codesandbox.io/s/n5orzr5mxj)
 
 ### More examples
+- [React](https://github.com/concretesolutions/redux-zero/tree/master/examples/react/counter)
 - [React Native](https://github.com/concretesolutions/redux-zero/tree/master/examples/react-native/counter)
 - [Svelte](https://github.com/concretesolutions/redux-zero/tree/master/examples/svelte/counter)
 
