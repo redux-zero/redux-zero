@@ -31,7 +31,7 @@ To install the stable version:
 npm install --save redux-zero
 ```
 
-This assumes that you’re using [npm](https://www.npmjs.com/) with a module bundler like [Webpack](https://webpack.js.org/)
+This assumes that you’re using [npm](https://www.npmjs.com/) with a module bundler like [webpack](https://webpack.js.org/)
 
 ## How
 
