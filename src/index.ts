@@ -1,3 +1,4 @@
-import createStore from "./store/createStore"
+import createStore from "./store/createStore";
 
-export default createStore
+export default createStore;
+export { Provider, Connect, connect } from "./react";
