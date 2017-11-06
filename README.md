@@ -11,8 +11,8 @@
 [![build](https://img.shields.io/travis/concretesolutions/redux-zero/master.svg?style=flat-square)](https://travis-ci.org/concretesolutions/redux-zero)
 [![npm](https://img.shields.io/npm/v/redux-zero.svg?style=flat-square)](https://www.npmjs.com/package/redux-zero)
 [![downloads](https://img.shields.io/npm/dm/redux-zero.svg?style=flat-square)](https://www.npmjs.com/package/redux-zero)
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)]()
-[![dependencies](https://img.shields.io/david/expressjs/express.svg?style=flat-square)]()
+[![license](https://img.shields.io/github/license/concretesolutions/redux-zero.svg?style=flat-square)]()
+[![dependencies](https://img.shields.io/david/concretesolutions/redux-zero.svg?style=flat-square)]()
 
 
 - Single store
@@ -153,4 +153,4 @@ These are unofficial tools, maintained by the community:
 * [Contributing](https://github.com/concretesolutions/redux-zero/blob/master/CONTRIBUTING.md)
 * [Changelog](https://github.com/concretesolutions/redux-zero/blob/master/CHANGELOG.md)
 * [Code of Conduct](https://github.com/concretesolutions/redux-zero/blob/master/CODE_OF_CONDUCT.md)
-* [License](https://github.com/concretesolutions/redux-zero/blob/master/LICENSE.md)
+* [License](https://github.com/concretesolutions/redux-zero/blob/master/LICENSE)
