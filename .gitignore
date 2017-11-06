@@ -34,7 +34,6 @@ node_modules/
 dist/
 /react/
 /preact/
-/react/
 /svelte/
 
 # Optional npm cache directory

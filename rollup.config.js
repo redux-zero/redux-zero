@@ -22,7 +22,7 @@ function getConfig(input, file) {
     sourcemap: true,
     output: {
       file: getFileName(file),
-      format
+      format,
     },
     plugins: [
       peerDeps(),
@@ -30,10 +30,10 @@ function getConfig(input, file) {
       resolve({
         jsnext: true,
         main: true,
-        browser: true
+        browser: true,
       }),
-      commonjs()
-    ]
+      commonjs(),
+    ],
   }
 
   isUmd && conf.plugins.push(uglify(), filesize())
@@ -45,7 +45,7 @@ const config = [
   getConfig("./src/index.ts", "dist/redux-zero"),
   getConfig("./src/react/index.ts", "react/index"),
   // getConfig("./src/preact/index.ts", "preact/index"),
-  getConfig('./src/svelte/index.ts', 'svelte/index'),
+  getConfig("./src/svelte/index.ts", "svelte/index"),
 ]
 
 export default config
