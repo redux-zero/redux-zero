@@ -1,0 +1,34 @@
+<div>
+    <h1>{{count}}</h1>
+    <div>
+      <button on:click="increment(event)" class="button">+</button>
+      <button on:click="decrement(event)" class="button">-</button>
+    </div>
+</div>
+<hr />
+
+<script>
+    import { connect, getActions  }  from 'redux-zero/svelte';
+    import store from "../store";
+    import { actions } from "../actions";
+
+    const mapToProps = ({ count }) => ({ count });
+    const { decrement, increment } = getActions(store, actions);
+
+    export default {
+        methods: {
+            decrement,
+            increment,
+        },
+        oncreate() {
+            connect(this, store, mapToProps);
+        }
+    };
+</script>
+
+<style>
+.button {
+    font-size: 20px;
+    min-width: 30px;
+}
+</style>

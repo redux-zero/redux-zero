@@ -44,7 +44,8 @@ function getConfig(input, file) {
 const config = [
   getConfig("./src/index.ts", "dist/redux-zero"),
   getConfig("./src/react/index.ts", "react/index"),
-  getConfig("./src/preact/index.ts", "preact/index")
+  getConfig("./src/preact/index.ts", "preact/index"),
+  getConfig('./src/svelte/index.ts', 'svelte/index'),
 ]
 
 export default config
