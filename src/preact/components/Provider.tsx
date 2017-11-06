@@ -1,4 +1,4 @@
-import { Component } from "react"
+import { Component } from "preact"
 
 import Props from "../../interfaces/Props"
 import Store from "../../interfaces/Store"
