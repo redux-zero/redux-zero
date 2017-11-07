@@ -26,7 +26,7 @@ function getConfig(input, file) {
     },
     plugins: [
       peerDeps(),
-      typescript(),
+      typescript({ useTsconfigDeclarationDir: true }),
       resolve({
         jsnext: true,
         main: true,
