@@ -3,14 +3,14 @@
   "version": "4.3.0",
   "description": "",
   "main": "dist/redux-zero.js",
-  "typings": "dist/index.d.ts",
+  "typings": "typings/index.d.ts",
   "scripts": {
     "compile": "tsc --pretty",
     "lint": "tslint -c tslint.json src/**/*.ts src/**/*.tsx",
     "test": "jest",
     "format": "prettier --write --no-semi \"src/**/*.ts\" \"src/**/*.tsx\"",
     "check": "npm run compile && npm run lint && npm run test",
-    "clean": "rimraf dist coverage",
+    "clean": "rimraf dist coverage react svelte",
     "prebuild": "npm run format && npm run check && npm run clean",
     "build:umd": "cross-env NODE_ENV=umd rollup --config",
     "build:cjs": "cross-env NODE_ENV=cjs rollup --config",
@@ -21,7 +21,8 @@
   "files": [
     "dist",
     "react",
-    "svelte"
+    "svelte",
+    "typings"
   ],
   "license": "MIT",
   "repository": {

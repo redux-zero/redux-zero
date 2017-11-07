@@ -34,6 +34,7 @@ node_modules/
 dist/
 /react/
 /svelte/
+/typings/
 
 # Optional npm cache directory
 .npm

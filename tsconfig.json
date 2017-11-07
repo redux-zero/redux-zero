@@ -9,6 +9,7 @@
     "removeComments": false,
     "sourceMap": true,
     "target": "ES5",
+    "declarationDir": "typings",
     "outDir": "./dist"
   },
   "include": [
