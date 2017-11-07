@@ -1,5 +1,15 @@
 # Changelog
 
+### 4.3.1
+
+- Fixes binding imports with TypeScript
+
+This is now working for both TypeScript and JavaScript:
+
+```javascript
+import { Provider } from 'redux-zero/react'
+```
+
 ### 4.3.0
 
 - Add connect function for Svelte and usage example.
