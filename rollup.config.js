@@ -34,7 +34,7 @@ function getConfig(input, file, sub) {
         main: true,
         browser: true,
       }),
-      commonjs(),      
+      commonjs()
     ],
   } 
 
