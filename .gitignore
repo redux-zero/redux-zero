@@ -33,6 +33,7 @@ _site/
 node_modules/
 dist/
 /react/
+/preact/
 /svelte/
 /interfaces/
 /utils/
