@@ -60,6 +60,7 @@
     "enzyme-adapter-react-16": "1.0.1",
     "jest": "^21.2.1",
     "preact": "8.2.6",
+    "preact-render-spy": "1.2.1",
     "prettier": "^1.7.4",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",

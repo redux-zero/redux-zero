@@ -32,6 +32,6 @@ export default class Connect extends Component<any, {}> {
     }
   }
   render({ children }, state, { store }) {
-    return children({ store, ...state, ...this.actions })
+    return children[0]({ store, ...state, ...this.actions })
   }
 }
