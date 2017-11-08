@@ -16,6 +16,7 @@ function getFileName(file) {
 }
 
 function getConfig(input, file) {
+  const tsconfig = input.includes('preact') ? './src/preact/tsconfig.json'  : 'tsconfig.json'
   const conf = {
     input,
     name: 'redux-zero',
@@ -26,7 +27,7 @@ function getConfig(input, file) {
     },
     plugins: [
       peerDeps(),
-      typescript({ useTsconfigDeclarationDir: true }),
+      typescript({ useTsconfigDeclarationDir: true, tsconfig }),
       resolve({
         jsnext: true,
         main: true,
@@ -43,6 +44,7 @@ function getConfig(input, file) {
 
 const config = [
   getConfig('./src/index.ts', 'dist/redux-zero'),
+  getConfig('./src/preact/index.ts', 'preact/index'),
   getConfig('./src/react/index.ts', 'react/index'),
   getConfig('./src/svelte/index.ts', 'svelte/index'),
 ]

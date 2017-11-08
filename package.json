@@ -6,7 +6,7 @@
   "types": "index.d.ts",
   "scripts": {
     "compile": "tsc --pretty",
-    "lint": "tslint -c tslint.json src/**/*.ts src/**/*.tsx",
+    "lint": "tslint src/**/*.ts src/**/*.tsx",
     "test": "jest",
     "format": "prettier --write --no-semi \"src/**/*.ts\" \"src/**/*.tsx\"",
     "check": "npm run compile && npm run lint && npm run test",
@@ -21,6 +21,7 @@
   "files": [
     "dist",
     "interfaces",
+    "preact",
     "react",
     "store",
     "svelte",
@@ -49,6 +50,7 @@
     ]
   },
   "peerDependencies": {
+    "preact": ">=8",
     "react": ">=15"
   },
   "devDependencies": {
@@ -57,6 +59,7 @@
     "enzyme": "3.1.0",
     "enzyme-adapter-react-16": "1.0.1",
     "jest": "^21.2.1",
+    "preact": "8.2.6",
     "prettier": "^1.7.4",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
