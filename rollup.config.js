@@ -7,6 +7,8 @@ import filesize from 'rollup-plugin-filesize'
 
 const format = process.env.NODE_ENV
 const isUmd = format === 'umd'
+const REACT = 'react'
+const PREACT = 'preact'
 
 function getFileName(file) {
   if (isUmd) {
@@ -15,8 +17,21 @@ function getFileName(file) {
   return `${file}.js`
 }
 
+function getGlobals(file) {
+  if (isUmd) {
+    if (file.startsWith(REACT)) {
+      return { react: 'React' }
+    } else if (file.startsWith(PREACT)) {
+      return { preact: 'preact' }
+    }
+    return {}
+  }
+  return {}
+}
+
 function getConfig(input, file) {
-  const tsconfig = input.includes('preact') ? './src/preact/tsconfig.json'  : 'tsconfig.json'
+  const tsconfig = input.includes('preact') ? './src/preact/tsconfig.json' : 'tsconfig.json'
+
   const conf = {
     input,
     name: 'redux-zero',
@@ -24,6 +39,7 @@ function getConfig(input, file) {
     output: {
       file: getFileName(file),
       format,
+      globals: getGlobals(file),
     },
     plugins: [
       peerDeps(),
