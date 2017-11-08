@@ -1,9 +1,9 @@
 {
   "name": "redux-zero",
-  "version": "4.3.0",
+  "version": "4.3.1",
   "description": "",
   "main": "dist/redux-zero.js",
-  "typings": "dist/index.d.ts",
+  "types": "index.d.ts",
   "scripts": {
     "compile": "tsc --pretty",
     "lint": "tslint -c tslint.json src/**/*.ts src/**/*.tsx",
@@ -20,8 +20,12 @@
   "author": "Matheus Lima <matheusml90@gmail.com>",
   "files": [
     "dist",
+    "interfaces",
     "react",
-    "svelte"
+    "store",
+    "svelte",
+    "utils",
+    "index.d.ts"
   ],
   "license": "MIT",
   "repository": {
