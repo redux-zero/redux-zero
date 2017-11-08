@@ -22,7 +22,7 @@ function getGlobals(file) {
     if (file.startsWith(REACT)) {
       return { react: 'React' }
     } else if (file.startsWith(PREACT)) {
-      return { preact: 'preact' }
+      return { preact: PREACT }
     }
     return {}
   }
@@ -30,7 +30,7 @@ function getGlobals(file) {
 }
 
 function getConfig(input, file) {
-  const tsconfig = input.includes('preact') ? './src/preact/tsconfig.json' : 'tsconfig.json'
+  const tsconfig = input.includes(PREACT) ? './src/preact/tsconfig.json' : 'tsconfig.json'
 
   const conf = {
     input,
