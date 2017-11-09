@@ -288,7 +288,9 @@ describe("redux-zero - react bindings", () => {
 
       const ConnectedComp = () => (
         <Connect mapToProps={mapToProps} actions={actions}>
-          {({ count, incrementOf }) => <h1 onClick={() => incrementOf(10)}>{count}</h1>}
+          {({ count, incrementOf }) => (
+            <h1 onClick={() => incrementOf(10)}>{count}</h1>
+          )}
         </Connect>
       )
 

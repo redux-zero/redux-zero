@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.4.0
+
+- Add Preact bindings
+
 ### 4.3.1
 
 - Fixes binding imports with TypeScript

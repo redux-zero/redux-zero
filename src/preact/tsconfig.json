@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "jsx": "react",
+    "jsxFactory": "h",
     "inlineSources": true,
     "module": "commonjs",
     "declaration": true,
@@ -12,16 +13,12 @@
     "outDir": "./dist"
   },
   "include": [
-    "src/**/*"
+    "**/*.ts",
+    "**/*.tsx"
   ],
   "exclude": [
     "node_modules",
-    "src/preact/**/*",
     "**/*.spec.ts",
     "**/*.spec.tsx"
-  ],
-  "filesGlob": [
-    "typings/index.d.ts",
-    "src/**/*"
   ]
 }
