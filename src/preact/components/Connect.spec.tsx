@@ -6,7 +6,7 @@ import { Provider, Connect } from ".."
 
 describe("redux-zero - preact bindings", () => {
   const listener = jest.fn()
-  let store, unsubscribe
+  let store, unsubscribe, context
   beforeEach(() => {
     store = createStore({})
     listener.mockReset()
@@ -31,158 +31,159 @@ describe("redux-zero - preact bindings", () => {
         </Provider>
       )
 
-      const wrapper = deep(<App />, { depth: Infinity })
-
-      expect(wrapper.find("h1").text()).toBe("hello")
-
-      // store.setState({ message: "bye" })
-
-      // expect(wrapper.find("h1").text()).toBe("bye")
+      context = deep(<App />, { depth: Infinity })
+      expect(context.find("h1").text()).toBe("hello")
+      store.setState({ message: "bye" })
+      context = deep(<App />, { depth: Infinity })
+      expect(context.find("h1").text()).toBe("bye")
     })
 
-    // it("should provide the actions and subscribe to changes", () => {
-    //   store.setState({ count: 0 })
+    it("should provide the actions and subscribe to changes", () => {
+      store.setState({ count: 0 })
 
-    //   const mapToProps = ({ count }) => ({ count })
+      const mapToProps = ({ count }) => ({ count })
 
-    //   const actions = store => ({
-    //     increment: state => ({ count: state.count + 1 })
-    //   })
+      const actions = store => ({
+        increment: state => ({ count: state.count + 1 })
+      })
 
-    //   const ConnectedComp = () => (
-    //     <Connect mapToProps={mapToProps} actions={actions}>
-    //       {({ count, increment }) => <h1 onClick={increment}>{count}</h1>}
-    //     </Connect>
-    //   )
+      const ConnectedComp = () => (
+        <Connect mapToProps={mapToProps} actions={actions}>
+          {({ count, increment }) => <h1 onClick={increment}>{count}</h1>}
+        </Connect>
+      )
 
-    //   const App = () => (
-    //     <Provider store={store}>
-    //       <ConnectedComp />
-    //     </Provider>
-    //   )
+      const App = () => (
+        <Provider store={store}>
+          <ConnectedComp />
+        </Provider>
+      )
 
-    //   const wrapper = deep(<App />, { depth: Infinity })
+      context = deep(<App />, { depth: Infinity })
+      expect(context.find("h1").text()).toBe("0")
+      context.find("[onClick]").simulate("click")
+      context.find("[onClick]").simulate("click")
+      expect(context.find("h1").text()).toBe("2")
+    })
 
-    //   expect(wrapper.html()).toBe("<h1>0</h1>")
+    it("should peform async actions correctly", done => {
+      store.setState({ count: 0 })
 
-    //   wrapper.children().simulate("click")
-    //   wrapper.children().simulate("click")
+      const Comp = ({ count, increment }) => (
+        <h1 onClick={increment}>{count}</h1>
+      )
 
-    //   expect(wrapper.html()).toBe("<h1>2</h1>")
-    // })
+      const mapToProps = ({ count }) => ({ count })
 
-    // it("should peform async actions correctly", done => {
-    //   store.setState({ count: 0 })
+      const actions = ({ getState, setState }) => ({
+        increment: state => {
+          Promise.resolve()
+            .then(() => {
+              setState({ pending: false, count: getState().count + 1 })
+            })
+            .then(() => {
+              setState({ count: getState().count + 1 })
 
-    //   const Comp = ({ count, increment }) => (
-    //     <h1 onClick={increment}>{count}</h1>
-    //   )
+              const [state0, state1, state2, state3] = listener.mock.calls.map(
+                ([c]) => c
+              )
 
-    //   const mapToProps = ({ count }) => ({ count })
+              expect(state0.count).toBe(0)
+              expect(state1.pending).toBe(true)
+              expect(state1.count).toBe(0)
+              expect(state2.pending).toBe(false)
+              expect(state2.count).toBe(1)
+              expect(state3.count).toBe(2)
 
-    //   const actions = ({ getState, setState }) => ({
-    //     increment: state => {
-    //       Promise.resolve()
-    //         .then(() => {
-    //           setState({ pending: false, count: getState().count + 1 })
-    //         })
-    //         .then(() => {
-    //           setState({ count: getState().count + 1 })
+              done()
+            })
 
-    //           const [state0, state1, state2, state3] = listener.mock.calls.map(
-    //             ([c]) => c
-    //           )
+          return { pending: true }
+        }
+      })
 
-    //           expect(state0.count).toBe(0)
-    //           expect(state1.pending).toBe(true)
-    //           expect(state1.count).toBe(0)
-    //           expect(state2.pending).toBe(false)
-    //           expect(state2.count).toBe(1)
-    //           expect(state3.count).toBe(2)
+      const ConnectedComp = () => (
+        <Connect mapToProps={mapToProps} actions={actions}>
+          {({ count, increment }) => <h1 onClick={increment}>{count}</h1>}
+        </Connect>
+      )
 
-    //           done()
-    //         })
+      const App = () => (
+        <Provider store={store}>
+          <ConnectedComp />
+        </Provider>
+      )
 
-    //       return { pending: true }
-    //     }
-    //   })
+      context = deep(<App />, { depth: Infinity })
 
-    //   const ConnectedComp = () => (
-    //     <Connect mapToProps={mapToProps} actions={actions}>
-    //       {({ count, increment }) => <h1 onClick={increment}>{count}</h1>}
-    //     </Connect>
-    //   )
+      context.find("[onClick]").simulate("click")
+    })
 
-    //   const App = () => (
-    //     <Provider store={store}>
-    //       <ConnectedComp />
-    //     </Provider>
-    //   )
+    it("should provide the store as a prop", () => {
+      const mapToProps = state => state
 
-    //   const wrapper = deep(<App />, { depth: Infinity })
+      const ConnectedComp = () => (
+        <Connect mapToProps={mapToProps}>
+          {({ store }) => <h1>{String(!!store)}</h1>}
+        </Connect>
+      )
 
-    //   wrapper.children().simulate("click")
-    // })
+      const App = () => (
+        <Provider store={store}>
+          <ConnectedComp />
+        </Provider>
+      )
 
-    // it("should provide the store as a prop", () => {
-    //   const mapToProps = state => state
+      context = deep(<App />, { depth: Infinity })
 
-    //   const ConnectedComp = () => (
-    //     <Connect mapToProps={mapToProps}>
-    //       {({ store }) => <h1>{String(!!store)}</h1>}
-    //     </Connect>
-    //   )
+      expect(context.find("h1").text()).toBe("true")
+    })
 
-    //   const App = () => (
-    //     <Provider store={store}>
-    //       <ConnectedComp />
-    //     </Provider>
-    //   )
+    it("should connect with nested children", () => {
+      store.setState({ message: "hello" })
 
-    //   const wrapper = deep(<App />, { depth: Infinity })
+      const mapToProps = ({ message }) => ({ message })
 
-    //   expect(wrapper.html()).toBe("<h1>true</h1>")
-    // })
+      const ConnectedComp = ({ children }) => (
+        <Connect mapToProps={mapToProps}>
+          {({ message }) => (
+            <div>
+              parent {message} {children}
+            </div>
+          )}
+        </Connect>
+      )
+      const ConnectedChildComp = () => (
+        <Connect mapToProps={mapToProps}>
+          {({ message }) => <span>child {message}</span>}
+        </Connect>
+      )
 
-    // it("should connect with nested children", () => {
-    //   store.setState({ message: "hello" })
+      const App = () => (
+        <Provider store={store}>
+          <ConnectedComp>
+            <ConnectedChildComp />
+          </ConnectedComp>
+        </Provider>
+      )
 
-    //   const mapToProps = ({ message }) => ({ message })
+      context = deep(<App />, { depth: Infinity })
 
-    //   const ConnectedComp = ({ children }) => (
-    //     <Connect mapToProps={mapToProps}>
-    //       {({ message }) => (
-    //         <div>
-    //           parent {message} {children}
-    //         </div>
-    //       )}
-    //     </Connect>
-    //   )
-    //   const ConnectedChildComp = () => (
-    //     <Connect mapToProps={mapToProps}>
-    //       {({ message }) => <span>child {message}</span>}
-    //     </Connect>
-    //   )
+      expect(context.output()).toEqual(
+        <div>
+          parent hello <span>child hello</span>
+        </div>
+      )
 
-    //   const App = () => (
-    //     <Provider store={store}>
-    //       <ConnectedComp>
-    //         <ConnectedChildComp />
-    //       </ConnectedComp>
-    //     </Provider>
-    //   )
+      store.setState({ message: "bye" })
 
-    //   const wrapper = deep(<App />, { depth: Infinity })
+      context = deep(<App />, { depth: Infinity })
 
-    //   expect(wrapper.html()).toBe(
-    //     "<div>parent hello <span>child hello</span></div>"
-    //   )
-
-    //   store.setState({ message: "bye" })
-
-    //   expect(wrapper.html()).toBe(
-    //     "<div>parent bye <span>child bye</span></div>"
-    //   )
-    // })
+      expect(context.output()).toEqual(
+        <div>
+          parent bye <span>child bye</span>
+        </div>
+      )
+    })
   })
 })
