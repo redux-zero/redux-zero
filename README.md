@@ -142,7 +142,6 @@ Here's the full version: [https://codesandbox.io/s/n5orzr5mxj](https://codesandb
 ## Roadmap
 - Add more examples (including unit tests, SSR, etc)
 - Add middleware
-- Add Preact bindings
 
 ## Tools
 These are unofficial tools, maintained by the community:

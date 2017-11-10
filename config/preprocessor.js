@@ -1,16 +1,13 @@
-var tsc = require('typescript')
-var tsConfig = require('../tsconfig.json')
+const tsc = require("typescript")
 
 module.exports = {
   process(src, path) {
-    if (path.endsWith('.ts') || path.endsWith('.tsx')) {
-      return tsc.transpile(
-        src,
-        tsConfig.compilerOptions,
-        path,
-        []
-      )
-    }
-    return src
-  },
+    const config = /preact/.test(path)
+      ? require("../src/preact/tsconfig.json")
+      : require("../tsconfig.json")
+
+    return /\.tsx?$/.test(path)
+      ? tsc.transpile(src, config.compilerOptions, path, [])
+      : src
+  }
 }

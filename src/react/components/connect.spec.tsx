@@ -69,6 +69,37 @@ describe("redux-zero - react bindings", () => {
       expect(wrapper.html()).toBe("<h1>2</h1>")
     })
 
+    it("should provide actions with parameters and subscribe to changes", () => {
+      store.setState({ count: 0 })
+
+      const Comp = ({ count, incrementOf }) => (
+        <h1 onClick={() => incrementOf(10)}>{count}</h1>
+      )
+
+      const mapToProps = ({ count }) => ({ count })
+
+      const actions = store => ({
+        incrementOf: (state, value) => ({ count: state.count + value })
+      })
+
+      const ConnectedComp = connect(mapToProps, actions)(Comp)
+
+      const App = () => (
+        <Provider store={store}>
+          <ConnectedComp />
+        </Provider>
+      )
+
+      const wrapper = mount(<App />)
+
+      expect(wrapper.html()).toBe("<h1>0</h1>")
+
+      wrapper.children().simulate("click")
+      wrapper.children().simulate("click")
+
+      expect(wrapper.html()).toBe("<h1>20</h1>")
+    })
+
     it("should peform async actions correctly", done => {
       store.setState({ count: 0 })
 
@@ -244,6 +275,39 @@ describe("redux-zero - react bindings", () => {
       wrapper.children().simulate("click")
 
       expect(wrapper.html()).toBe("<h1>2</h1>")
+    })
+
+    it("should provide actions with parameters and subscribe to changes", () => {
+      store.setState({ count: 0 })
+
+      const mapToProps = ({ count }) => ({ count })
+
+      const actions = store => ({
+        incrementOf: (state, value) => ({ count: state.count + value })
+      })
+
+      const ConnectedComp = () => (
+        <Connect mapToProps={mapToProps} actions={actions}>
+          {({ count, incrementOf }) => (
+            <h1 onClick={() => incrementOf(10)}>{count}</h1>
+          )}
+        </Connect>
+      )
+
+      const App = () => (
+        <Provider store={store}>
+          <ConnectedComp />
+        </Provider>
+      )
+
+      const wrapper = mount(<App />)
+
+      expect(wrapper.html()).toBe("<h1>0</h1>")
+
+      wrapper.children().simulate("click")
+      wrapper.children().simulate("click")
+
+      expect(wrapper.html()).toBe("<h1>20</h1>")
     })
 
     it("should peform async actions correctly", done => {
