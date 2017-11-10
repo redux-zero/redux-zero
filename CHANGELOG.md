@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.4.1
+
+- Fixes Svelte connect function date object change detection
+
 ### 4.4.0
 
 - Add Preact bindings
