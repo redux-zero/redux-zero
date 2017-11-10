@@ -29,6 +29,27 @@ describe("redux-zero - svelte bindings", () => {
     expect(svt.get()).toEqual(store.getState())
   })
 
+  test("update date-time", () => {
+    const currentTime = new Date()
+    const svt = Svelte()
+    const mapToProps = ({ date }) => ({ date })
+    const state = { date: currentTime }
+
+    store.setState(state)
+
+    connect(svt, store, mapToProps)
+
+    expect(svt.get()).toEqual(store.getState())
+
+    const newTime = new Date()
+    newTime.setTime(newTime.getTime() + 60 * 60 * 1000)
+    const newState = { date: newTime }
+    store.setState(newState)
+
+    expect(svt.get("date")).toEqual(newState.date)
+    expect(svt.get()).toEqual(store.getState())
+  })
+
   test("update number", () => {
     const svt = Svelte()
     const mapToProps = ({ count }) => ({ count })

@@ -1,10 +1,12 @@
 import shallowEqual from "./shallowEqual"
 
 function differs(a, b) {
-  if (a && typeof a === "object") {
+  if (a !== b) {
+    return true
+  } else if (a && typeof a === "object") {
     return !shallowEqual(a, b)
   }
-  return a !== b
+  return false
 }
 
 export default function getDiff(newData, oldData) {
