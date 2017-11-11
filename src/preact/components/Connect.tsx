@@ -35,3 +35,13 @@ export default class Connect extends Component<any, {}> {
     return children[0]({ store, ...state, ...this.actions })
   }
 }
+
+// !important. `any` signature to avoid TS complains, due to replacement with a HOC
+export function connect(stateToProps: Function, actions = {}): any {
+  return Child => (props) => (
+    <Connect mapToProps={stateToProps} actions={actions}>
+      {mappedProps => <Child {...mappedProps} {...props} />}
+    </Connect>
+  )
+}
+
