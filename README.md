@@ -82,7 +82,8 @@ Then, create your actions. This is where you change the state from your store:
 /* actions.js */
 const actions = store => ({
   increment: state => ({ count: state.count + 1 }),
-  decrement: state => ({ count: state.count - 1 })
+  decrement: state => ({ count: state.count - 1 }),
+  incrementBy: (state, amount) => ({ count: state.count + amount }),
 });
 
 export default actions;
@@ -101,12 +102,13 @@ import actions from "./actions";
 
 const mapToProps = ({ count }) => ({ count });
 
-export default connect(mapToProps, actions)(({ count, increment, decrement }) => (
+export default connect(mapToProps, actions)(({ count, increment, decrement, incrementBy }) => (
   <div>
     <h1>{count}</h1>
     <div>
       <button onClick={decrement}>decrement</button>
       <button onClick={increment}>increment</button>
+      <button onClick={() => incrementBy(10)}>increment 10</button>
     </div>
   </div>
 ));
