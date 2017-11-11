@@ -1,4 +1,6 @@
-export default function createStore(state = {}) {
+import Store from "../interfaces/Store"
+
+export default function createStore(state = {}): Store {
   const listeners = []
   return {
     setState(update) {

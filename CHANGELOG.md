@@ -1,5 +1,15 @@
 # Changelog
 
+### 4.4.2
+
+- Fix typings, remove unsubscribe from Store interface since isn't used
+
+[info] Using redux-zero along with TypeScript gives an error when implementing:
+`<Provider store={store}><Whatever/></Provider>` due to the actual store object
+and the expected attribute differ.
+
+- Added Store interface as signature for createStore function.
+
 ### 4.4.1
 
 - Fixes Svelte connect function date object change detection
