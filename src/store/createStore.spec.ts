@@ -1,4 +1,12 @@
-import createStore from "./createStore"
+declare const describe: any
+declare const beforeEach: any
+declare const jest: any
+declare const Promise: any
+declare const it: any
+declare const expect: any
+declare const test: any
+
+import createStore from "../../dist/index"
 
 describe("redux-zero - the store", () => {
   const listener = jest.fn()

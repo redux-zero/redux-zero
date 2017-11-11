@@ -11,7 +11,7 @@
     "format": "prettier --write --no-semi \"src/**/*.ts\" \"src/**/*.tsx\"",
     "check": "npm run compile && npm run lint && npm run test",
     "clean": "rimraf dist coverage",
-    "prebuild": "npm run format && npm run check && npm run clean",
+    "postbuild": "npm run format && npm run check && npm run clean",
     "build:umd": "cross-env NODE_ENV=umd rollup --config",
     "build:cjs": "cross-env NODE_ENV=cjs rollup --config",
     "build": "npm run build:umd && npm run build:cjs",
