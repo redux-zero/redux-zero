@@ -15,16 +15,15 @@
 [![dependencies](https://img.shields.io/david/concretesolutions/redux-zero.svg?style=flat-square)]()
 
 
-- Single store
-- No reducers
-- Less boilerplate
-- No PropTypes
-- Smaller and simpler than [redux](https://github.com/reactjs/redux)
-- Written in TypeScript
-- Bindings for:
-  - React/React Native
-  - Preact
-  - Svelte
+## Table of Contents
+
+- [Installation](#installation)
+- [How](#how)
+- [Example](#example)
+- [Inspiration](#inspiration)
+- [Roadmap](#roadmap)
+- [Tools](#tools)
+- [Docs](#docs)
 
 
 ## Installation
