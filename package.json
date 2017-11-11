@@ -1,6 +1,6 @@
 {
   "name": "redux-zero",
-  "version": "4.4.1",
+  "version": "4.4.2",
   "description": "",
   "main": "dist/redux-zero.js",
   "types": "index.d.ts",
