@@ -83,7 +83,7 @@ Then, create your actions. This is where you change the state from your store:
 const actions = store => ({
   increment: state => ({ count: state.count + 1 }),
   decrement: state => ({ count: state.count - 1 }),
-  incrementBy: (state, amount) => ({ count: state.count + amount }),
+  incrementBy: (state, amount) => ({ count: state.count + amount })
 });
 
 export default actions;
