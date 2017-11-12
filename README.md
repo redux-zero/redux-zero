@@ -38,10 +38,17 @@ This assumes that you’re using [npm](https://www.npmjs.com/) with a module bun
 
 ## How
 
-**ES2015+ or TypeScript:**
+**ES2015+:**
 
 ```js
 import createStore from "redux-zero"
+import { Provider, connect } from "redux-zero/react"
+```
+
+**TypeScript:**
+
+```js
+import * as createStore from "redux-zero"
 import { Provider, connect } from "redux-zero/react"
 ```
 
