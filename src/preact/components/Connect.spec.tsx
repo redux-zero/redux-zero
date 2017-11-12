@@ -1,8 +1,15 @@
+declare const describe: any
+declare const beforeEach: any
+declare const jest: any
+declare const Promise: any
+declare const it: any
+declare const expect: any
+
 import { h } from "preact"
 import { deep } from "preact-render-spy"
 
-import createStore from "../.."
-import { Provider, Connect } from ".."
+import createStore from "../../../dist/index"
+import { Connect, Provider } from "../../../preact"
 
 describe("redux-zero - preact bindings", () => {
   const listener = jest.fn()
@@ -144,11 +151,11 @@ describe("redux-zero - preact bindings", () => {
 
       const mapToProps = ({ message }) => ({ message })
 
-      const ConnectedComp = ({ children }) => (
+      const ConnectedComp = props => (
         <Connect mapToProps={mapToProps}>
           {({ message }) => (
             <div>
-              parent {message} {children}
+              parent {message} {props.children}
             </div>
           )}
         </Connect>
