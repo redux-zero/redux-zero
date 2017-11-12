@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.4.3
+
+- Removing peerDependencies from `package.json`
+
 ### 4.4.2
 
 - Fix typings, remove unsubscribe from Store interface since isn't used
