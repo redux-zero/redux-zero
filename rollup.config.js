@@ -1,7 +1,6 @@
 import typescript from 'rollup-plugin-typescript2'
 import resolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
-import peerDeps from 'rollup-plugin-peer-deps-external'
 import uglify from 'rollup-plugin-uglify'
 import filesize from 'rollup-plugin-filesize'
 
@@ -29,6 +28,15 @@ function getGlobals(file) {
   return {}
 }
 
+function getExternals(file) {
+  if (file.startsWith(REACT)) {
+    return [REACT]
+  } else if (file.startsWith(PREACT)) {
+    return [PREACT]
+  }
+  return []
+}
+
 function getConfig(input, file) {
   const tsconfig = input.includes(PREACT) ? './src/preact/tsconfig.json' : 'tsconfig.json'
 
@@ -36,20 +44,20 @@ function getConfig(input, file) {
     input,
     name: 'redux-zero',
     sourcemap: true,
+    external: getExternals(file),
     output: {
       file: getFileName(file),
       format,
       globals: getGlobals(file),
     },
     plugins: [
-      peerDeps(),
       typescript({ useTsconfigDeclarationDir: true, tsconfig }),
       resolve({
         jsnext: true,
         main: true,
         browser: true,
       }),
-      commonjs(),
+      commonjs()
     ],
   }
 

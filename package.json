@@ -49,10 +49,6 @@
       "<rootDir>/src/**/*.spec.(ts|tsx)"
     ]
   },
-  "peerDependencies": {
-    "preact": ">=8",
-    "react": ">=15"
-  },
   "devDependencies": {
     "@types/react": "^16.0.9",
     "cross-env": "^5.0.5",
