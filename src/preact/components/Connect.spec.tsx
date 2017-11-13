@@ -5,12 +5,11 @@ import createStore from "../.."
 import { Provider, Connect } from ".."
 
 describe("redux-zero - preact bindings", () => {
-  const listener = jest.fn()
-  let store, unsubscribe, context
+  let store, listener, context
   beforeEach(() => {
     store = createStore({})
-    listener.mockReset()
-    unsubscribe = store.subscribe(listener)
+    listener = jest.fn()
+    store.subscribe(listener)
   })
 
   describe("Connect component", () => {
@@ -32,10 +31,10 @@ describe("redux-zero - preact bindings", () => {
       )
 
       context = deep(<App />, { depth: Infinity })
-      expect(context.find("h1").text()).toBe("hello")
+      expect(context.output()).toEqual(<h1>hello</h1>)
       store.setState({ message: "bye" })
       context = deep(<App />, { depth: Infinity })
-      expect(context.find("h1").text()).toBe("bye")
+      expect(context.output()).toEqual(<h1>bye</h1>)
     })
 
     it("should provide the actions and subscribe to changes", () => {
@@ -76,8 +75,10 @@ describe("redux-zero - preact bindings", () => {
       const mapToProps = ({ count }) => ({ count })
 
       const actions = ({ getState, setState }) => ({
-        increment: state => {
-          Promise.resolve()
+        increment() {
+          setState({ pending: true })
+
+          return Promise.resolve()
             .then(() => {
               setState({ pending: false, count: getState().count + 1 })
             })
@@ -97,8 +98,6 @@ describe("redux-zero - preact bindings", () => {
 
               done()
             })
-
-          return { pending: true }
         }
       })
 

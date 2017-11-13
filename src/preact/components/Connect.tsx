@@ -1,9 +1,9 @@
-import { h, Component } from "preact"
+import * as preact from "preact"
 
 import shallowEqual from "../../utils/shallowEqual"
 import bindActions from "../../utils/bindActions"
 
-export default class Connect extends Component<any, {}> {
+export default class Connect extends preact.Component<any, {}> {
   unsubscribe
   state = this.getProps()
   actions = this.getActions()
@@ -32,6 +32,6 @@ export default class Connect extends Component<any, {}> {
     }
   }
   render({ children }, state, { store }) {
-    return children[0]({ store, ...state, ...this.actions })
+    return children[0] && children[0]({ store, ...state, ...this.actions })
   }
 }
