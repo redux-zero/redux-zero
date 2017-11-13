@@ -5,8 +5,7 @@ import bindActions from "../../utils/bindActions"
 
 export default class Connect extends preact.Component<any, {}> {
   unsubscribe
-  state = this.getProps()
-  actions = this.getActions()
+  state = { ...this.getProps(), ...this.getActions() }
   componentWillMount() {
     this.unsubscribe = this.context.store.subscribe(this.update)
   }
@@ -20,10 +19,7 @@ export default class Connect extends preact.Component<any, {}> {
   }
   getActions() {
     const { actions } = this.props
-    return bindActions(
-      typeof actions === "function" ? actions(this.context.store) : actions,
-      this.context.store
-    )
+    return bindActions(actions, this.context.store)
   }
   update = () => {
     const mapped = this.getProps()
@@ -32,6 +28,6 @@ export default class Connect extends preact.Component<any, {}> {
     }
   }
   render({ children }, state, { store }) {
-    return children[0] && children[0]({ store, ...state, ...this.actions })
+    return children[0] && children[0]({ store, ...state })
   }
 }

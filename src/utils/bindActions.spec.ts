@@ -11,6 +11,13 @@ const getActions = ({ setState }) => ({
       .then(payload => ({ payload, loading: false }))
       .catch(error => ({ error, loading: false }))
   },
+  asyncActionWithParam(state, id) {
+    setState({ loading: true })
+
+    return Promise.resolve({ some: "mock data", id })
+      .then(payload => ({ payload, loading: false }))
+      .catch(error => ({ error, loading: false }))
+  },
   failingAsyncAction() {
     setState({ loading: true })
 
@@ -26,7 +33,7 @@ describe("bindActions", () => {
     store = createStore({ count: 0 })
     listener = jest.fn()
     store.subscribe(listener)
-    actions = bindActions(getActions(store), store)
+    actions = bindActions(getActions, store)
   })
 
   it("should perform sync actions", () => {
@@ -52,7 +59,18 @@ describe("bindActions", () => {
       expect(SUCCESS_STATE.loading).toBe(false)
     }))
 
-  it("should fail an async action", () =>
+  it("should perform an async action with params", () =>
+    actions.asyncActionWithParam(1).then(() => {
+      const [LOADING_STATE, SUCCESS_STATE] = listener.mock.calls.map(
+        ([call]) => call
+      )
+
+      expect(LOADING_STATE.loading).toBe(true)
+      expect(SUCCESS_STATE.payload).toEqual({ some: "mock data", id: 1 })
+      expect(SUCCESS_STATE.loading).toBe(false)
+    }))
+
+  it("should fail a falling async action", () =>
     actions.failingAsyncAction().then(() => {
       const [LOADING_STATE, FAILING_STATE] = listener.mock.calls.map(
         ([call]) => call
