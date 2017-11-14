@@ -1,5 +1,21 @@
 # Changelog
 
+### 4.5.0
+
+- Adds Thennable actions. Now we can declare actions as so:
+
+```js
+const mapActions = ({ setState }) => ({
+  getTodos() {
+    setState({ loading: true });
+
+    return client.get("/todos")
+      .then(payload => ({ payload, loading: false }))
+      .catch(error => ({ error, loading: false }))
+  }
+});
+```
+
 ### 4.4.3
 
 - Removing peerDependencies from `package.json`
