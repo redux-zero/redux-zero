@@ -24,10 +24,7 @@ export class Connect extends React.Component<any> {
   }
   getActions() {
     const { actions } = this.props
-    return bindActions(
-      typeof actions === "function" ? actions(this.context.store) : actions,
-      this.context.store
-    )
+    return bindActions(actions, this.context.store)
   }
   update = () => {
     const mapped = this.getProps()

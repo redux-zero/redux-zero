@@ -5,12 +5,11 @@ import createStore from "../.."
 import { Provider, Connect, connect } from ".."
 
 describe("redux-zero - react bindings", () => {
-  const listener = jest.fn()
-  let store, unsubscribe
+  let store, listener
   beforeEach(() => {
     store = createStore({})
-    listener.mockReset()
-    unsubscribe = store.subscribe(listener)
+    listener = jest.fn()
+    store.subscribe(listener)
   })
 
   describe("connect HOC", () => {
@@ -110,8 +109,10 @@ describe("redux-zero - react bindings", () => {
       const mapToProps = ({ count }) => ({ count })
 
       const actions = ({ getState, setState }) => ({
-        increment: state => {
-          Promise.resolve()
+        increment() {
+          setState({ pending: true })
+
+          return Promise.resolve()
             .then(() => {
               setState({ pending: false, count: getState().count + 1 })
             })
@@ -131,8 +132,6 @@ describe("redux-zero - react bindings", () => {
 
               done()
             })
-
-          return { pending: true }
         }
       })
 
@@ -320,8 +319,10 @@ describe("redux-zero - react bindings", () => {
       const mapToProps = ({ count }) => ({ count })
 
       const actions = ({ getState, setState }) => ({
-        increment: state => {
-          Promise.resolve()
+        increment() {
+          setState({ pending: true })
+
+          return Promise.resolve()
             .then(() => {
               setState({ pending: false, count: getState().count + 1 })
             })
@@ -341,8 +342,6 @@ describe("redux-zero - react bindings", () => {
 
               done()
             })
-
-          return { pending: true }
         }
       })
 

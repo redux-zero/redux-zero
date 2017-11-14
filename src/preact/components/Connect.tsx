@@ -1,4 +1,4 @@
-import { h, Component } from "preact"
+import { Component } from "preact"
 
 import shallowEqual from "../../utils/shallowEqual"
 import bindActions from "../../utils/bindActions"
@@ -20,10 +20,7 @@ export default class Connect extends Component<any, {}> {
   }
   getActions() {
     const { actions } = this.props
-    return bindActions(
-      typeof actions === "function" ? actions(this.context.store) : actions,
-      this.context.store
-    )
+    return bindActions(actions, this.context.store)
   }
   update = () => {
     const mapped = this.getProps()
