@@ -9,7 +9,8 @@ export class Connect extends React.Component<any> {
     store: propValidation
   }
   unsubscribe
-  state = { ...this.getProps(), ...this.getActions() }
+  state = this.getProps()
+  actions = this.getActions()
   componentWillMount() {
     this.unsubscribe = this.context.store.subscribe(this.update)
   }
@@ -32,7 +33,11 @@ export class Connect extends React.Component<any> {
     }
   }
   render() {
-    return this.props.children({ store: this.context.store, ...this.state })
+    return this.props.children({
+      store: this.context.store,
+      ...this.state,
+      ...this.actions
+    })
   }
 }
 
