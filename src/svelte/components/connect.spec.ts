@@ -125,7 +125,26 @@ describe("redux-zero - svelte bindings", () => {
     expect(svt.get("nested").count).toEqual(2)
   })
 
-  test("update array", () => {
+  test("insert array item", () => {
+    const svt = Svelte()
+    const mapToProps = ({ arr }) => ({ arr })
+    const state = { arr: [1, 2] }
+
+    store.setState(state)
+
+    connect(svt, store, mapToProps)
+
+    expect(svt.get()).toEqual(store.getState())
+
+    state.arr.push(3)
+    expect(svt.get("arr").length).toEqual(2)
+    store.setState(state)
+
+    expect(svt.get("arr").length).toEqual(3)
+    expect(svt.get()).toEqual(store.getState())
+  })
+
+  test("update array property", () => {
     const svt = Svelte()
     const mapToProps = ({ arr }) => ({ arr })
     const state = { arr: { nested: [1, 2] } }
@@ -139,12 +158,11 @@ describe("redux-zero - svelte bindings", () => {
     const newState = { arr: { nested: [3, 4] } }
     store.setState(newState)
 
-    console.log("svt.get()", svt.get())
     expect(svt.get("arr").nested[1]).toEqual(4)
     expect(svt.get()).toEqual(store.getState())
   })
 
-  test("update array clone", () => {
+  test("update array property clone", () => {
     const svt = Svelte()
     const mapToProps = ({ arr }) => ({ arr })
     const state = { arr: { nested: [1, 2] } }
@@ -159,7 +177,6 @@ describe("redux-zero - svelte bindings", () => {
     store.setState(newState)
     newState.arr.nested = [5, 6]
 
-    console.log("svt.get()", svt.get())
     expect(svt.get("arr").nested[1]).toEqual(4)
   })
 
