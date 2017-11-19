@@ -1,5 +1,6 @@
 /**
- * This function can be replaced by webpack-flush-chunks library 
+ * This is a makeshift function for extracting assets from webpack stats object,
+ * modules like `webpack-flush-chunks` should be used for production use cases.
  */
 export function flushAssets(statsObject) {
 	const { assetsByChunkName } = statsObject
