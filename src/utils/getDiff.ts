@@ -17,8 +17,7 @@ export default function getDiff(newData, oldData) {
     if (differs(oldData[key], val)) {
       changed = true
       if (typeof val === "object" && typeof val.getMonth !== "function") {
-        diff[key] =
-          val.constructor === Array ? val.slice(0) : Object.assign({}, val)
+        diff[key] = val.constructor === Array ? val.slice(0) : { ...val }
       } else {
         diff[key] = val
       }

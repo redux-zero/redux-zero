@@ -125,6 +125,24 @@ describe("redux-zero - svelte bindings", () => {
     expect(svt.get("nested").count).toEqual(2)
   })
 
+  test("do not share object instance", () => {
+    const svt = Svelte()
+    const svt2 = Svelte()
+    const mapToProps = ({ nested }) => ({ nested })
+    const state = { nested: { count: 1 } }
+
+    store.setState(state)
+
+    connect(svt, store, mapToProps)
+    connect(svt2, store, mapToProps)
+    expect(svt.get("nested") === svt2.get("nested")).toEqual(false)
+
+    const newState = { nested: { count: 2 } }
+    store.setState(newState)
+    expect(svt.get("nested").count).toEqual(2)
+    expect(svt.get("nested") === svt2.get("nested")).toEqual(false)
+  })
+
   test("insert array item", () => {
     const svt = Svelte()
     const mapToProps = ({ arr }) => ({ arr })

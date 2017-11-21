@@ -8,7 +8,6 @@
     "suppressImplicitAnyIndexErrors": true,
     "removeComments": false,
     "sourceMap": true,
-    "lib": [ "es2015" ],
     "target": "ES5",
     "outDir": "./dist"
   },
