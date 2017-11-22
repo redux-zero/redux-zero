@@ -43,8 +43,8 @@ describe("redux-zero - the store", () => {
   })
 
   test("middleware", () => {
-    const middleware = jest.fn();
-    store = createStore({}, middleware);
-    expect(store.middleware).toEqual(middleware);
+    const middleware = jest.fn()
+    store = createStore({}, middleware)
+    expect(store.middleware).toEqual(middleware)
   })
 })
