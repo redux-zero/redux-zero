@@ -6,8 +6,10 @@
   "types": "index.d.ts",
   "scripts": {
     "compile": "tsc --pretty",
+    "compile:watch": "tsc --pretty --watch",
     "lint": "tslint src/**/*.ts src/**/*.tsx",
     "test": "jest",
+    "test:watch": "jest --watch",
     "format": "prettier --write --no-semi \"src/**/*.ts\" \"src/**/*.tsx\"",
     "check":
       "npm run compile && npm run format && npm run lint && npm run test",
