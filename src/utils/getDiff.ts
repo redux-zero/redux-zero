@@ -13,9 +13,14 @@ export default function getDiff(newData, oldData) {
   const diff = {}
   let changed = false
   for (let key in newData) {
-    if (differs(oldData[key], newData[key])) {
+    const val = newData[key]
+    if (differs(oldData[key], val)) {
       changed = true
-      diff[key] = newData[key]
+      if (typeof val === "object" && typeof val.getMonth !== "function") {
+        diff[key] = val.constructor === Array ? val.slice(0) : { ...val }
+      } else {
+        diff[key] = val
+      }
     }
   }
   return { diff, changed }

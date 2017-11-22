@@ -106,7 +106,81 @@ describe("redux-zero - svelte bindings", () => {
     expect(svt.get("nested").count).toEqual(3)
   })
 
-  test("update array", () => {
+  test("update object property clone", () => {
+    const svt = Svelte()
+    const mapToProps = ({ nested }) => ({ nested })
+    const state = { nested: { count: 1 } }
+
+    store.setState(state)
+
+    connect(svt, store, mapToProps)
+
+    expect(svt.get()).toEqual(store.getState())
+
+    const newState = { nested: { count: 2 } }
+    store.setState(newState)
+    expect(svt.get("nested").count).toEqual(2)
+
+    newState.nested.count = 3
+    expect(svt.get("nested").count).toEqual(2)
+  })
+
+  test("do not share object instance", () => {
+    const svt = Svelte()
+    const svt2 = Svelte()
+    const mapToProps = ({ nested }) => ({ nested })
+    const state = { nested: { count: 1 } }
+
+    store.setState(state)
+
+    connect(svt, store, mapToProps)
+    connect(svt2, store, mapToProps)
+    expect(svt.get("nested") === svt2.get("nested")).toEqual(false)
+
+    const newState = { nested: { count: 2 } }
+    store.setState(newState)
+    expect(svt.get("nested").count).toEqual(2)
+    expect(svt.get("nested") === svt2.get("nested")).toEqual(false)
+  })
+
+  test("insert array item", () => {
+    const svt = Svelte()
+    const mapToProps = ({ arr }) => ({ arr })
+    const state = { arr: [1, 2] }
+
+    store.setState(state)
+
+    connect(svt, store, mapToProps)
+
+    expect(svt.get()).toEqual(store.getState())
+
+    state.arr.push(3)
+    expect(svt.get("arr").length).toEqual(2)
+    store.setState(state)
+
+    expect(svt.get("arr").length).toEqual(3)
+    expect(svt.get()).toEqual(store.getState())
+  })
+
+  test("update array property", () => {
+    const svt = Svelte()
+    const mapToProps = ({ arr }) => ({ arr })
+    const state = { arr: { nested: [1, 2] } }
+
+    store.setState(state)
+
+    connect(svt, store, mapToProps)
+
+    expect(svt.get()).toEqual(store.getState())
+
+    const newState = { arr: { nested: [3, 4] } }
+    store.setState(newState)
+
+    expect(svt.get("arr").nested[1]).toEqual(4)
+    expect(svt.get()).toEqual(store.getState())
+  })
+
+  test("update array property clone", () => {
     const svt = Svelte()
     const mapToProps = ({ arr }) => ({ arr })
     const state = { arr: { nested: [1, 2] } }
@@ -121,9 +195,7 @@ describe("redux-zero - svelte bindings", () => {
     store.setState(newState)
     newState.arr.nested = [5, 6]
 
-    expect(newState).toEqual(store.getState())
-    expect(svt.get("arr").nested[1]).toEqual(6)
-    expect(svt.get()).toEqual(store.getState())
+    expect(svt.get("arr").nested[1]).toEqual(4)
   })
 
   test("action - increment", () => {
