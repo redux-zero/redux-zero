@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.5.1
+
+- Shallow clone mutated object and array in Svelte bindig
+
 ### 4.5.0
 
 - Adds Thennable actions. Now we can declare actions as so:
