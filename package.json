@@ -1,6 +1,6 @@
 {
   "name": "redux-zero",
-  "version": "4.5.1",
+  "version": "4.5.2",
   "description": "",
   "main": "dist/redux-zero.js",
   "types": "index.d.ts",
@@ -9,7 +9,8 @@
     "lint": "tslint src/**/*.ts src/**/*.tsx",
     "test": "jest",
     "format": "prettier --write --no-semi \"src/**/*.ts\" \"src/**/*.tsx\"",
-    "check": "npm run compile && npm run format && npm run lint && npm run test",
+    "check":
+      "npm run compile && npm run format && npm run lint && npm run test",
     "clean": "rimraf dist coverage",
     "prebuild": "npm run check && npm run clean",
     "build:umd": "cross-env NODE_ENV=umd rollup --config",

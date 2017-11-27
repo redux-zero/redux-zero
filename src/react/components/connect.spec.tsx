@@ -216,6 +216,22 @@ describe("redux-zero - react bindings", () => {
       const wrapper = mount(<App />)
       expect(wrapper.html()).toBe("<h1>Hey!</h1>")
     })
+
+    it("should accept ownProps as the second parameter to mapToProps", () => {
+      const Comp = ({ message }) => <h1>{message}</h1>
+      const ConnectedComp = connect((state, ownProps) => ({
+        message: ownProps.someProp
+      }))(Comp)
+
+      const App = () => (
+        <Provider store={store}>
+          <ConnectedComp someProp="some value" />
+        </Provider>
+      )
+
+      const wrapper = mount(<App />)
+      expect(wrapper.html()).toBe("<h1>some value</h1>")
+    })
   })
 
   describe("Connect component", () => {
