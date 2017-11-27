@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.5.2
+
+- Fixes bug in which ownProps were not being passed as the second argument to mapToProps inside a connect HOC
+
 ### 4.5.1
 
 - Shallow clone mutated object and array in Svelte bindig
