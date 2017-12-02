@@ -1,6 +1,6 @@
 import createStore from ".."
 import applyMiddleware from "./applyMiddleware"
-import bindActions from "./bindActions"
+import bindActions from "../utils/bindActions"
 
 const getActions = ({ getState }) => ({
   syncAction: ({ count }) => ({ count: count + 1 }),
