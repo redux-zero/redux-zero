@@ -1,0 +1,22 @@
+{
+  "name": "vue-app",
+  "version": "1.0.0",
+  "devDependencies": {
+    "redux-zero": "^4.5.2",
+    "rollup": "^0.52.0",
+    "rollup-plugin-buble": "^0.18.0",
+    "rollup-plugin-commonjs": "^8.2.1",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-replace": "^2.0.0",
+    "rollup-plugin-vue": "^2.5.2",
+    "serve": "^6.0.6",
+    "vue": "^2.5.0",
+    "vue-template-compiler": "^2.5.9"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "start": "serve public"
+  },
+  "dependencies": {}
+}
