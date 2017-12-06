@@ -21,6 +21,14 @@ describe("applyMiddleware", () => {
     expect(store.getState().count).toBe(1)
   })
 
+  it("should drop the action", () => {
+    const store = createStore({ count: 0 }, applyMiddleware(noAction))
+    const actions = bindActions(getActions, store)
+
+    actions.syncAction()
+    expect(store.getState().count).toBe(0)
+  })
+
   it("should replace with another action", () => {
     const store = createStore({ count: 0 }, applyMiddleware(doAnotherAction))
     const actions = bindActions(getActions, store)
