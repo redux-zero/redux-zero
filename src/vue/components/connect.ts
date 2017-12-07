@@ -1,11 +1,7 @@
 import getDiff from "../../utils/getDiff"
 import bindActions from "../../utils/bindActions"
 
-function merge(s, t) {
-  for (let k in s) t[k] = s[k]
-}
-
-export function connect(component, store, mapToProps, actions) {
+export function connect(component, store, mapToProps, actions?) {
   update()
   const beforeDestroy = component.beforeDestroy
   const unsubscribe = store.subscribe(update)
@@ -14,6 +10,9 @@ export function connect(component, store, mapToProps, actions) {
     beforeDestroy()
   }
   merge(bindActions(actions, store), component)
+  function merge(s, t) {
+    for (let k in s) t[k] = s[k]
+  }
   function update() {
     const { diff, changed } = getDiff(
       mapToProps(store.getState()),

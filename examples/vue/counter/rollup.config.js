@@ -13,7 +13,7 @@ export default {
     file: 'public/bundle.js',
     format: 'umd'
   },
-  sourcemap: false,
+  sourcemap: true,
   plugins: [
     nodeResolve({ 
     	jsnext: true, 
