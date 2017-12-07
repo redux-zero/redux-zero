@@ -150,9 +150,7 @@ Here's the full version: [https://codesandbox.io/s/n5orzr5mxj](https://codesandb
 
 ## Middleware
 
-There is basic middleware support as of 4.6.0. The method signature for the middleware was inspired by redux. The main difference is that action is a function.
-
-eg:
+The method signature for the middleware was inspired by redux. The main difference is that action is just a function:
 
 ```js
 /* store.js */
