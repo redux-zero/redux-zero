@@ -1,6 +1,4 @@
 import * as Vue from "vue/dist/vue.common"
-// As we use standard templates we'll need to use that version
-import Component from "./component"
 import createStore from "../.."
 import { connect } from ".."
 
@@ -123,6 +121,7 @@ describe("redux-zero - vue bindings", () => {
       expect(html).toEqual("<div><h1>hello</h1><h2>hello</h2></div>")
 
       store.setState({ message: "bye" })
+      expect($mounted.message).toBe("bye")
       Vue.nextTick()
         .then(() => {
           html = $mounted.$el.outerHTML
