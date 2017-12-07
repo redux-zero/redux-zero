@@ -1,5 +1,25 @@
 # Changelog
 
+### 4.6.0
+
+- Adds middleware support:
+
+```js
+// a middleware
+const logger = (store) => (next) => (action) => {
+  console.log('current state', store.getState())
+  return next(action);
+}
+
+// compose middlewares
+const middlewares = applyMiddleware(
+  logger,
+  anotherMiddleware
+);
+
+const store = createStore({}, middlewares);
+```
+
 ### 4.5.2
 
 - Fixes bug in which ownProps were not being passed as the second argument to mapToProps inside a connect HOC

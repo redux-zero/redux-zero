@@ -20,6 +20,7 @@
 - [Installation](#installation)
 - [How](#how)
 - [Example](#example)
+- [Middleware](#middleware)
 - [Inspiration](#inspiration)
 - [Roadmap](#roadmap)
 - [Tools](#tools)
@@ -147,12 +148,38 @@ Here's the full version: [https://codesandbox.io/s/n5orzr5mxj](https://codesandb
 - [React Native](https://github.com/concretesolutions/redux-zero/tree/master/examples/react-native/counter)
 - [Svelte](https://github.com/concretesolutions/redux-zero/tree/master/examples/svelte/counter)
 
+## Middleware
+
+There is basic middleware support as of 4.6.0. The method signature for the middleware was inspired by redux. The main difference is that action is a function.
+
+eg:
+
+```js
+/* store.js */
+import createStore from "redux-zero";
+import { applyMiddleware } from "redux-zero/middleware"
+
+const logger = (store) => (next) => (action) => {
+  console.log('current state', store.getState())
+  return next(action);
+}
+
+const initialState = { count: 1 };
+const middlewares = applyMiddleware(
+  logger,
+  anotherMiddleware
+);
+
+const store = createStore(initialState, middlewares);
+
+export default store;
+```
+
 ## Inspiration
 **Redux Zero** was based on this [gist](https://gist.github.com/developit/55c48d294abab13a146eac236bae3219) by [@developit](https://github.com/developit)
 
 ## Roadmap
 - Add more examples (including unit tests, SSR, etc)
-- Add middleware
 
 ## Tools
 These are unofficial tools, maintained by the community:

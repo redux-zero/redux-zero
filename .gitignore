@@ -38,6 +38,7 @@ dist/
 /interfaces/
 /utils/
 /store/
+/middleware/
 index.d.ts
 
 # Optional npm cache directory
