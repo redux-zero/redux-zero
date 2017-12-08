@@ -24,6 +24,7 @@
   "files": [
     "dist",
     "interfaces",
+    "middleware",
     "preact",
     "react",
     "store",
