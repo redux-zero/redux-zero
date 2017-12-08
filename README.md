@@ -20,6 +20,7 @@
 - [Installation](#installation)
 - [How](#how)
 - [Example](#example)
+- [Async](#async)
 - [Middleware](#middleware)
 - [Inspiration](#inspiration)
 - [Roadmap](#roadmap)
@@ -147,6 +148,54 @@ Here's the full version: [https://codesandbox.io/s/n5orzr5mxj](https://codesandb
 - [Preact](https://github.com/concretesolutions/redux-zero/tree/master/examples/preact/counter)
 - [React Native](https://github.com/concretesolutions/redux-zero/tree/master/examples/react-native/counter)
 - [Svelte](https://github.com/concretesolutions/redux-zero/tree/master/examples/svelte/counter)
+
+## Async
+
+Async actions in Redux Zero are almost as simple as sync ones. Here's an example:
+
+```js
+const mapActions = ({ setState }) => ({
+  getTodos() {
+    setState({ loading: true });
+
+    return client.get("/todos")
+      .then(payload => ({ payload, loading: false }))
+      .catch(error => ({ error, loading: false }))
+  }
+});
+```
+
+They're still pure functions. You'll need to invoke `setState` if you have a loading status. But at the end, it's the same, just return whatever the updated state that you want.
+
+And here's how easy it is to test this:
+
+```js
+describe("todo actions", () => {
+  let actions, store, listener, unsubscribe;
+  beforeEach(() => {
+    store = createStore();
+    actions = getActions(store);
+    listener = jest.fn();
+    unsubscribe = store.subscribe(listener);
+  });
+
+  it("should fetch todos", () => {
+    nock("http://someapi.com/")
+      .get("/todos")
+      .reply(200, { id: 1, title: "test stuff" });
+
+    return actions.getTodos().then(() => {
+      const [LOADING_STATE, SUCCESS_STATE] = listener.mock.calls.map(
+        ([call]) => call
+      );
+
+      expect(LOADING_STATE.loading).toBe(true);
+      expect(SUCCESS_STATE.payload).toEqual({ id: 1, title: "test stuff" });
+      expect(SUCCESS_STATE.loading).toBe(false);
+    });
+  });
+});
+```
 
 ## Middleware
 
