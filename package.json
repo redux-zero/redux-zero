@@ -1,6 +1,6 @@
 {
   "name": "redux-zero",
-  "version": "4.6.0",
+  "version": "4.6.1",
   "description": "",
   "main": "dist/redux-zero.js",
   "types": "index.d.ts",
@@ -25,6 +25,7 @@
   "files": [
     "dist",
     "interfaces",
+    "middleware",
     "preact",
     "react",
     "store",
