@@ -41,4 +41,10 @@ describe("redux-zero - the store", () => {
     expect(listener).not.toBeCalled()
     expect(otherListener).toBeCalledWith({ a: "key" })
   })
+
+  test("middleware", () => {
+    const middleware = jest.fn()
+    store = createStore({}, middleware)
+    expect(store.middleware).toEqual(middleware)
+  })
 })

@@ -72,6 +72,7 @@ const config = [
   getConfig('./src/react/index.ts', 'react/index'),
   getConfig('./src/svelte/index.ts', 'svelte/index'),
   getConfig('./src/vue/index.ts', 'vue/index'),
+  getConfig('./src/middleware/index.ts', 'middleware/index'),
 ]
 
 export default config

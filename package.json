@@ -1,13 +1,15 @@
 {
   "name": "redux-zero",
-  "version": "4.5.1",
+  "version": "4.7.0",
   "description": "",
   "main": "dist/redux-zero.js",
   "types": "index.d.ts",
   "scripts": {
     "compile": "tsc --pretty",
+    "compile:watch": "tsc --pretty --watch",
     "lint": "tslint src/**/*.ts src/**/*.tsx",
     "test": "jest",
+    "test:watch": "jest --watch",
     "format": "prettier --write --no-semi \"src/**/*.ts\" \"src/**/*.tsx\"",
     "check": "npm run compile && npm run format && npm run lint && npm run test",
     "clean": "rimraf dist coverage",
