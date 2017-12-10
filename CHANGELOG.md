@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.7.0
+
+- Add Vue.js bindings
+
 ### 4.6.0
 
 - Adds middleware support:

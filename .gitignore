@@ -38,6 +38,7 @@ dist/
 /interfaces/
 /utils/
 /store/
+/vue/
 /middleware/
 index.d.ts
 
