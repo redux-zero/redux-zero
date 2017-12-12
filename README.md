@@ -64,8 +64,20 @@ const { Provider, connect } = require("redux-zero/react")
 **UMD:**
 
 ```html
+<!-- the store -->
 <script src="https://unpkg.com/redux-zero/dist/redux-zero.min.js"></script>
+
+<!-- for react -->
 <script src="https://unpkg.com/redux-zero/react/index.min.js"></script>
+
+<!-- for preact -->
+<script src="https://unpkg.com/redux-zero/preact/index.min.js"></script>
+
+<!-- for vue -->
+<script src="https://unpkg.com/redux-zero/vue/index.min.js"></script>
+
+<!-- for svelte -->
+<script src="https://unpkg.com/redux-zero/svelte/index.min.js"></script>
 ```
 
 ## Example
