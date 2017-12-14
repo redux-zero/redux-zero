@@ -1,5 +1,13 @@
 # Changelog
 
+### 4.8.0
+
+- Add bindActions export
+
+```js
+import { bindActions } from 'redux-zero/utils'
+```
+
 ### 4.7.0
 
 - Add Vue.js bindings
