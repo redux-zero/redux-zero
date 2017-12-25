@@ -5,7 +5,7 @@ const finalMiddleware = (store: Store, args) => (action: Function) =>
   set(store, action(store.getState(), ...args))
 
 export default function applyMiddleware(...middlewares) {
-  middlewares = middlewares.reverse() // just reverse once
+  middlewares.reverse()
   return (store: Store, action: Function, args) => {
     if (middlewares.length < 1) {
       return set(store, action(store.getState(), ...args))
