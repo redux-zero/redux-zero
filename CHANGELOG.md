@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.8.1
+
+- Fix a bug of middleware
+
 ### 4.8.0
 
 - Add bindActions export
