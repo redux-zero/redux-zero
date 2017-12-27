@@ -159,6 +159,7 @@ Here's the full version: [https://codesandbox.io/s/n5orzr5mxj](https://codesandb
 - [React](https://github.com/concretesolutions/redux-zero/tree/master/examples/react/counter)
 - [Preact](https://github.com/concretesolutions/redux-zero/tree/master/examples/preact/counter)
 - [React Native](https://github.com/concretesolutions/redux-zero/tree/master/examples/react-native/counter)
+- [SSR](https://github.com/concretesolutions/redux-zero/tree/master/examples/react/ssr)
 - [Svelte](https://github.com/concretesolutions/redux-zero/tree/master/examples/svelte/counter)
 - [Vue](https://github.com/concretesolutions/redux-zero/tree/master/examples/vue/counter)
 
