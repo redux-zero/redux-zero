@@ -43,7 +43,7 @@ function getConfig(input, file) {
   const conf = {
     input,
     name: 'redux-zero',
-    sourcemap: true,
+    sourcemap: false,
     external: getExternals(file),
     output: {
       file: getFileName(file),
