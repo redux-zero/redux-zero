@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "jsx": "react",
-    "inlineSources": true,
     "module": "commonjs",
     "declaration": true,
     "noImplicitAny": false,
