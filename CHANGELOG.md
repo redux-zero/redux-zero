@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.9.1
+
+- Disable generation of source maps
+
 ### 4.8.1
 
 - Fix a bug of middleware
