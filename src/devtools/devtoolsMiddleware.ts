@@ -1,7 +1,7 @@
 let devTools = { instance: null }
 let connect
 const nextActions = []
-const REPLAY_INTERVAL = 100
+const REPLAY_INTERVAL = 10
 
 function getOrAddAction(action, fn) {
   let found = (<any>nextActions).find(x => action.name === x.key)
@@ -14,21 +14,25 @@ function getOrAddAction(action, fn) {
 
 function replay(store, message) {
   const state = JSON.parse(message.state)
-  for (let key in state.actionsById) {
-    const thisAction = state.actionsById[key].action
-    if (parseInt(key, 10) <= message.payload.id) {
-      setTimeout(() => {
-        if (thisAction.type === "initialState") {
-          store.setState(state.computedStates[0].state)
-        } else {
-          let found = (<any>nextActions).find(x => thisAction.type === x.key)
-          if (found) {
-            found.fn()
-          }
-        }
-      }, REPLAY_INTERVAL)
+  const runAction = action => {
+    if (action.type === "initialState") {
+      store.setState(state.computedStates[0].state)
+    } else {
+      const found = (<any>nextActions).find(x => action.type === x.key)
+      if (found) {
+        found.fn()
+      }
     }
   }
+  const keys = Object.keys(state.actionsById).filter(
+    x => parseInt(x, 10) <= message.payload.id
+  )
+  let i = 0
+  setTimeout(function run() {
+    runAction(state.actionsById[keys[i]].action)
+    if (++i >= keys.length) return
+    setTimeout(run, REPLAY_INTERVAL)
+  }, 0)
 }
 
 function update(message) {

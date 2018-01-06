@@ -62,8 +62,6 @@ describe("devtoolsMiddleware", () => {
 
     devTools.instance = { send: () => {}, subscribe: () => {} }
 
-    console.log("action name", Object.keys(actions))
-
     Object.keys(actions).forEach(key => {
       getOrAddAction({ name: key }, actions[key])
     })
