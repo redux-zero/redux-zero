@@ -1,7 +1,4 @@
 # Changelog
-### 4.9.0
-
-- Add DevTools middleware
 
 ### 4.8.1
 

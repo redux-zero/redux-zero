@@ -236,23 +236,6 @@ const store = createStore(initialState, middlewares);
 export default store;
 ```
 
-### DevTools Middleware
-
-You can setup DevTools middleware in store.js to connect with Redux DevTools and inspect states in the store. 
-
-```js
-/* store.js */
-import createStore from 'redux-zero';
-import { applyMiddleware } from 'redux-zero/middleware';
-import devtoolsMiddleware from 'redux-zero/devtools';
-
-const initialState = { count: 1 };
-const middlewares = devtoolsMiddleware ? applyMiddleware(devtoolsMiddleware.connect(initialState)): [];
-const store = createStore(initialState, middlewares);
-
-export default store;
-```
-
 ## Inspiration
 **Redux Zero** was based on this [gist](https://gist.github.com/developit/55c48d294abab13a146eac236bae3219) by [@developit](https://github.com/developit)
 
