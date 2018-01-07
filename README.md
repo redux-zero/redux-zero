@@ -22,9 +22,9 @@
 - [Example](#example)
 - [Async](#async)
 - [Middleware](#middleware)
+- [DevTools](#devtools)
 - [Inspiration](#inspiration)
 - [Roadmap](#roadmap)
-- [Tools](#tools)
 - [Docs](#docs)
 
 
@@ -236,9 +236,9 @@ const store = createStore(initialState, middlewares);
 export default store;
 ```
 
-### DevTools Middleware
+## DevTools
 
-You can setup DevTools middleware in store.js to connect with Redux DevTools and inspect states in the store. 
+You can setup DevTools middleware in store.js to connect with Redux DevTools and inspect states in the store.
 
 ```js
 /* store.js */
@@ -253,15 +253,14 @@ const store = createStore(initialState, middlewares);
 export default store;
 ```
 
+Also, these are unofficial tools, maintained by the community:
+- [Redux-Zero Tools](https://github.com/nyteshade/rzero-tools)
+
 ## Inspiration
 **Redux Zero** was based on this [gist](https://gist.github.com/developit/55c48d294abab13a146eac236bae3219) by [@developit](https://github.com/developit)
 
 ## Roadmap
 - Add more examples (including unit tests, SSR, etc)
-
-## Tools
-These are unofficial tools, maintained by the community:
-- [Redux-Zero Tools](https://github.com/nyteshade/rzero-tools)
 
 ## Docs
 
