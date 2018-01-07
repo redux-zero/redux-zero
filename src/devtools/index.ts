@@ -1,0 +1,1 @@
+export { connect } from "./devtoolsMiddleware"

@@ -22,6 +22,7 @@
   },
   "author": "Matheus Lima <matheusml90@gmail.com>",
   "files": [
+    "devtools",
     "dist",
     "interfaces",
     "middleware",

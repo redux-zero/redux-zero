@@ -74,6 +74,7 @@ const config = [
   getConfig('./src/vue/index.ts', 'vue/index'),
   getConfig('./src/middleware/index.ts', 'middleware/index'),
   getConfig('./src/utils/index.ts', 'utils/index'),
+  getConfig('./src/devtools/index.ts', 'devtools/index'),
 ]
 
 export default config
