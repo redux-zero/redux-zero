@@ -40,6 +40,7 @@ dist/
 /store/
 /vue/
 /middleware/
+/devtools/
 index.d.ts
 
 # Optional npm cache directory
