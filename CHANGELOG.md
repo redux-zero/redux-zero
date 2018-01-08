@@ -1,4 +1,9 @@
 # Changelog
+
+### 4.9.1
+
+- Disable generation of source maps
+
 ### 4.9.0
 
 - Add DevTools middleware

@@ -2,13 +2,12 @@
   "compilerOptions": {
     "jsx": "react",
     "jsxFactory": "h",
-    "inlineSources": true,
     "module": "commonjs",
     "declaration": true,
     "noImplicitAny": false,
     "suppressImplicitAnyIndexErrors": true,
     "removeComments": false,
-    "sourceMap": true,
+    "sourceMap": false,
     "target": "ES5",
     "outDir": "./dist"
   },
