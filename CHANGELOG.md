@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.9.2
+
+- Add hot module reloading support to React `connect()` decorator
+
 ### 4.9.1
 
 - Disable generation of source maps
