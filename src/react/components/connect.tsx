@@ -42,9 +42,16 @@ export class Connect extends React.Component<any> {
 }
 
 export default function connect(mapToProps, actions = {}) {
-  return Child => props => (
-    <Connect {...props} mapToProps={mapToProps} actions={actions}>
-      {mappedProps => <Child {...mappedProps} {...props} />}
-    </Connect>
-  )
+  return Child =>
+    class ConnectWrapper extends React.Component<any> {
+      render() {
+        const { props } = this
+
+        return (
+          <Connect {...props} mapToProps={mapToProps} actions={actions}>
+            {mappedProps => <Child {...mappedProps} {...props} />}
+          </Connect>
+        )
+      }
+    }
 }
