@@ -60,6 +60,11 @@ const devtoolsMiddleware = store => next => action => {
   let result = next(action)
   subscribe(store, devtoolsMiddleware)
   getOrAddAction(action, () => next(action))
+  if (result && result.then) {
+    return result.then(() =>
+      devTools.instance.send(action.name, store.getState())
+    )
+  }
   devTools.instance.send(action.name, store.getState())
   return result
 }

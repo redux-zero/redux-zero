@@ -10,9 +10,19 @@ import {
 
 const increment = ({ count }) => ({ count: count + 1 })
 const decrement = ({ count }) => ({ count: count - 1 })
-const getActions = ({ getState }) => ({
+const getActions = () => ({
   increment,
   decrement
+})
+
+const getAsyncActions = ({ setState }) => ({
+  successAsyncAction() {
+    setState({ loading: true })
+
+    return Promise.resolve({ some: "mock data" })
+      .then(payload => ({ payload, loading: false }))
+      .catch(error => ({ error, loading: false }))
+  }
 })
 
 const jumpToAction = {
@@ -81,5 +91,58 @@ describe("devtoolsMiddleware", () => {
 
     expect(setTimeout).toHaveBeenCalledTimes(2 + 3)
     expect(store.getState()).toEqual({ count: 1 })
+  })
+})
+
+describe("sendActions", () => {
+  let store, listener, middlewares
+  beforeEach(() => {
+    devtoolsMiddleware.initialized = false
+    middlewares = applyMiddleware(devtoolsMiddleware)
+    store = createStore({ count: 1 }, middlewares)
+    listener = jest.fn()
+    store.subscribe(listener)
+  })
+
+  it("should send actions to store", () => {
+    const actions = bindActions(getActions, store)
+    let sendCalled = false
+    let subscribeCalled = false
+
+    devTools.instance = {
+      send: () => (sendCalled = true),
+      subscribe: () => (subscribeCalled = true)
+    }
+    actions.increment()
+
+    expect(store.getState().count).toBe(2)
+    expect(sendCalled).toBe(true)
+    expect(subscribeCalled).toBe(true)
+  })
+
+  it("should send async actions to store", done => {
+    const actions = bindActions(getAsyncActions, store)
+    let sendCalled = false
+    let subscribeCalled = false
+
+    devTools.instance = {
+      send: () => (sendCalled = true),
+      subscribe: () => (subscribeCalled = true)
+    }
+
+    actions.successAsyncAction().then(() => {
+      const [LOADING_STATE, SUCCESS_STATE] = listener.mock.calls.map(
+        ([call]) => call
+      )
+
+      expect(LOADING_STATE.loading).toBe(true)
+      expect(SUCCESS_STATE.payload).toEqual({ some: "mock data" })
+      expect(SUCCESS_STATE.loading).toBe(false)
+
+      expect(sendCalled).toBe(true)
+      expect(subscribeCalled).toBe(true)
+
+      done()
+    })
   })
 })
