@@ -28,14 +28,6 @@ describe("redux-zero - preact bindings", () => {
         </Provider>
       )
 
-      // const wrapper = mount(<App />)
-
-      // expect(wrapper.html()).toBe("<h1>hello</h1>")
-
-      // store.setState({ message: "bye" })
-
-      // expect(wrapper.html()).toBe("<h1>bye</h1>")
-
       context = deep(<App />, { depth: Infinity })
       expect(context.output()).toEqual(<h1>hello</h1>)
       store.setState({ message: "bye" })

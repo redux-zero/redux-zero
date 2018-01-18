@@ -33,19 +33,22 @@ export class Connect extends Component<any, {}> {
   }
 }
 
+// [ HACK ] to avoid Typechecks
+// since there is a small conflict between preact and react typings
+// in the future this might become unecessary by updating typings
+const ConnectUntyped = Connect as any
+
 export default function connect(mapToProps, actions = {}) {
   return Child =>
     class ConnectWrapper extends Component<any, {}> {
       render() {
         const { props } = this
 
-        /* tslint:disable */
         return (
-          <Connect {...props} mapToProps={mapToProps} actions={actions}>
+          <ConnectUntyped {...props} mapToProps={mapToProps} actions={actions}>
             {mappedProps => <Child {...mappedProps} {...props} />}
-          </Connect>
+          </ConnectUntyped>
         )
-        /* tslint:enable */
       }
     }
 }
