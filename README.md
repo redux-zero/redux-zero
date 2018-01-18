@@ -157,6 +157,7 @@ Here's the full version: [https://codesandbox.io/s/n5orzr5mxj](https://codesandb
 
 ### More examples
 - [React](https://github.com/concretesolutions/redux-zero/tree/master/examples/react/counter)
+- [React-Router](https://github.com/concretesolutions/redux-zero/tree/master/examples/react/react-router)
 - [Preact](https://github.com/concretesolutions/redux-zero/tree/master/examples/preact/counter)
 - [React Native](https://github.com/concretesolutions/redux-zero/tree/master/examples/react-native/counter)
 - [SSR](https://github.com/concretesolutions/redux-zero/tree/master/examples/react/ssr)
