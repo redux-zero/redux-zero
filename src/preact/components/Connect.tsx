@@ -1,9 +1,9 @@
-import { Component } from "preact"
+import { h, Component } from "preact"
 
 import shallowEqual from "../../utils/shallowEqual"
 import bindActions from "../../utils/bindActions"
 
-export default class Connect extends Component<any, {}> {
+export class Connect extends Component<any, {}> {
   unsubscribe
   state = this.getProps()
   actions = this.getActions()
@@ -31,4 +31,21 @@ export default class Connect extends Component<any, {}> {
   render({ children }, state, { store }) {
     return children[0]({ store, ...state, ...this.actions })
   }
+}
+
+export default function connect(mapToProps, actions = {}) {
+  return Child =>
+    class ConnectWrapper extends Component<any, {}> {
+      render() {
+        const { props } = this
+
+        /* tslint:disable */
+        return (
+          <Connect {...props} mapToProps={mapToProps} actions={actions}>
+            {mappedProps => <Child {...mappedProps} {...props} />}
+          </Connect>
+        )
+        /* tslint:enable */
+      }
+    }
 }
