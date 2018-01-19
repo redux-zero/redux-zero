@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.10.0
+
+- Implement connect HOC decorator for preact
+
 ### 4.9.2
 
 - Add hot module reloading support to React `connect()` decorator
