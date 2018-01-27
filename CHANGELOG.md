@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.10.1
+
+- Fix bug of devtools middleware - handle async actions
+
 ### 4.10.0
 
 - Implement connect HOC decorator for preact
