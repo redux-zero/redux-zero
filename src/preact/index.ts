@@ -1,4 +1,4 @@
-import Connect from "./components/Connect"
+import connect, { Connect } from "./components/Connect"
 import Provider from "./components/Provider"
 
-export { Provider, Connect }
+export { connect, Provider, Connect }
