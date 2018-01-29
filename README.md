@@ -265,6 +265,7 @@ Also, these are unofficial tools, maintained by the community:
 
 ## Docs
 
+* [Full Docs](https://matheusml1.gitbooks.io/redux-zero-docs/content/)
 * [Contributing](https://github.com/concretesolutions/redux-zero/blob/master/CONTRIBUTING.md)
 * [Changelog](https://github.com/concretesolutions/redux-zero/blob/master/CHANGELOG.md)
 * [Code of Conduct](https://github.com/concretesolutions/redux-zero/blob/master/CODE_OF_CONDUCT.md)
