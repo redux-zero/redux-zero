@@ -20,6 +20,7 @@
 - [Installation](#installation)
 - [How](#how)
 - [Example](#example)
+- [Actions](#actions)
 - [Async](#async)
 - [Middleware](#middleware)
 - [DevTools](#devtools)
@@ -163,6 +164,56 @@ Here's the full version: [https://codesandbox.io/s/n5orzr5mxj](https://codesandb
 - [SSR](https://github.com/concretesolutions/redux-zero/tree/master/examples/react/ssr)
 - [Svelte](https://github.com/concretesolutions/redux-zero/tree/master/examples/svelte/counter)
 - [Vue](https://github.com/concretesolutions/redux-zero/tree/master/examples/vue/counter)
+
+## Actions
+
+There are two gotchas with Redux Zero's actions:
+- Passing arguments
+- Combining actions
+
+### Passing arguments
+
+Here's how you can pass arguments to actions:
+
+```js
+const Component = ({ count, incrementOf }) => (
+  <h1 onClick={() => incrementOf(10)}>{count}</h1>
+)
+
+const mapToProps = ({ count }) => ({ count })
+
+const actions = store => ({
+  incrementOf: (state, value) => ({ count: state.count + value })
+})
+
+const ConnectedComponent = connect(mapToProps, actions)(Component)
+
+const App = () => (
+  <Provider store={store}>
+    <ConnectedComponent />
+  </Provider>
+)
+```
+
+### Combining actions
+
+There's a simple way to combine actions in Redux Zero by using the [spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax). Here's how:
+
+```js
+import { connect } from "redux-zero/react";
+
+import Component from "./Component";
+import firstActions from "../../actions/firstActions";
+import secondActions from "../../actions/secondActions";
+
+export default connect(
+  ({ params, moreParams }) => ({ params, moreParams }),
+  (...actionParams) => ({
+    ...firstActions(...actionParams),
+    ...secondActions(...actionParams)
+  })
+)(Component);
+```
 
 ## Async
 
