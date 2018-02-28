@@ -9,11 +9,11 @@
 <hr />
 
 [![codacy](https://api.codacy.com/project/badge/Grade/a4adf13156bd4441ae132d2d9dc72186)](https://www.codacy.com/app/matheusml/redux-zero?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=concretesolutions/redux-zero&amp;utm_campaign=Badge_Grade)
-[![build](https://img.shields.io/travis/concretesolutions/redux-zero/master.svg?style=flat-square)](https://travis-ci.org/concretesolutions/redux-zero)
-[![npm](https://img.shields.io/npm/v/redux-zero.svg?style=flat-square)](https://www.npmjs.com/package/redux-zero)
-[![downloads](https://img.shields.io/npm/dm/redux-zero.svg?style=flat-square)](https://www.npmjs.com/package/redux-zero)
-[![license](https://img.shields.io/github/license/concretesolutions/redux-zero.svg?style=flat-square)]()
-[![dependencies](https://img.shields.io/david/concretesolutions/redux-zero.svg?style=flat-square)]()
+[![build](https://img.shields.io/travis/concretesolutions/redux-zero/master.svg)](https://travis-ci.org/concretesolutions/redux-zero)
+[![npm](https://img.shields.io/npm/v/redux-zero.svg)](https://www.npmjs.com/package/redux-zero)
+[![downloads](https://img.shields.io/npm/dm/redux-zero.svg)](https://www.npmjs.com/package/redux-zero)
+[![license](https://img.shields.io/github/license/concretesolutions/redux-zero.svg)]()
+[![dependencies](https://img.shields.io/david/concretesolutions/redux-zero.svg)]()
 
 
 ## Table of Contents
