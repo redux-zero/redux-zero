@@ -1,3 +1,3 @@
-import { connect } from "./components/connect"
+import { connect } from "./components/connect";
 
-export { connect }
+export { connect };

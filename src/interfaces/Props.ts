@@ -1,5 +1,5 @@
-import Store from "./Store"
+import Store from "./Store";
 
 export default interface Props {
-  store: Store
-}
+  store: Store;
+};

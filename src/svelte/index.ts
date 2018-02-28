@@ -1,3 +1,3 @@
-import { connect, getActions } from "./components/connect"
+import { connect, getActions } from "./components/connect";
 
-export { connect, getActions }
+export { connect, getActions };

@@ -1,2 +1,2 @@
-import applyMiddleware from "./applyMiddleware"
-export { applyMiddleware }
+import applyMiddleware from "./applyMiddleware";
+export { applyMiddleware };

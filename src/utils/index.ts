@@ -1,3 +1,3 @@
-import bindActions from "./bindActions"
+import bindActions from "./bindActions";
 
-export { bindActions }
+export { bindActions };
