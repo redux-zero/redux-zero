@@ -1,14 +1,14 @@
-import Store from "../interfaces/Store"
-import set from "../utils/set"
+import Store from "../interfaces/Store";
+import set from "../utils/set";
 
 const finalMiddleware = (store: Store, args) => (action: Function) =>
-  set(store, action(store.getState(), ...args))
+  set(store, action(store.getState(), ...args));
 
 export default function applyMiddleware(...middlewares) {
-  middlewares.reverse()
+  middlewares.reverse();
   return (store: Store, action: Function, args) => {
     if (middlewares.length < 1) {
-      return set(store, action(store.getState(), ...args))
+      return set(store, action(store.getState(), ...args));
     }
 
     const chain = middlewares
@@ -16,8 +16,8 @@ export default function applyMiddleware(...middlewares) {
       .reduce(
         (next, middleware) => middleware(next),
         finalMiddleware(store, args)
-      )
+      );
 
-    return chain(action)
-  }
+    return chain(action);
+  };
 }
