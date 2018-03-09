@@ -7,13 +7,9 @@ import store from './store';
 
 import 'tachyons/css/tachyons.min.css';
 
-import registerServiceWorker from './registerServiceWorker';
-
 ReactDOM.render(
   <Provider store={store}>
     <Routes />
   </Provider>,
   document.getElementById('root')
 );
-
-registerServiceWorker();
