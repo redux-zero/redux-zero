@@ -13,14 +13,14 @@ function submitForm(createUser, event) {
 
 const CreateUser = ({ createUser, setUsername, userName = '' }) => (
   <div className="w-60 center">
-    <h1 className="tc">Digite seu nome</h1>
+    <h1 className="tc">Type your username</h1>
     <form onSubmit={submitForm.bind(this, createUser)}>
       <input type="text"
         onChange={setUsernameInputValue.bind(this, setUsername)}
         value={userName}
         className="w-100 pa2"
       />
-      <button type="submit" disabled={isEmpty(userName)} className="w-100 pa3 mt3">Entrar</button>
+      <button type="submit" disabled={isEmpty(userName)} className="w-100 pa3 mt3">Sign In</button>
     </form>
   </div>
 );

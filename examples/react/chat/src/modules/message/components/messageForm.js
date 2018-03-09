@@ -16,7 +16,7 @@ const MessageForm = ({ className, clearMessageContent, messageContent, setMessag
           onChange={event => setMessageContent(event.target.value)}
           className="w-80 h-100 v-top pa3"
         />
-        <button disabled={isEmpty(messageContent)} className="w-20 h-100 v-top">Enviar</button>
+        <button disabled={isEmpty(messageContent)} className="w-20 h-100 v-top">Send</button>
       </form>
     </div>
   );
