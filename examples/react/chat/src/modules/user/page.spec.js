@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import Chance from 'chance';
 
 import { lifecycle } from 'recompose';
@@ -11,22 +11,61 @@ describe('Page container unit', () => {
     jest.resetModules();
   });
 
-  it.skip('Render without currentUser', () => {
-    const currentUserStub = {};
-    const connectMock = jest.fn((props) => (args) => {
-      return class extends React.Component {
-        render() {
-          return new args();
-        };
-      };
-    });
+  it('Should Render component without currentUser', () => {
+    const currentUserStub = { };
+    const userNameStub = chance.name();
+
+    const historyPushMock = jest.fn();
+    const historyStub = { push: historyPushMock };
+    const connectMock = jest.fn((props) => (args) => args);
+
+    const PageContent = () => (<div />);
 
     jest.doMock('redux-zero/react', () => ({ connect: connectMock }));
-    jest.doMock('./pageContent', () => <div />);
+    jest.doMock('./pageContent', () => PageContent);
 
-    const Page = require('./page');
-    const wrapper = mount(<Page />);
+    const Page = require('./page').default;
+    const wrapper = shallow(<Page
+      history={historyStub}
+      currentUser={currentUserStub}
+      userName={userNameStub}
+    />);
 
-    expect(wrapper.find(lifecycle).componentDidMount).toBeCalled();
+    wrapper.instance().componentDidMount();
+    wrapper.instance().componentWillReceiveProps({ currentUser: currentUserStub });
+
+    expect(historyPushMock).not.toBeCalled();
+    expect(connectMock).toBeCalledWith(expect.any(Function), expect.any(Function));
+  });
+
+  it('Should Render component with currentUser', () => {
+    const currentUserStub = { name: chance.name() };
+    const userNameStub = chance.name();
+
+    const historyPushMock = jest.fn();
+    const historyStub = { push: historyPushMock };
+    const connectMock = jest.fn((props) => (args) => args);
+
+    const PageContent = () => (<div />);
+
+    jest.doMock('redux-zero/react', () => ({ connect: connectMock }));
+    jest.doMock('./pageContent', () => PageContent);
+
+    const Page = require('./page').default;
+    const wrapper = shallow(<Page
+      history={historyStub}
+      currentUser={currentUserStub}
+      userName={userNameStub}
+    />);
+
+
+    wrapper.instance().componentDidMount();
+    wrapper.instance().componentWillReceiveProps({
+      history: historyStub,
+      currentUser: currentUserStub
+    });
+
+    expect(historyPushMock).toBeCalledWith('/chat');
+    expect(connectMock).toBeCalledWith(expect.any(Function), expect.any(Function));
   });
 });
