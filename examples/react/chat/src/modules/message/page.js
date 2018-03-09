@@ -12,14 +12,16 @@ const withFetchMessages = lifecycle({
   componentDidMount() {
     if (isEmpty(this.props.currentUser))
       this.props.history.push('/');
-
-    setInterval(() => this.props.fetchMessages(), 2000);
+    else
+      setInterval(() => this.props.fetchMessages(), 2000);
   },
 });
 
 const enhance = compose(
-  connect(({ messages, messageContent, currentUser }) =>
-    ({ messages, messageContent, currentUser }), actions),
+  connect(
+    ({ messages, messageContent, currentUser }) => ({ messages, messageContent, currentUser }),
+    actions
+  ),
   withFetchMessages,
 );
 
