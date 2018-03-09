@@ -53,14 +53,16 @@ describe('Page container unit', () => {
   });
 
   it.skip('Should invoke connect with correct params', () => {
+    const mapStateToPropsStub = { messages: [], messageContent: '', currentUser: { name: ' ' } };
     const connectMock = jest.fn(props => identity);
 
     jest.doMock('redux-zero/react', () => ({ connect: connectMock }));
     jest.doMock('./components/message', () => () => <div />);
 
     const Page = require('./page').default;
-    const wrapper = shallow(<Page currentUser={chance.name()}/>);
+    const wrapper = shallow(<Page {...mapStateToPropsStub} />);
 
+    // expect(connectMock.mock.calls[0][0](mapStateToPropsStub)).toMatchSnapshot();
     expect(connectMock).toBeCalledWith(expect.any(Function), expect.any(Function));
   });
 });

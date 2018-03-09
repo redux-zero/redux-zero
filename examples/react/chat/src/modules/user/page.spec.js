@@ -12,8 +12,8 @@ describe('Page container unit', () => {
   });
 
   it('Connect should map props correctly', () => {
-    const currentUserStub = { name: chance.name() };
-    const userNameStub = chance.name();
+    const currentUserStub = { name: '' };
+    const userNameStub = ' ';
     const propsStub = { currentUser: currentUserStub, userName: userNameStub };
     const PageContent = () => (<div />);
 
@@ -22,7 +22,7 @@ describe('Page container unit', () => {
     jest.doMock('./pageContent', () => PageContent);
 
     const Page = require('./page').default;
-    expect(connectMock.mock.calls[0][0](propsStub)).toEqual(propsStub)
+    expect(connectMock.mock.calls[0][0](propsStub)).toMatchSnapshot();
   });
 
   it('Should Render component without currentUser', () => {

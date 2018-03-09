@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page container unit Connect should map props correctly 1`] = `
+Object {
+  "currentUser": Object {
+    "name": "",
+  },
+  "userName": " ",
+}
+`;
