@@ -1,60 +1,6 @@
 {
   "messages": [
-    {
-      "createdAt": 1520604907715,
-      "userName": "Teste",
-      "content": "Teste",
-      "id": 1
-    },
-    {
-      "createdAt": 1520604911162,
-      "userName": "Teste",
-      "content": "aaa",
-      "id": 2
-    },
-    {
-      "createdAt": 1520605634763,
-      "userName": "Teste",
-      "content": "aaaa",
-      "id": 3
-    },
-    {
-      "createdAt": 1520605642544,
-      "userName": "Teste",
-      "content": "aaa",
-      "id": 4
-    },
-    {
-      "createdAt": 1520605644689,
-      "userName": "Teste",
-      "content": "ddd",
-      "id": 5
-    },
-    {
-      "createdAt": 1520605647881,
-      "userName": "Teste",
-      "content": "qq",
-      "id": 6
-    },
-    {
-      "createdAt": 1520607262447,
-      "userName": "Leonardo",
-      "content": "Teste 11:54",
-      "id": 7
-    }
   ],
   "users": [
-    {
-      "name": "Teste",
-      "id": 1
-    },
-    {
-      "name": "Teste",
-      "id": 2
-    },
-    {
-      "name": "Leonardo",
-      "id": 3
-    }
   ]
 }
