@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test API Routes unit Check if structure keeps equal 1`] = `
+Object {
+  "index": "/users",
+  "lastUser": "/users?_sort=id&_order=desc&_limit=1",
+}
+`;

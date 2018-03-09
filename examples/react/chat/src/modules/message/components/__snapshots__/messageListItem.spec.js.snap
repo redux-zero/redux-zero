@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test MessageListItem component unit Should render component with correct structure 1`] = `
+<div
+  className="w-100 bb pv1"
+>
+  <h2
+    className="di v-mid ma0"
+  >
+    Test username
+  </h2>
+  <small
+    className="di fr v-mid"
+  >
+    Date formatted
+  </small>
+  <p>
+    Test Content
+  </p>
+</div>
+`;
