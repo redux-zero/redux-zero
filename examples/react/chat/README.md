@@ -4,14 +4,16 @@ A simple chat built with [create-react-app](https://github.com/facebook/create-r
 
 To run this example in
 #### Development mode
-```
+```shell
 npm run mock:api
+export REACT_APP_API_BASE_URL=http://localhost:3000 #localhost:3000 = json-server api URL
 npm start
 ```
 
 #### Production mode
-```
+```shell
 npm run mock:api
+export REACT_APP_API_BASE_URL=http://localhost:3000 #localhost:3000 = json-server api URL
 npm run build
 ```
 
