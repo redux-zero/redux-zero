@@ -11,6 +11,20 @@ describe('Page container unit', () => {
     jest.resetModules();
   });
 
+  it('Connect should map props correctly', () => {
+    const currentUserStub = { name: chance.name() };
+    const userNameStub = chance.name();
+    const propsStub = { currentUser: currentUserStub, userName: userNameStub };
+    const PageContent = () => (<div />);
+
+    const connectMock = jest.fn((props) => (args) => args);
+    jest.doMock('redux-zero/react', () => ({ connect: connectMock }));
+    jest.doMock('./pageContent', () => PageContent);
+
+    const Page = require('./page').default;
+    expect(connectMock.mock.calls[0][0](propsStub)).toEqual(propsStub)
+  });
+
   it('Should Render component without currentUser', () => {
     const currentUserStub = { };
     const userNameStub = chance.name();
