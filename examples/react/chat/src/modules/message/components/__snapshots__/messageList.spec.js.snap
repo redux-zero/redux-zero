@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test MessageList component unit Should render component with correct structure 1`] = `
+<div
+  className="Teste 1 ba pa3 overflow-y-auto"
+/>
+`;
+
+exports[`Test MessageList component unit Should render component with correct structure 2`] = `
+<div
+  className="Teste 2 ba pa3 overflow-y-auto"
+>
+  <MessageListItem
+    key="message_item_0"
+  />
+</div>
+`;
+
+exports[`Test MessageList component unit Should render component with correct structure 3`] = `
+<div
+  className="Teste 3 ba pa3 overflow-y-auto"
+>
+  <MessageListItem
+    key="message_item_0"
+  />
+  <MessageListItem
+    key="message_item_1"
+  />
+  <MessageListItem
+    key="message_item_2"
+  />
+</div>
+`;
+
+exports[`Test MessageList component unit Should render component with correct with correct structure, even when messages undefined 1`] = `
+<div
+  className="undefined ba pa3 overflow-y-auto"
+/>
+`;

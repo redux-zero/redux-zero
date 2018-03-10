@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test MessageForm component unit Should render component with correct structure 1`] = `
+<div
+  className="Teste"
+>
+  <form
+    className="h-100"
+    onSubmit={[Function]}
+  >
+    <textarea
+      className="w-80 h-100 v-top pa3"
+      onChange={[Function]}
+      value="Msg"
+    />
+    <button
+      className="w-20 h-100 v-top"
+      disabled={false}
+    >
+      Enviar
+    </button>
+  </form>
+</div>
+`;

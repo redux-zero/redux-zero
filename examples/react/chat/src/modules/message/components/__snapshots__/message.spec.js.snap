@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Message component unit Should render component with correct structure 1`] = `
+<div
+  className="vh-100"
+>
+  <MessageList
+    className="w-100 h-75"
+    messages={Array []}
+  />
+  <MessageForm
+    className="w-100 h-25"
+    createMessage={[Function]}
+    messageContent=""
+    setMessageContent={[Function]}
+  />
+</div>
+`;

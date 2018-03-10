@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreateUserPage unit Should render with success 1`] = `
+<div
+  className="w-60 center"
+>
+  <h1
+    className="tc"
+  >
+    Digite seu nome
+  </h1>
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      className="w-100 pa2"
+      onChange={[Function]}
+      type="text"
+      value="User Test"
+    />
+    <button
+      className="w-100 pa3 mt3"
+      disabled={false}
+      type="submit"
+    >
+      Entrar
+    </button>
+  </form>
+</div>
+`;
+
+exports[`CreateUserPage unit Should render with success 2`] = `
+<div
+  className="w-60 center"
+>
+  <h1
+    className="tc"
+  >
+    Digite seu nome
+  </h1>
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      className="w-100 pa2"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+    <button
+      className="w-100 pa3 mt3"
+      disabled={true}
+      type="submit"
+    >
+      Entrar
+    </button>
+  </form>
+</div>
+`;

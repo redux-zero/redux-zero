@@ -1,0 +1,52 @@
+{
+  "name": "redux-zero-chat",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=8.5.0",
+    "npm": ">5"
+  },
+  "contributors": [
+    {
+      "email": "pabloalexandre.nave@gmail.com",
+      "name": "Pablo Salgado",
+      "url": "https://github.com/PabloAlexandre"
+    },
+    {
+      "email": "leonardo.villela37@gmail.com",
+      "name": "Leonardo Villela",
+      "url": "https://github.com/leonardovillela"
+    }
+  ],
+  "dependencies": {
+    "axios": "^0.18.0",
+    "lodash": "^4.17.5",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.1",
+    "recompose": "^0.26.0",
+    "redux-zero": "^4.10.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "mock:api": "json-server ./mock/db.json"
+  },
+  "devDependencies": {
+    "chance": "^1.0.13",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.1",
+    "json-server": "^0.12.1",
+    "tachyons": "^4.9.1"
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
+  }
+}
