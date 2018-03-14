@@ -172,7 +172,7 @@ Here's the full version: [https://codesandbox.io/s/n5orzr5mxj](https://codesandb
 There are tree gotchas with Redux Zero's actions:
 - Passing arguments
 - Combining actions
-- Using actions outside app scope
+- Binding actions to a outside object
 
 ### Passing arguments
 
@@ -237,7 +237,6 @@ messaging.onMessage((payload) => {
   boundActions.saveMessage(payload);
 });
 ```
-
 
 
 ## Async
