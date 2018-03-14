@@ -222,7 +222,7 @@ export default connect(
 
 It's not usual, but sometimes you need to use yor actions outside from you application scope.
 
-On this example we listem to push notification that send data to our store.
+On this example we listen to push notification that send data to our React Native app.
 
 ```js
 import firebase from 'react-native-firebase';
