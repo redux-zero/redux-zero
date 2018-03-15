@@ -203,6 +203,7 @@ There's a simple way to combine actions in Redux Zero by using the [spread opera
 
 ```js
 import { connect } from "redux-zero/react";
+import { combineActions } from "redux-zero/utils";
 
 import Component from "./Component";
 import firstActions from "../../actions/firstActions";
@@ -210,10 +211,7 @@ import secondActions from "../../actions/secondActions";
 
 export default connect(
   ({ params, moreParams }) => ({ params, moreParams }),
-  (...actionParams) => ({
-    ...firstActions(...actionParams),
-    ...secondActions(...actionParams)
-  })
+  combineActions(firstActions, secondActions)
 )(Component);
 ```
 
