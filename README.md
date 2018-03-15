@@ -200,7 +200,7 @@ const App = () => (
 
 ### Combining actions
 
-There's an utilitary funtion to combine actions on Redux Zero:
+There's an utilitary function to combine actions on Redux Zero:
 
 ```js
 import { connect } from "redux-zero/react";
@@ -220,7 +220,7 @@ export default connect(
 
 If you need to bind the actions to an external listener outside the application scope, here's a simple way to do it:
 
-On this example we listen to push notifications that send data to our React Native app.
+On this example we listen to push notifications that sends data to our React Native app.
 
 ```js
 import firebase from 'react-native-firebase';
