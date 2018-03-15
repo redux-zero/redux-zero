@@ -9,6 +9,10 @@ const actionsB = () => ({
   setBaz: (state, baz) => ({ baz })
 });
 
+const actionsObj = {
+  setObj: (state, obj) => ({ obj })
+};
+
 describe("combineActions", () => {
   it("should return a function", () => {
     expect(typeof combineActions()).toBe("function");
@@ -18,15 +22,27 @@ describe("combineActions", () => {
     expect(typeof combineActions()()).toBe("object");
   });
 
-  it("should when called with only one actions object and returned function called without params return the result of the actions", () => {
+  it("should when called with only one actions func and returned function called without params return the result of the actions", () => {
     expect(combineActions(actionsA)().toString()).toEqual(
       actionsA().toString()
+    );
+  });
+
+  it("should when called with only one actions object and returned function called without params return the action object", () => {
+    expect(combineActions(actionsObj)().toString()).toEqual(
+      actionsObj.toString()
     );
   });
 
   it("should when called with two actions and returned function called without params return the result of merged actions", () => {
     expect(combineActions(actionsA, actionsB)().toString()).toEqual(
       { ...actionsA(), ...actionsB() }.toString()
+    );
+  });
+
+  it("should when called with two mixed types of actions and returned function called without params return the result of merged actions", () => {
+    expect(combineActions(actionsA, actionsObj)().toString()).toEqual(
+      { ...actionsA(), ...actionsObj }.toString()
     );
   });
 
