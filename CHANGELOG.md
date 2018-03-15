@@ -1,5 +1,13 @@
 # Changelog
 
+### 4.11.0
+
+- Add `combineActions` function
+
+```js
+import { combineActions } from 'redux-zero/utils';
+```
+
 ### 4.10.1
 
 - Fix bug of devtools middleware - handle async actions

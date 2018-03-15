@@ -199,7 +199,7 @@ const App = () => (
 
 ### Combining actions
 
-There's a simple way to combine actions in Redux Zero by using the [spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax). Here's how:
+There's an utilitary funtion to combine actions on React Zero:
 
 ```js
 import { connect } from "redux-zero/react";
