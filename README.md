@@ -172,7 +172,7 @@ Here's the full version: [https://codesandbox.io/s/n5orzr5mxj](https://codesandb
 There are tree gotchas with Redux Zero's actions:
 - Passing arguments
 - Combining actions
-- Binding actions to a outside object
+- Binding actions outside your application scope
 
 ### Passing arguments
 
@@ -218,11 +218,11 @@ export default connect(
 )(Component);
 ```
 
-### Binding actions to a outside object
+### Binding actions outside your application scope
 
-It's not usual, but sometimes you need to use yor actions outside from you application scope.
+If you need to bind the actions to an external listener outside the application scope, here's a simple way to do it:
 
-On this example we listen to push notification that send data to our React Native app.
+On this example we listen to push notifications that send data to our React Native app.
 
 ```js
 import firebase from 'react-native-firebase';
