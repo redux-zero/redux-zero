@@ -200,7 +200,7 @@ const App = () => (
 
 ### Combining actions
 
-There's an utilitary function to combine actions on Redux Zero:
+There's an utility function to combine actions on Redux Zero:
 
 ```js
 import { connect } from "redux-zero/react";
