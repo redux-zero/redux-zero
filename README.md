@@ -200,10 +200,11 @@ const App = () => (
 
 ### Combining actions
 
-There's a simple way to combine actions in Redux Zero by using the [spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax). Here's how:
+There's an utility function to combine actions on Redux Zero:
 
 ```js
 import { connect } from "redux-zero/react";
+import { combineActions } from "redux-zero/utils";
 
 import Component from "./Component";
 import firstActions from "../../actions/firstActions";
@@ -211,10 +212,7 @@ import secondActions from "../../actions/secondActions";
 
 export default connect(
   ({ params, moreParams }) => ({ params, moreParams }),
-  (...actionParams) => ({
-    ...firstActions(...actionParams),
-    ...secondActions(...actionParams)
-  })
+  combineActions(firstActions, secondActions)
 )(Component);
 ```
 
@@ -222,7 +220,7 @@ export default connect(
 
 If you need to bind the actions to an external listener outside the application scope, here's a simple way to do it:
 
-On this example we listen to push notifications that send data to our React Native app.
+On this example we listen to push notifications that sends data to our React Native app.
 
 ```js
 import firebase from 'react-native-firebase';
