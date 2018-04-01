@@ -10,9 +10,12 @@ import {
 
 const increment = ({ count }) => ({ count: count + 1 });
 const decrement = ({ count }) => ({ count: count - 1 });
+const incrementBy = ({ count }, amount) => ({ count: count + amount });
+
 const getActions = () => ({
   increment,
-  decrement
+  decrement,
+  incrementBy
 });
 
 const getAsyncActions = ({ setState }) => ({
@@ -117,6 +120,27 @@ describe("sendActions", () => {
 
     expect(store.getState().count).toBe(2);
     expect(sendCalled).toBe(true);
+    expect(subscribeCalled).toBe(true);
+  });
+
+  it("should send action args to store", () => {
+    const actions = bindActions(getActions, store);
+    let sendCalled = false;
+    let subscribeCalled = false;
+    let sentAction = null;
+    devTools.instance = {
+      send: (action, state) => {
+        sentAction = action;
+        sendCalled = true;
+      },
+      subscribe: () => (subscribeCalled = true)
+    };
+    actions.incrementBy(5);
+
+    expect(store.getState().count).toBe(6);
+    expect(sendCalled).toBe(true);
+    expect(sentAction.type).toBe("incrementBy");
+    expect(sentAction.args).toEqual([5]);
     expect(subscribeCalled).toBe(true);
   });
 
