@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.12.0
+
+- Pass action `args` to middleware and devtools
+
 ### 4.11.0
 
 - Add `combineActions` function
