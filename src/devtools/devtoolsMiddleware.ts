@@ -56,16 +56,17 @@ function subscribe(store, middleware) {
   }
 }
 
-const devtoolsMiddleware = store => next => action => {
+const devtoolsMiddleware = store => (next, args) => action => {
   let result = next(action);
   subscribe(store, devtoolsMiddleware);
   getOrAddAction(action, () => next(action));
+  const reduxAction = { type: action.name, args: args };
   if (result && result.then) {
     return result.then(() =>
-      devTools.instance.send(action.name, store.getState())
+      devTools.instance.send(reduxAction, store.getState())
     );
   }
-  devTools.instance.send(action.name, store.getState());
+  devTools.instance.send(reduxAction, store.getState());
   return result;
 };
 
