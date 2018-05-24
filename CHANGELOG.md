@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.11.0
+
+- React `connect` high order component now proagate connected component statics
+
 ### 4.10.1
 
 - Fix bug of devtools middleware - handle async actions
