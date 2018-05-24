@@ -1,8 +1,12 @@
+/* tslint:enable: allowSyntheticDefaultImports */
+
 import * as React from "react";
 
 import shallowEqual from "../../utils/shallowEqual";
 import propValidation from "../../utils/propsValidation";
 import bindActions from "../../utils/bindActions";
+
+const hoistNonReactStatics = require("hoist-non-react-statics");
 
 export class Connect extends React.Component<any> {
   static contextTypes = {
@@ -42,8 +46,8 @@ export class Connect extends React.Component<any> {
 }
 
 export default function connect(mapToProps, actions = {}) {
-  return Child =>
-    class ConnectWrapper extends React.Component<any> {
+  return Child => {
+    const ConnectWrapper = class extends React.Component<any> {
       render() {
         const { props } = this;
 
@@ -54,4 +58,9 @@ export default function connect(mapToProps, actions = {}) {
         );
       }
     };
+
+    hoistNonReactStatics(ConnectWrapper, Child);
+
+    return ConnectWrapper;
+  };
 }
