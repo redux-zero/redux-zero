@@ -244,8 +244,6 @@ describe("redux-zero - react bindings", () => {
       const ConnectedComp = connect(state => state)(Comp);
 
       expect(ConnectedComp.foo).toBe(Comp.foo);
-
-
     });
   });
 

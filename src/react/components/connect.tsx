@@ -1,5 +1,3 @@
-/* tslint:enable: allowSyntheticDefaultImports */
-
 import * as React from "react";
 
 import shallowEqual from "../../utils/shallowEqual";
