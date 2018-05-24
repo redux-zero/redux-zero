@@ -1,8 +1,20 @@
 # Changelog
 
-### 4.11.0
+### 4.13.0
 
 - React `connect` high order component now proagate connected component statics
+
+### 4.12.0
+
+- Pass action `args` to middleware and devtools
+
+### 4.11.0
+
+- Add `combineActions` function
+
+```js
+import { combineActions } from 'redux-zero/utils';
+```
 
 ### 4.10.1
 

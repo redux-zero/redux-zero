@@ -14,7 +14,7 @@ export default function applyMiddleware(...middlewares) {
     const chain = middlewares
       .map(middleware => middleware(store))
       .reduce(
-        (next, middleware) => middleware(next),
+        (next, middleware) => middleware(next, args),
         finalMiddleware(store, args)
       );
 

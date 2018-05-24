@@ -1,3 +1,4 @@
 import bindActions from "./bindActions";
+import combineActions from "./combineActions";
 
-export { bindActions };
+export { bindActions, combineActions };
