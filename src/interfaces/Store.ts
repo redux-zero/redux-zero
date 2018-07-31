@@ -1,7 +1,7 @@
 export default interface Store {
-  middleware: Function;
-  setState: Function;
-  subscribe: Function;
-  getState: Function;
-  reset: Function;
+  middleware(): void;
+  setState(f: any): void;
+  subscribe(f: () => any): any;
+  getState(): object;
+  reset(): void;
 };
