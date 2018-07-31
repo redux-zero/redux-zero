@@ -47,4 +47,12 @@ describe("redux-zero - the store", () => {
     store = createStore({}, middleware);
     expect(store.middleware).toEqual(middleware);
   });
+
+  test("reset", () => {
+    const state = { one: { two: { three: "four" } }, five: "six" };
+    store.setState(state);
+
+    store.reset();
+    expect(store.getState()).toEqual({});
+  });
 });

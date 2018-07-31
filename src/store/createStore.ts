@@ -20,6 +20,9 @@ export default function createStore(state = {}, middleware = null): Store {
     },
     getState() {
       return state;
+    },
+    reset() {
+      state = {};
     }
   };
 }
