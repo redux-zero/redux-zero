@@ -341,6 +341,9 @@ export default store;
 Also, these are unofficial tools, maintained by the community:
 
 - [Redux-Zero Tools](https://github.com/nyteshade/rzero-tools)
+- [redux-zero persist middleware](https://github.com/axetroy/redux-zero-persist)
+- [redux-zero logger middleware](https://github.com/axetroy/redux-zero-logger)
+- [redux loading middleware](https://github.com/andre-araujo/redux-loading-middleware)
 
 ## Inspiration
 
