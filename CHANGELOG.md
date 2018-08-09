@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.13.1
+
+- Adding protection to `window` for SSR on devtools
+
 ### 4.13.0
 
 - Adding `reset` function to the store
