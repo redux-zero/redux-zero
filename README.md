@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="https://i.imgur.com/S8jnr8O.png" alt="redux zero logo" title="redux zero logo">
+  <img src="https://i.imgur.com/S8jnr8O.png" height="300px" alt="redux zero logo" title="redux zero logo">
   <br>
 </h1>
 <p align="center" style="font-size: 1.2rem;">A lightweight state container based on Redux</p>
