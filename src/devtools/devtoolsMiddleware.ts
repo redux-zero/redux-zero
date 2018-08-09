@@ -70,7 +70,7 @@ const devtoolsMiddleware = store => (next, args) => action => {
   return result;
 };
 
-if (window !== undefined && (<any>window).__REDUX_DEVTOOLS_EXTENSION__) {
+if (typeof window === "object" && (<any>window).__REDUX_DEVTOOLS_EXTENSION__) {
   connect = function(initialState) {
     devTools.instance = (<any>window).__REDUX_DEVTOOLS_EXTENSION__.connect();
     devTools.instance.send("initialState", initialState);
