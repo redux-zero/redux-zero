@@ -33,6 +33,7 @@ export class Connect extends React.Component<any> {
     }
   };
   render() {
+    //@ts-ignore
     return this.props.children({
       store: this.context.store,
       ...this.state,
