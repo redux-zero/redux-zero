@@ -9,8 +9,8 @@
     "sourceMap": false,
     "target": "ES5",
     "outDir": "./dist",
-
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node"
   },
   "include": ["src/**/*"],
   "exclude": [
@@ -23,5 +23,5 @@
   "baseUrl": "types",
   "typeRoots": [
     "types"
-  ],
+  ]
 }

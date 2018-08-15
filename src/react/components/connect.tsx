@@ -1,5 +1,5 @@
 import * as React from "react";
-import hoistNonReactStatics from "hoist-non-react-statics";
+import * as hoistNonReactStatics from "hoist-non-react-statics/dist/hoist-non-react-statics";
 
 import shallowEqual from "../../utils/shallowEqual";
 import propValidation from "../../utils/propsValidation";
@@ -58,7 +58,7 @@ export default function connect(mapToProps?: mapToProps, actions = {}) {
       }
     };
 
-    hoistNonReactStatics(ConnectWrapper, Child);
+    hoistNonReactStatics.call(null, ConnectWrapper, Child);
 
     return ConnectWrapper;
   };
