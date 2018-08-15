@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.13.2
+
+- Adding some typings
+
 ### 4.13.1
 
 - Adding protection to `window` for SSR on devtools

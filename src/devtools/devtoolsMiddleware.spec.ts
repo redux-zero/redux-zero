@@ -48,6 +48,15 @@ const toggleAction = {
     "currentStateIndex":2,"nextActionId":3,"skippedActionIds":[],"stagedActionIds":[0,1,2]}`
 };
 
+const StoreStub = {
+  middleware: null,
+  setState: null,
+  getState: null,
+  reset: null,
+  send: null,
+  subscribe: null
+};
+
 jest.useFakeTimers();
 
 describe("devtoolsMiddleware", () => {
@@ -73,12 +82,12 @@ describe("devtoolsMiddleware", () => {
     const store = createStore(initialState, middlewares);
     const actions = bindActions(getActions, store);
 
-    devTools.instance = { send: () => {}, subscribe: () => {} };
+    devTools.instance = { ...StoreStub, send: () => {}, subscribe: () => {} };
 
     Object.keys(actions).forEach(key => {
-      getOrAddAction({ name: key }, actions[key]);
+      getOrAddAction({ name: key, type: "" }, actions[key]);
     });
-    expect(store.getState().count).toBe(1);
+    expect((<{ count: number }>store.getState()).count).toBe(1);
 
     const storeUpdate = update.bind(store);
     storeUpdate(toggleAction);
@@ -100,7 +109,7 @@ describe("devtoolsMiddleware", () => {
 describe("sendActions", () => {
   let store, listener, middlewares;
   beforeEach(() => {
-    devtoolsMiddleware.initialized = false;
+    (<any>devtoolsMiddleware).initialized = false;
     middlewares = applyMiddleware(devtoolsMiddleware);
     store = createStore({ count: 1 }, middlewares);
     listener = jest.fn();
@@ -113,6 +122,7 @@ describe("sendActions", () => {
     let subscribeCalled = false;
 
     devTools.instance = {
+      ...StoreStub,
       send: () => (sendCalled = true),
       subscribe: () => (subscribeCalled = true)
     };
@@ -129,6 +139,7 @@ describe("sendActions", () => {
     let subscribeCalled = false;
     let sentAction = null;
     devTools.instance = {
+      ...StoreStub,
       send: (action, state) => {
         sentAction = action;
         sendCalled = true;
@@ -150,6 +161,7 @@ describe("sendActions", () => {
     let subscribeCalled = false;
 
     devTools.instance = {
+      ...StoreStub,
       send: () => (sendCalled = true),
       subscribe: () => (subscribeCalled = true)
     };

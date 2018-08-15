@@ -1,11 +1,12 @@
 import set from "./set";
+import Store from "../interfaces/Store";
 
-export default function bindActions(actions, store) {
+export default function bindActions(actions: any, store: Store): any {
   actions = typeof actions === "function" ? actions(store) : actions;
 
   let bound = {};
   for (let name in actions) {
-    bound[name] = (...args) => {
+    bound[name] = (...args: any[]) => {
       const action = actions[name];
 
       if (typeof store.middleware === "function") {

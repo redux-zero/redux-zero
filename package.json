@@ -1,6 +1,6 @@
 {
   "name": "redux-zero",
-  "version": "4.13.1",
+  "version": "4.13.2",
   "description": "",
   "main": "dist/redux-zero.js",
   "types": "index.d.ts",
@@ -10,10 +10,8 @@
     "lint": "tslint src/**/*.ts src/**/*.tsx",
     "test": "jest",
     "test:watch": "jest --watch",
-    "format":
-      "prettier --write rollup.config.js \"config/**/*.js\" \"src/**/*.ts\" \"src/**/*.tsx\"",
-    "check":
-      "npm run compile && npm run format && npm run lint && npm run test",
+    "format": "prettier --write rollup.config.js \"config/**/*.js\" \"src/**/*.ts\" \"src/**/*.tsx\"",
+    "check": "npm run compile && npm run format && npm run lint && npm run test",
     "clean": "rimraf dist coverage",
     "prebuild": "npm run check && npm run clean",
     "build:umd": "cross-env NODE_ENV=umd rollup --config",
@@ -42,14 +40,23 @@
     "url": "https://github.com/concretesolutions/redux-zero"
   },
   "jest": {
-    "moduleFileExtensions": ["ts", "tsx", "js"],
-    "setupFiles": ["<rootDir>/config/testSetup.js"],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "setupFiles": [
+      "<rootDir>/config/testSetup.js"
+    ],
     "transform": {
       "^.+\\.(ts|tsx)$": "<rootDir>/config/preprocessor.js"
     },
-    "testMatch": ["<rootDir>/src/**/*.spec.(ts|tsx)"]
+    "testMatch": [
+      "<rootDir>/src/**/*.spec.(ts|tsx)"
+    ]
   },
   "devDependencies": {
+    "@types/jest": "21.1.10",
     "@types/react": "16.0.9",
     "cross-env": "5.0.5",
     "enzyme": "3.1.0",
