@@ -4,12 +4,13 @@ import hoistNonReactStatics from "hoist-non-react-statics";
 import shallowEqual from "../../utils/shallowEqual";
 import propValidation from "../../utils/propsValidation";
 import bindActions from "../../utils/bindActions";
+import { mapToProps } from "../../interfaces/Helpers";
 
 export class Connect extends React.Component<any> {
   static contextTypes = {
     store: propValidation
   };
-  unsubscribe;
+  unsubscribe: any;
   state = this.getProps();
   actions = this.getActions();
   componentWillMount() {
@@ -43,15 +44,15 @@ export class Connect extends React.Component<any> {
   }
 }
 
-export default function connect(mapToProps, actions = {}) {
-  return Child => {
+export default function connect(mapToProps?: mapToProps, actions = {}) {
+  return (Child: any) => {
     const ConnectWrapper = class extends React.Component<any> {
       render() {
         const { props } = this;
 
         return (
           <Connect {...props} mapToProps={mapToProps} actions={actions}>
-            {mappedProps => <Child {...mappedProps} {...props} />}
+            {(mappedProps: object) => <Child {...mappedProps} {...props} />}
           </Connect>
         );
       }

@@ -1,4 +1,4 @@
-const Svelte = function(options) {
+const Svelte = function(options?: { data: any }) {
   return {
     _state: (options ? options.data : null) || {},
 
@@ -20,7 +20,7 @@ const Svelte = function(options) {
       this._state = this.assign({}, oldState, newState);
     },
 
-    get: function(key) {
+    get: function(key?: string) {
       return key ? this._state[key] : this._state;
     },
 
