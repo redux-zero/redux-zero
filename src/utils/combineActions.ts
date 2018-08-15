@@ -1,4 +1,4 @@
-export default (...actions) => (...actionsParams) =>
+export default (...actions: any[]) => (...actionsParams: any[]) =>
   actions.reduce(
     (acc, action) => ({
       ...acc,

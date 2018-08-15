@@ -1,11 +1,13 @@
 import getDiff from "../../utils/getDiff";
 import bindActions from "../../utils/bindActions";
+import Store from "../../interfaces/Store";
+import { mapToProps } from "../../interfaces/Helpers";
 
-export function getActions(store, actions) {
+export function getActions(store: Store, actions: any) {
   return bindActions(actions, store);
 }
 
-export function connect(component, store, mapToProps) {
+export function connect(component: any, store: Store, mapToProps: mapToProps) {
   update();
   component.on("destroy", store.subscribe(update));
   function update() {

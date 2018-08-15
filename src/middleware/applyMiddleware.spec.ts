@@ -22,7 +22,7 @@ describe("applyMiddleware", () => {
     const actions = bindActions(getActions, store);
 
     actions.syncAction();
-    expect(store.getState().count).toBe(1);
+    expect((<{ count: number }>store.getState()).count).toBe(1);
   });
 
   it("should drop the action", () => {
@@ -30,7 +30,7 @@ describe("applyMiddleware", () => {
     const actions = bindActions(getActions, store);
 
     actions.syncAction();
-    expect(store.getState().count).toBe(0);
+    expect((<{ count: number }>store.getState()).count).toBe(0);
   });
 
   it("should replace with another action", () => {
@@ -38,7 +38,7 @@ describe("applyMiddleware", () => {
     const actions = bindActions(getActions, store);
 
     actions.syncAction();
-    expect(store.getState().count).toBe(2);
+    expect((<{ count: number }>store.getState()).count).toBe(2);
   });
 
   it("should apply middlewares in correct order", () => {
@@ -50,6 +50,6 @@ describe("applyMiddleware", () => {
 
     actions.syncAction();
     actions.syncAction();
-    expect(store.getState().count).toBe(5); // 1 + 2 + 2 not 1 + 2 + 3
+    expect((<{ count: number }>store.getState()).count).toBe(5); // 1 + 2 + 2 not 1 + 2 + 3
   });
 });
