@@ -1,8 +1,16 @@
 # Changelog
 
+### 4.13.2
+
+- React `connect` high order component now propagate connected component statics
+
+### 4.13.1
+
+- Adding protection to `window` for SSR on devtools
+
 ### 4.13.0
 
-- React `connect` high order component now proagate connected component statics
+- Adding `reset` function to the store
 
 ### 4.12.0
 
@@ -13,7 +21,7 @@
 - Add `combineActions` function
 
 ```js
-import { combineActions } from 'redux-zero/utils';
+import { combineActions } from "redux-zero/utils";
 ```
 
 ### 4.10.1
@@ -45,7 +53,7 @@ import { combineActions } from 'redux-zero/utils';
 - Add bindActions export
 
 ```js
-import { bindActions } from 'redux-zero/utils'
+import { bindActions } from "redux-zero/utils";
 ```
 
 ### 4.7.0
@@ -58,16 +66,13 @@ import { bindActions } from 'redux-zero/utils'
 
 ```js
 // a middleware
-const logger = (store) => (next) => (action) => {
-  console.log('current state', store.getState())
+const logger = store => next => action => {
+  console.log("current state", store.getState());
   return next(action);
-}
+};
 
 // compose middlewares
-const middlewares = applyMiddleware(
-  logger,
-  anotherMiddleware
-);
+const middlewares = applyMiddleware(logger, anotherMiddleware);
 
 const store = createStore({}, middlewares);
 ```
@@ -89,9 +94,10 @@ const mapActions = ({ setState }) => ({
   getTodos() {
     setState({ loading: true });
 
-    return client.get("/todos")
+    return client
+      .get("/todos")
       .then(payload => ({ payload, loading: false }))
-      .catch(error => ({ error, loading: false }))
+      .catch(error => ({ error, loading: false }));
   }
 });
 ```
@@ -125,7 +131,7 @@ and the expected attribute differ.
 This is now working for both TypeScript and JavaScript:
 
 ```javascript
-import { Provider } from 'redux-zero/react'
+import { Provider } from "redux-zero/react";
 ```
 
 ### 4.3.0
@@ -139,13 +145,9 @@ import { Provider } from 'redux-zero/react'
 If you don't pass `mapToProps` function to `connect` HOC or `Connect` component, it will inject all state as props at the connected component.
 
 ```javascript
-const store = createStore({ message: 'Hey' })
+const store = createStore({ message: "Hey" });
 
-const App = connect()(
-  ({ message }) => (
-    <h1>{message}</h1>
-  )
-)
+const App = connect()(({ message }) => <h1>{message}</h1>);
 ```
 
 ### 4.2.0
@@ -156,14 +158,13 @@ Right now, actions must import an instance of the store in order to invoke `setS
 
 ```javascript
 const createActions = store => ({
-  increment: state => ({ count: state.count + 1 }),
-})
+  increment: state => ({ count: state.count + 1 })
+});
 
-const App = connect(mapToProps, createActions)(
-  ({ count, increment }) => (
-    <button onClick={increment}>{count}</button>
-  )
-)
+const App = connect(
+  mapToProps,
+  createActions
+)(({ count, increment }) => <button onClick={increment}>{count}</button>);
 ```
 
 ### 4.1.1
@@ -186,7 +187,6 @@ render() {
     </Connect>
   )
 }
-
 ```
 
 ### 4.0.1
@@ -198,8 +198,8 @@ render() {
 - Separating `Provider` and `connect` from `createStore`. With this we'll be able to build for different frameworks:
 
 ```javascript
-import createStore from 'redux-zero'
-import { Provider, connect } from 'redux-zero/react'
+import createStore from "redux-zero";
+import { Provider, connect } from "redux-zero/react";
 ```
 
 ### 3.0.0
@@ -207,11 +207,11 @@ import { Provider, connect } from 'redux-zero/react'
 - Removing `unsubscribe` function from createStore. Now `subscribe` returns `unsubscribe`:
 
 ```javascript
-const store = createStore()
+const store = createStore();
 
-const unsubscribe = store.subscribe()
+const unsubscribe = store.subscribe();
 
-unsubscribe()
+unsubscribe();
 ```
 
 ### 2.1.0
@@ -219,10 +219,10 @@ unsubscribe()
 - Now you can pass a function to `setState`. Example:
 
 ```javascript
-store.setState((state) => {
+store.setState(state => {
   return {
     counter: state.counter + 1,
-    changed: true,
+    changed: true
   };
 });
 ```
@@ -232,4 +232,5 @@ store.setState((state) => {
 - Changing Provider API to accept store as a prop instead of context.
 
 ### 1.1.0
+
 - Removing PropTypes

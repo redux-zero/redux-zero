@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="https://s1.postimg.org/7p3dmmc3nz/logo_redux_zero.png" alt="redux zero logo" title="redux zero logo">
+  <img src="https://i.imgur.com/S8jnr8O.png" height="300px" alt="redux zero logo" title="redux zero logo">
   <br>
 </h1>
 <p align="center" style="font-size: 1.2rem;">A lightweight state container based on Redux</p>
@@ -8,13 +8,12 @@
 
 <hr />
 
-[![codacy](https://api.codacy.com/project/badge/Grade/a4adf13156bd4441ae132d2d9dc72186)](https://www.codacy.com/app/matheusml/redux-zero?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=concretesolutions/redux-zero&amp;utm_campaign=Badge_Grade)
+[![codacy](https://api.codacy.com/project/badge/Grade/a4adf13156bd4441ae132d2d9dc72186)](https://www.codacy.com/app/matheusml/redux-zero?utm_source=github.com&utm_medium=referral&utm_content=concretesolutions/redux-zero&utm_campaign=Badge_Grade)
 [![build](https://img.shields.io/travis/concretesolutions/redux-zero/master.svg)](https://travis-ci.org/concretesolutions/redux-zero)
 [![npm](https://img.shields.io/npm/v/redux-zero.svg)](https://www.npmjs.com/package/redux-zero)
 [![downloads](https://img.shields.io/npm/dm/redux-zero.svg)](https://www.npmjs.com/package/redux-zero)
 [![license](https://img.shields.io/github/license/concretesolutions/redux-zero.svg)]()
 [![dependencies](https://img.shields.io/david/concretesolutions/redux-zero.svg)]()
-
 
 ## Table of Contents
 
@@ -28,7 +27,6 @@
 - [Inspiration](#inspiration)
 - [Roadmap](#roadmap)
 - [Docs](#docs)
-
 
 ## Installation
 
@@ -45,22 +43,22 @@ This assumes that you’re using [npm](https://www.npmjs.com/) with a module bun
 **ES2015+:**
 
 ```js
-import createStore from "redux-zero"
-import { Provider, connect } from "redux-zero/react"
+import createStore from "redux-zero";
+import { Provider, connect } from "redux-zero/react";
 ```
 
 **TypeScript:**
 
 ```js
-import * as createStore from "redux-zero"
-import { Provider, connect } from "redux-zero/react"
+import * as createStore from "redux-zero";
+import { Provider, connect } from "redux-zero/react";
 ```
 
 **CommonJS:**
 
 ```js
-const createStore = require("redux-zero")
-const { Provider, connect } = require("redux-zero/react")
+const createStore = require("redux-zero");
+const { Provider, connect } = require("redux-zero/react");
 ```
 
 **UMD:**
@@ -123,7 +121,10 @@ import actions from "./actions";
 
 const mapToProps = ({ count }) => ({ count });
 
-export default connect(mapToProps, actions)(({ count, increment, decrement }) => (
+export default connect(
+  mapToProps,
+  actions
+)(({ count, increment, decrement }) => (
   <div>
     <h1>{count}</h1>
     <div>
@@ -157,7 +158,16 @@ render(<App />, document.getElementById("root"));
 
 Here's the full version: [https://codesandbox.io/s/n5orzr5mxj](https://codesandbox.io/s/n5orzr5mxj)
 
+By the way, you can also reset the state of the store anytime by simply doing this:
+
+```js
+import store from "./store";
+
+store.reset();
+```
+
 ### More examples
+
 - [React](https://github.com/concretesolutions/redux-zero/tree/master/examples/react/counter)
 - [React-Router](https://github.com/concretesolutions/redux-zero/tree/master/examples/react/react-router)
 - [Material-UI](https://github.com/concretesolutions/redux-zero/tree/master/examples/react/material-ui-counter)
@@ -170,6 +180,7 @@ Here's the full version: [https://codesandbox.io/s/n5orzr5mxj](https://codesandb
 ## Actions
 
 There are tree gotchas with Redux Zero's actions:
+
 - Passing arguments
 - Combining actions
 - Binding actions outside your application scope
@@ -181,21 +192,24 @@ Here's how you can pass arguments to actions:
 ```js
 const Component = ({ count, incrementOf }) => (
   <h1 onClick={() => incrementOf(10)}>{count}</h1>
-)
+);
 
-const mapToProps = ({ count }) => ({ count })
+const mapToProps = ({ count }) => ({ count });
 
 const actions = store => ({
   incrementOf: (state, value) => ({ count: state.count + value })
-})
+});
 
-const ConnectedComponent = connect(mapToProps, actions)(Component)
+const ConnectedComponent = connect(
+  mapToProps,
+  actions
+)(Component);
 
 const App = () => (
   <Provider store={store}>
     <ConnectedComponent />
   </Provider>
-)
+);
 ```
 
 ### Combining actions
@@ -223,19 +237,18 @@ If you need to bind the actions to an external listener outside the application 
 On this example we listen to push notifications that sends data to our React Native app.
 
 ```js
-import firebase from 'react-native-firebase';
-import { bindActions } from 'redux-zero/utils';
-import store from '../store';
-import actions from '../actions';
+import firebase from "react-native-firebase";
+import { bindActions } from "redux-zero/utils";
+import store from "../store";
+import actions from "../actions";
 
 const messaging = firebase.messaging();
 const boundActions = bindActions(actions, store);
 
-messaging.onMessage((payload) => {
+messaging.onMessage(payload => {
   boundActions.saveMessage(payload);
 });
 ```
-
 
 ## Async
 
@@ -246,9 +259,10 @@ const mapActions = ({ setState }) => ({
   getTodos() {
     setState({ loading: true });
 
-    return client.get("/todos")
+    return client
+      .get("/todos")
       .then(payload => ({ payload, loading: false }))
-      .catch(error => ({ error, loading: false }))
+      .catch(error => ({ error, loading: false }));
   }
 });
 ```
@@ -292,18 +306,15 @@ The method signature for the middleware was inspired by redux. The main differen
 ```js
 /* store.js */
 import createStore from "redux-zero";
-import { applyMiddleware } from "redux-zero/middleware"
+import { applyMiddleware } from "redux-zero/middleware";
 
-const logger = (store) => (next) => (action) => {
-  console.log('current state', store.getState())
+const logger = store => next => action => {
+  console.log("current state", store.getState());
   return next(action);
-}
+};
 
 const initialState = { count: 1 };
-const middlewares = applyMiddleware(
-  logger,
-  anotherMiddleware
-);
+const middlewares = applyMiddleware(logger, anotherMiddleware);
 
 const store = createStore(initialState, middlewares);
 
@@ -316,30 +327,36 @@ You can setup DevTools middleware in store.js to connect with Redux DevTools and
 
 ```js
 /* store.js */
-import createStore from 'redux-zero';
-import { applyMiddleware } from 'redux-zero/middleware';
-import { connect } from 'redux-zero/devtools';
+import createStore from "redux-zero";
+import { applyMiddleware } from "redux-zero/middleware";
+import { connect } from "redux-zero/devtools";
 
 const initialState = { count: 1 };
-const middlewares = connect ? applyMiddleware(connect(initialState)): [];
+const middlewares = connect ? applyMiddleware(connect(initialState)) : [];
 const store = createStore(initialState, middlewares);
 
 export default store;
 ```
 
 Also, these are unofficial tools, maintained by the community:
+
 - [Redux-Zero Tools](https://github.com/nyteshade/rzero-tools)
+- [redux-zero persist middleware](https://github.com/axetroy/redux-zero-persist)
+- [redux-zero logger middleware](https://github.com/axetroy/redux-zero-logger)
+- [redux loading middleware](https://github.com/andre-araujo/redux-loading-middleware)
 
 ## Inspiration
+
 **Redux Zero** was based on this [gist](https://gist.github.com/developit/55c48d294abab13a146eac236bae3219) by [@developit](https://github.com/developit)
 
 ## Roadmap
+
 - Add more examples (including unit tests, SSR, etc)
 
 ## Docs
 
-* [Full Docs](https://matheusml1.gitbooks.io/redux-zero-docs/content/)
-* [Contributing](https://github.com/concretesolutions/redux-zero/blob/master/CONTRIBUTING.md)
-* [Changelog](https://github.com/concretesolutions/redux-zero/blob/master/CHANGELOG.md)
-* [Code of Conduct](https://github.com/concretesolutions/redux-zero/blob/master/CODE_OF_CONDUCT.md)
-* [License](https://github.com/concretesolutions/redux-zero/blob/master/LICENSE)
+- [Full Docs](https://matheusml1.gitbooks.io/redux-zero-docs/content/)
+- [Contributing](https://github.com/concretesolutions/redux-zero/blob/master/CONTRIBUTING.md)
+- [Changelog](https://github.com/concretesolutions/redux-zero/blob/master/CHANGELOG.md)
+- [Code of Conduct](https://github.com/concretesolutions/redux-zero/blob/master/CODE_OF_CONDUCT.md)
+- [License](https://github.com/concretesolutions/redux-zero/blob/master/LICENSE)

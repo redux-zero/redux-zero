@@ -1,10 +1,9 @@
 import * as React from "react";
+import hoistNonReactStatics from "hoist-non-react-statics";
 
 import shallowEqual from "../../utils/shallowEqual";
 import propValidation from "../../utils/propsValidation";
 import bindActions from "../../utils/bindActions";
-
-const hoistNonReactStatics = require("hoist-non-react-statics");
 
 export class Connect extends React.Component<any> {
   static contextTypes = {
@@ -35,6 +34,7 @@ export class Connect extends React.Component<any> {
     }
   };
   render() {
+    // @ts-ignore
     return this.props.children({
       store: this.context.store,
       ...this.state,

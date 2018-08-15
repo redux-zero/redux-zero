@@ -1,6 +1,6 @@
 {
   "name": "redux-zero",
-  "version": "4.13.0",
+  "version": "4.13.2",
   "description": "",
   "main": "dist/redux-zero.js",
   "types": "index.d.ts",
@@ -56,27 +56,28 @@
     ]
   },
   "devDependencies": {
-    "@types/react": "^16.0.9",
-    "cross-env": "^5.0.5",
+    "@types/hoist-non-react-statics": "3.0.1",
+    "@types/react": "16.0.9",
+    "cross-env": "5.0.5",
     "enzyme": "3.1.0",
     "enzyme-adapter-react-16": "1.0.1",
     "husky": "0.14.3",
-    "jest": "^21.2.1",
+    "jest": "21.2.1",
     "preact": "8.2.6",
     "preact-render-spy": "1.2.1",
-    "prettier": "^1.7.4",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "react-test-renderer": "^16.0.0",
-    "rimraf": "^2.6.2",
+    "prettier": "1.7.4",
+    "react": "16.0.0",
+    "react-dom": "16.0.0",
+    "react-test-renderer": "16.0.0",
+    "rimraf": "2.6.2",
     "rollup": "0.50.0",
     "rollup-plugin-commonjs": "8.2.1",
     "rollup-plugin-filesize": "1.4.2",
     "rollup-plugin-node-resolve": "3.0.0",
     "rollup-plugin-typescript2": "0.7.0",
     "rollup-plugin-uglify": "2.0.1",
-    "tslint": "^5.7.0",
-    "typescript": "2.5.3",
+    "tslint": "5.7.0",
+    "typescript": "3.0.1",
     "vue": "2.5.9"
   },
   "keywords": [
@@ -94,6 +95,6 @@
     "simple"
   ],
   "dependencies": {
-    "hoist-non-react-statics": "2.5.0"
+    "hoist-non-react-statics": "3.0.1"
   }
 }
