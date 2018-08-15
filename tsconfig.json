@@ -8,19 +8,20 @@
     "removeComments": false,
     "sourceMap": false,
     "target": "ES5",
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node"
   },
-  "include": [
-    "src/**/*"
-  ],
+  "include": ["src/**/*"],
   "exclude": [
     "node_modules",
     "src/preact/**/*",
     "**/*.spec.ts",
     "**/*.spec.tsx"
   ],
-  "filesGlob": [
-    "typings/index.d.ts",
-    "src/**/*"
+  "filesGlob": ["typings/index.d.ts", "src/**/*"],
+  "baseUrl": "types",
+  "typeRoots": [
+    "types"
   ]
 }
