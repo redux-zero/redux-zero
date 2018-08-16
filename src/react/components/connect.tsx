@@ -1,5 +1,4 @@
 import * as React from "react";
-import * as hoistNonReactStatics from "hoist-non-react-statics/dist/hoist-non-react-statics";
 
 import shallowEqual from "../../utils/shallowEqual";
 import propValidation from "../../utils/propsValidation";
@@ -35,7 +34,6 @@ export class Connect extends React.Component<any> {
     }
   };
   render() {
-    // @ts-ignore
     return this.props.children({
       store: this.context.store,
       ...this.state,
@@ -45,8 +43,8 @@ export class Connect extends React.Component<any> {
 }
 
 export default function connect(mapToProps?: mapToProps, actions = {}) {
-  return (Child: any) => {
-    const ConnectWrapper = class extends React.Component<any> {
+  return (Child: any) =>
+    class ConnectWrapper extends React.Component<any> {
       render() {
         const { props } = this;
 
@@ -57,9 +55,4 @@ export default function connect(mapToProps?: mapToProps, actions = {}) {
         );
       }
     };
-
-    hoistNonReactStatics.call(null, ConnectWrapper, Child);
-
-    return ConnectWrapper;
-  };
 }
