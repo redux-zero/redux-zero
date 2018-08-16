@@ -232,6 +232,19 @@ describe("redux-zero - react bindings", () => {
       const wrapper = mount(<App />);
       expect(wrapper.html()).toBe("<h1>some value</h1>");
     });
+
+    it("shoud have the statics of connected component", () => {
+      const Comp = class extends React.Component<any> {
+        static foo = 1;
+        render() {
+          return <h1>Hello World</h1>;
+        }
+      };
+
+      const ConnectedComp = connect(state => state)(Comp);
+
+      expect(ConnectedComp.foo).toBe(Comp.foo);
+    });
   });
 
   describe("Connect component", () => {

@@ -50,6 +50,7 @@
     "testMatch": ["<rootDir>/src/**/*.spec.(ts|tsx)"]
   },
   "devDependencies": {
+    "@types/hoist-non-react-statics": "3.0.1",
     "@types/jest": "21.1.10",
     "@types/react": "16.0.9",
     "cross-env": "5.0.5",
@@ -70,8 +71,8 @@
     "rollup-plugin-node-resolve": "3.0.0",
     "rollup-plugin-typescript2": "0.7.0",
     "rollup-plugin-uglify": "2.0.1",
-    "tslint": "5.7.0",
-    "typescript": "2.5.3",
+    "tslint": "5.11.0",
+    "typescript": "3.0.1",
     "vue": "2.5.9"
   },
   "keywords": [
@@ -87,5 +88,8 @@
     "light",
     "small",
     "simple"
-  ]
+  ],
+  "dependencies": {
+    "hoist-non-react-statics": "3.0.1"
+  }
 }
