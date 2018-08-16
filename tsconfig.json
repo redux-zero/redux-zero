@@ -8,9 +8,7 @@
     "removeComments": false,
     "sourceMap": false,
     "target": "ES5",
-    "outDir": "./dist",
-    "allowSyntheticDefaultImports": true,
-    "moduleResolution": "node"
+    "outDir": "./dist"
   },
   "include": ["src/**/*"],
   "exclude": [
@@ -19,9 +17,5 @@
     "**/*.spec.ts",
     "**/*.spec.tsx"
   ],
-  "filesGlob": ["typings/index.d.ts", "src/**/*"],
-  "baseUrl": "types",
-  "typeRoots": [
-    "types"
-  ]
+  "filesGlob": ["typings/index.d.ts", "src/**/*"]
 }

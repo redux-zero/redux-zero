@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.13.4
+
+- Reverting 4.13.3
+
 ### 4.13.3
 
 - React `connect` high order component now propagate connected component statics
