@@ -1,5 +1,10 @@
 # Changelog
 
+### 4.13.5
+
+- Fix deps with npm audit
+- Add typescript 3 support
+
 ### 4.13.4
 
 - Reverting 4.13.3
