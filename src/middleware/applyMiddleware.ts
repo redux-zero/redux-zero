@@ -1,7 +1,7 @@
 import Store from "../interfaces/Store";
 import set from "../utils/set";
 
-const finalMiddleware = (store: Store, args: any) => (action: Function) =>
+const finalMiddleware = (store: Store, args: any[]) => (action: Function) =>
   set(store, action(store.getState(), ...args));
 
 export default function applyMiddleware(...middlewares: any[]) {

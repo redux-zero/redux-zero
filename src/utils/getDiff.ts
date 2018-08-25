@@ -9,7 +9,7 @@ function differs(a: any, b: any) {
   return false;
 }
 
-export default function getDiff(newData: any, oldData: any) {
+export default function getDiff(newData: object, oldData: object) {
   const diff = {};
   let changed = false;
   for (let key in newData) {

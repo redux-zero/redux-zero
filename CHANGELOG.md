@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.13.6
+
+- Better typing support
+
 ### 4.13.5
 
 - Fix deps with npm audit

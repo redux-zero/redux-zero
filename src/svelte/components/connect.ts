@@ -3,7 +3,7 @@ import bindActions from "../../utils/bindActions";
 import Store from "../../interfaces/Store";
 import { mapToProps } from "../../interfaces/Helpers";
 
-export function getActions(store: Store, actions: any) {
+export function getActions(store: Store, actions: Function) {
   return bindActions(actions, store);
 }
 

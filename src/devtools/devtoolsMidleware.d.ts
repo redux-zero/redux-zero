@@ -12,7 +12,7 @@ export interface Action {
 
 export interface ReduxAction {
   type: string;
-  args: any;
+  args: any[];
 }
 
 export interface MessageState {
@@ -33,9 +33,16 @@ export interface Message {
   type: string;
 }
 
-export interface DevToolsStore extends Store {
+interface DevToolsStoreExtraParams {
   send: (type: string | ReduxAction, state: object) => void;
+  subscribe: (update?: object) => void;
 }
+
+export type DevToolsStore = Pick<
+  Store,
+  Exclude<keyof Store, keyof DevToolsStoreExtraParams>
+> &
+  DevToolsStoreExtraParams;
 
 export interface DevTools {
   instance: DevToolsStore | null;

@@ -1,10 +1,13 @@
 import Store from "../interfaces/Store";
 
-export default function createStore(state = {}, middleware: any = null): Store {
+export default function createStore(
+  state: object = {},
+  middleware: any = null
+): Store {
   const listeners: Function[] = [];
   return {
     middleware,
-    setState(update) {
+    setState(update: Function | object) {
       state =
         typeof update === "function"
           ? { ...state, ...update(state) }
@@ -12,7 +15,7 @@ export default function createStore(state = {}, middleware: any = null): Store {
 
       listeners.forEach(f => f(state));
     },
-    subscribe(f) {
+    subscribe(f: Function) {
       listeners.push(f);
       return () => {
         listeners.splice(listeners.indexOf(f), 1);
