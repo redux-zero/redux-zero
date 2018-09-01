@@ -15,6 +15,7 @@
       "scripthost",
       "es2015.core"
     ]
+
   },
   "include": [
     "src/**/*"
