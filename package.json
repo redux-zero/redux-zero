@@ -59,7 +59,7 @@
     "@types/jest": "21.1.10",
     "@types/react": "16.0.9",
     "cross-env": "5.0.5",
-    "enzyme": "3.4.4",
+    "enzyme": "3.5.0",
     "enzyme-adapter-react-16": "1.2.0",
     "husky": "0.14.3",
     "jest": "21.2.1",
