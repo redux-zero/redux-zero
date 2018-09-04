@@ -3,7 +3,7 @@ import * as React from "react";
 import shallowEqual from "../../utils/shallowEqual";
 import propValidation from "../../utils/propsValidation";
 import bindActions from "../../utils/bindActions";
-import { mapToProps } from "../../interfaces/Helpers";
+type mapToProps = (state: object, ownProps?: object) => object;
 
 export class Connect extends React.Component<any> {
   static contextTypes = {

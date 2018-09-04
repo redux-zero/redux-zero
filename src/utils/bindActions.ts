@@ -1,7 +1,7 @@
 import set from "./set";
 import Store from "../interfaces/Store";
 
-export default function bindActions(actions: any, store: Store): any {
+export default function bindActions(actions: Function, store: Store): any {
   actions = typeof actions === "function" ? actions(store) : actions;
 
   let bound = {};

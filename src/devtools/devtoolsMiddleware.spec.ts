@@ -78,11 +78,16 @@ describe("devtoolsMiddleware", () => {
   it("should replay actions to current action", () => {
     const initialState = { count: 1 };
     const middlewares = applyMiddleware(devtoolsMiddleware);
+    let subscribeCalled = false;
 
     const store = createStore(initialState, middlewares);
     const actions = bindActions(getActions, store);
 
-    devTools.instance = { ...StoreStub, send: () => {}, subscribe: () => {} };
+    devTools.instance = {
+      ...StoreStub,
+      send: () => {},
+      subscribe: () => (subscribeCalled = true)
+    };
 
     Object.keys(actions).forEach(key => {
       getOrAddAction({ name: key, type: "" }, actions[key]);
@@ -109,7 +114,7 @@ describe("devtoolsMiddleware", () => {
 describe("sendActions", () => {
   let store, listener, middlewares;
   beforeEach(() => {
-    (<any>devtoolsMiddleware).initialized = false;
+    (<{ initialized?: boolean }>devtoolsMiddleware).initialized = false;
     middlewares = applyMiddleware(devtoolsMiddleware);
     store = createStore({ count: 1 }, middlewares);
     listener = jest.fn();

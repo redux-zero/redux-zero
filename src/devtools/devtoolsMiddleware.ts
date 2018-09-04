@@ -14,9 +14,7 @@ const nextActions: NextAction[] = [];
 const REPLAY_INTERVAL = 10;
 
 function getOrAddAction(action: Action, fn: Function): NextAction {
-  let found = (<any>nextActions).find(
-    (x: { key: string }) => action.name === x.key
-  );
+  let found = nextActions.find((x: { key: string }) => action.name === x.key);
   if (!found) {
     found = { key: action.name, fn };
     nextActions.push(found);
@@ -30,7 +28,7 @@ function replay(store: Store, message: Message): void {
     if (action.type === "initialState") {
       store.setState(state.computedStates[0].state);
     } else {
-      const found = (<any>nextActions).find(
+      const found = nextActions.find(
         (x: { key: string }) => action.type === x.key
       );
       if (found) {
@@ -62,7 +60,7 @@ function update(message: Message) {
   }
 }
 
-function subscribe(store: Store, middleware: any) {
+function subscribe(store: Store, middleware: { initialized?: boolean }) {
   if (!middleware.initialized) {
     const storeUpdate = update.bind(store);
     if (devTools.instance) {
@@ -76,7 +74,7 @@ const devtoolsMiddleware = (store: Store) => (next: Function, args: any) => (
   action: Action
 ) => {
   let result = next(action);
-  subscribe(store, devtoolsMiddleware);
+  subscribe(store, devtoolsMiddleware as { initialized?: boolean });
   getOrAddAction(action, () => next(action));
   const reduxAction: ReduxAction = { type: action.name, args: args };
   if (result && result.then) {
