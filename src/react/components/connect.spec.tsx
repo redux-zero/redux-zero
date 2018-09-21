@@ -291,7 +291,36 @@ describe("redux-zero - react bindings", () => {
 
       expect(wrapper.html()).toBe("<h1>2</h1>");
     });
+    it("should provide actions with ownprops", () => {
+      store.setState({ count: 0 });
 
+      const Comp = ({ count, increment }) => (
+        <h1 onClick={increment}>{count}</h1>
+      );
+
+      const mapToProps = ({ count }) => ({ count });
+
+      const actions = (store, ownProps) => ({
+        increment: state => ({ count: state.count + ownProps.add })
+      });
+
+      const ConnectedComp = connect(mapToProps, actions)(Comp);
+
+      const App = () => (
+        <Provider store={store}>
+          <ConnectedComp add={10} />
+        </Provider>
+      );
+
+      const wrapper = mount(<App />);
+
+      expect(wrapper.html()).toBe("<h1>0</h1>");
+
+      wrapper.children().simulate("click");
+      wrapper.children().simulate("click");
+
+      expect(wrapper.html()).toBe("<h1>20</h1>");
+    });
     it("should provide actions with parameters and subscribe to changes", () => {
       store.setState({ count: 0 });
 

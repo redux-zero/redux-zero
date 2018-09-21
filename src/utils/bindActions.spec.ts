@@ -1,7 +1,11 @@
 import createStore from "../";
 import bindActions from "./bindActions";
 
-const getActions = ({ setState }) => ({
+const ownProps = {
+  foo: "bar"
+};
+
+const getActions = ({ setState }, ownProps) => ({
   syncAction: ({ count }) => ({ count: count + 1 }),
   syncActionWithParam: ({ count }, amount) => ({ count: count + amount }),
   successAsyncAction() {
@@ -24,7 +28,8 @@ const getActions = ({ setState }) => ({
     return Promise.reject({ message: "I'M ERROR" })
       .then(payload => ({ payload, loading: false }))
       .catch(error => ({ error, loading: false }));
-  }
+  },
+  useOwnPropsInAction: () => ({ message: ownProps.foo })
 });
 
 describe("bindActions", () => {
@@ -33,7 +38,7 @@ describe("bindActions", () => {
     store = createStore({ count: 0 });
     listener = jest.fn();
     store.subscribe(listener);
-    actions = bindActions(getActions, store);
+    actions = bindActions(getActions, store, ownProps);
   });
 
   it("should perform sync actions", () => {
@@ -80,4 +85,10 @@ describe("bindActions", () => {
       expect(FAILING_STATE.error).toEqual({ message: "I'M ERROR" });
       expect(FAILING_STATE.loading).toBe(false);
     }));
+
+  it("should bind ownprops", () => {
+    actions.useOwnPropsInAction();
+
+    expect(store.getState().message).toBe("bar");
+  });
 });
