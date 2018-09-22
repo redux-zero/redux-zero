@@ -217,32 +217,24 @@ const App = () => (
 The initial component props are passed to the actions creator.
 
 ```js
-import compose from "lodash/fp/compose";
-import { withRouter } from "next/router";
-
-const Component = ({ goBack }) => <h1 onClick={() => goBack()}>Back</h1>;
-
-const actions = (store, ownProps) => {
-  // Ownprops is an optional second parameter to the actions creator
-  const { router } = ownProps;
-  return {
-    goBack: state => router.push(state.previousUrl)
-  };
-};
-
-const enhanced = compose(
-  withRouter,
-  connect(
-    mapToProps,
-    actions
-  )
+const Component = ({ count, increment }) => (
+  <h1 onClick={() => increment()}>{count}</h1>
 );
 
-const EnhancedComponent = enhance(Component);
+const mapToProps = ({ count }) => ({ count });
+
+const actions = (store, ownProps) => ({
+  increment: state => ({ count: state.count + ownProps.value })
+});
+
+const ConnectedComponent = connect(
+  mapToProps,
+  actions
+)(Component);
 
 const App = () => (
   <Provider store={store}>
-    <EnhancedComponent />
+    <ConnectedComponent value={10} />
   </Provider>
 );
 ```
