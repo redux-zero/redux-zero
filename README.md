@@ -212,6 +212,41 @@ const App = () => (
 );
 ```
 
+### Access props in actions
+
+The initial component props are passed to the actions creator.
+
+```js
+import compose from "lodash/fp/compose";
+import { withRouter } from "next/router";
+
+const Component = ({ goBack }) => <h1 onClick={() => goBack()}>Back</h1>;
+
+const actions = (store, ownProps) => {
+  // Ownprops is an optional second parameter to the actions creator
+  const { router } = ownProps;
+  return {
+    goBack: state => router.push(state.previousUrl)
+  };
+};
+
+const enhanced = compose(
+  withRouter,
+  connect(
+    mapToProps,
+    actions
+  )
+);
+
+const EnhancedComponent = enhance(Component);
+
+const App = () => (
+  <Provider store={store}>
+    <EnhancedComponent />
+  </Provider>
+);
+```
+
 ### Combining actions
 
 There's an utility function to combine actions on Redux Zero:

@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.14.0
+
+- Added ownprops as optional argument to the actions creator
+
 ### 4.13.6
 
 - Better typing support
