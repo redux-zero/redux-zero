@@ -212,6 +212,33 @@ const App = () => (
 );
 ```
 
+### Access props in actions
+
+The initial component props are passed to the actions creator.
+
+```js
+const Component = ({ count, increment }) => (
+  <h1 onClick={() => increment()}>{count}</h1>
+);
+
+const mapToProps = ({ count }) => ({ count });
+
+const actions = (store, ownProps) => ({
+  increment: state => ({ count: state.count + ownProps.value })
+});
+
+const ConnectedComponent = connect(
+  mapToProps,
+  actions
+)(Component);
+
+const App = () => (
+  <Provider store={store}>
+    <ConnectedComponent value={10} />
+  </Provider>
+);
+```
+
 ### Combining actions
 
 There's an utility function to combine actions on Redux Zero:

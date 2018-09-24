@@ -1,8 +1,12 @@
 import set from "./set";
 import Store from "../interfaces/Store";
 
-export default function bindActions(actions: Function, store: Store): any {
-  actions = typeof actions === "function" ? actions(store) : actions;
+export default function bindActions(
+  actions: Function,
+  store: Store,
+  ownProps?: object
+): any {
+  actions = typeof actions === "function" ? actions(store, ownProps) : actions;
 
   let bound = {};
   for (let name in actions) {
