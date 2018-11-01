@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.15.0
+
+- Added ownprops to preact actions
+
 ### 4.14.0
 
 - Added ownprops as optional argument to the actions creator

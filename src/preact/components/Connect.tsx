@@ -20,7 +20,7 @@ export class Connect extends Component<any, {}> {
   }
   getActions() {
     const { actions } = this.props;
-    return bindActions(actions, this.context.store);
+    return bindActions(actions, this.context.store, this.props);
   }
   update = () => {
     const mapped = this.getProps();
