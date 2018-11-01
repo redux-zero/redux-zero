@@ -283,6 +283,35 @@ describe("redux-zero - preact bindings", () => {
       expect(context.find("h1").text()).toBe("2");
     });
 
+    it("should provide actions with ownprops", () => {
+      store.setState({ count: 0})
+
+      const mapToProps = ({ count }) => ({ count });
+
+      const actions = (store, ownProps) => ({
+        increment: state => ({ count: state.count + ownProps.add })
+      });
+
+      const Comp = ({ count, increment }) => (
+        <h1 onClick={increment}>{count}</h1>
+      );
+
+      const ConnectedComp = connect(mapToProps, actions)(Comp);
+
+      const App = () => (
+        <Provider store={store}>
+          <ConnectedComp add={10} />
+        </Provider>
+      );
+
+      context = deep(<App />, { depth: Infinity });
+      expect(context.find("h1").text()).toBe("0");
+      context.find("[onClick]").simulate("click");
+      context.find("[onClick]").simulate("click");
+      expect(context.find("h1").text()).toBe("20");
+     
+    });
+
     it("should peform async actions correctly", done => {
       store.setState({ count: 0 });
 
