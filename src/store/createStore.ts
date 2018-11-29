@@ -8,10 +8,10 @@ export default function createStore(
   return {
     middleware,
     setState(update: Function | object) {
-      state =
-        typeof update === "function"
-          ? { ...state, ...update(state) }
-          : { ...state, ...update };
+      state = {
+        ...state,
+        ...typeof update === "function" ? update(state) : update
+      };
 
       listeners.forEach(f => f(state));
     },
