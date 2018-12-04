@@ -1,5 +1,9 @@
 # Changelog
 
+### 4.15.1
+
+- Simplify createStore function to improve minimization
+
 ### 4.15.0
 
 - Added ownprops to preact actions
