@@ -39,7 +39,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/concretesolutions/redux-zero"
+    "url": "https://github.com/redux-zero/redux-zero"
   },
   "jest": {
     "moduleFileExtensions": ["ts", "tsx", "js"],

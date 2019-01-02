@@ -188,7 +188,7 @@ const App = connect()(({ message }) => <h1>{message}</h1>);
 
 - Binding actions instead of coupling them to the store.
 
-Right now, actions must import an instance of the store in order to invoke `setState()`, as discussed [here](https://github.com/concretesolutions/redux-zero/issues/16). This version solved that problem. Now it's way easier to test the actions, because they are simply pure functions:
+Right now, actions must import an instance of the store in order to invoke `setState()`, as discussed [here](https://github.com/redux-zero/redux-zero/issues/16). This version solved that problem. Now it's way easier to test the actions, because they are simply pure functions:
 
 ```javascript
 const createActions = store => ({

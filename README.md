@@ -8,12 +8,12 @@
 
 <hr />
 
-[![codacy](https://api.codacy.com/project/badge/Grade/a4adf13156bd4441ae132d2d9dc72186)](https://www.codacy.com/app/matheusml/redux-zero?utm_source=github.com&utm_medium=referral&utm_content=concretesolutions/redux-zero&utm_campaign=Badge_Grade)
-[![build](https://img.shields.io/travis/concretesolutions/redux-zero/master.svg)](https://travis-ci.org/concretesolutions/redux-zero)
+[![codacy](https://api.codacy.com/project/badge/Grade/a4adf13156bd4441ae132d2d9dc72186)](https://www.codacy.com/app/matheusml/redux-zero?utm_source=github.com&utm_medium=referral&utm_content=redux-zero/redux-zero&utm_campaign=Badge_Grade)
+[![build](https://img.shields.io/travis/redux-zero/redux-zero/master.svg)](https://travis-ci.org/redux-zero/redux-zero)
 [![npm](https://img.shields.io/npm/v/redux-zero.svg)](https://www.npmjs.com/package/redux-zero)
 [![downloads](https://img.shields.io/npm/dm/redux-zero.svg)](https://www.npmjs.com/package/redux-zero)
-[![license](https://img.shields.io/github/license/concretesolutions/redux-zero.svg)]()
-[![dependencies](https://img.shields.io/david/concretesolutions/redux-zero.svg)]()
+[![license](https://img.shields.io/github/license/redux-zero/redux-zero.svg)]()
+[![dependencies](https://img.shields.io/david/redux-zero/redux-zero.svg)]()
 
 ## Table of Contents
 
@@ -168,14 +168,14 @@ store.reset();
 
 ### More examples
 
-- [React](https://github.com/concretesolutions/redux-zero/tree/master/examples/react/counter)
-- [React-Router](https://github.com/concretesolutions/redux-zero/tree/master/examples/react/react-router)
-- [Material-UI](https://github.com/concretesolutions/redux-zero/tree/master/examples/react/material-ui-counter)
-- [Preact](https://github.com/concretesolutions/redux-zero/tree/master/examples/preact/counter)
-- [React Native](https://github.com/concretesolutions/redux-zero/tree/master/examples/react-native/counter)
-- [SSR](https://github.com/concretesolutions/redux-zero/tree/master/examples/react/ssr)
-- [Svelte](https://github.com/concretesolutions/redux-zero/tree/master/examples/svelte/counter)
-- [Vue](https://github.com/concretesolutions/redux-zero/tree/master/examples/vue/counter)
+- [React](https://github.com/redux-zero/redux-zero/tree/master/examples/react/counter)
+- [React-Router](https://github.com/redux-zero/redux-zero/tree/master/examples/react/react-router)
+- [Material-UI](https://github.com/redux-zero/redux-zero/tree/master/examples/react/material-ui-counter)
+- [Preact](https://github.com/redux-zero/redux-zero/tree/master/examples/preact/counter)
+- [React Native](https://github.com/redux-zero/redux-zero/tree/master/examples/react-native/counter)
+- [SSR](https://github.com/redux-zero/redux-zero/tree/master/examples/react/ssr)
+- [Svelte](https://github.com/redux-zero/redux-zero/tree/master/examples/svelte/counter)
+- [Vue](https://github.com/redux-zero/redux-zero/tree/master/examples/vue/counter)
 
 ## Actions
 
@@ -383,7 +383,7 @@ Also, these are unofficial tools, maintained by the community:
 ## Docs
 
 - [Full Docs](https://matheusml1.gitbooks.io/redux-zero-docs/content/)
-- [Contributing](https://github.com/concretesolutions/redux-zero/blob/master/CONTRIBUTING.md)
-- [Changelog](https://github.com/concretesolutions/redux-zero/blob/master/CHANGELOG.md)
-- [Code of Conduct](https://github.com/concretesolutions/redux-zero/blob/master/CODE_OF_CONDUCT.md)
-- [License](https://github.com/concretesolutions/redux-zero/blob/master/LICENSE)
+- [Contributing](https://github.com/redux-zero/redux-zero/blob/master/CONTRIBUTING.md)
+- [Changelog](https://github.com/redux-zero/redux-zero/blob/master/CHANGELOG.md)
+- [Code of Conduct](https://github.com/redux-zero/redux-zero/blob/master/CODE_OF_CONDUCT.md)
+- [License](https://github.com/redux-zero/redux-zero/blob/master/LICENSE)
