@@ -2,9 +2,10 @@ import createStore from "./createStore";
 
 describe("redux-zero - the store", () => {
   const listener = jest.fn();
+  const initialState = {};
   let store, unsubscribe;
   beforeEach(() => {
-    store = createStore({});
+    store = createStore(initialState);
     listener.mockReset();
     unsubscribe = store.subscribe(listener);
   });

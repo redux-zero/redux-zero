@@ -1,10 +1,16 @@
 import Store from "../interfaces/Store";
 
 export default function createStore(
-  state: object = {},
+  initialState: object = {},
   middleware: any = null
 ): Store {
+  let state = initialState || {};
   const listeners: Function[] = [];
+
+  function dispatchListeners() {
+    listeners.forEach(f => f(state));
+  }
+
   return {
     middleware,
     setState(update: Function | object) {
@@ -13,7 +19,7 @@ export default function createStore(
         ...typeof update === "function" ? update(state) : update
       };
 
-      listeners.forEach(f => f(state));
+      dispatchListeners();
     },
     subscribe(f: Function) {
       listeners.push(f);
@@ -25,7 +31,8 @@ export default function createStore(
       return state;
     },
     reset() {
-      state = {};
+      state = initialState;
+      dispatchListeners();
     }
   };
 }
