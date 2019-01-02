@@ -284,7 +284,7 @@ describe("redux-zero - preact bindings", () => {
     });
 
     it("should provide actions with ownprops", () => {
-      store.setState({ count: 0})
+      store.setState({ count: 0 });
 
       const mapToProps = ({ count }) => ({ count });
 
@@ -309,7 +309,6 @@ describe("redux-zero - preact bindings", () => {
       context.find("[onClick]").simulate("click");
       context.find("[onClick]").simulate("click");
       expect(context.find("h1").text()).toBe("20");
-     
     });
 
     it("should peform async actions correctly", done => {
