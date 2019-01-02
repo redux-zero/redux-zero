@@ -1,5 +1,10 @@
 # Changelog
 
+### 4.15.2
+
+- Improved `reset` function on the store, now it makes reset to `initialState`
+- Fixed `devtoolsMiddleware` imports
+
 ### 4.15.1
 
 - Simplify createStore function to improve minimization
