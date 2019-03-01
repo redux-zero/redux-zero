@@ -219,7 +219,7 @@ describe("redux-zero - react bindings", () => {
 
     it("should accept ownProps as the second parameter to mapToProps", () => {
       const Comp = ({ message }) => <h1>{message}</h1>;
-      const ConnectedComp = connect((state, ownProps) => ({
+      const ConnectedComp = connect((state, ownProps: any) => ({
         message: ownProps.someProp
       }))(Comp);
 
