@@ -1,5 +1,27 @@
 # Changelog
 
+### 5.0.0
+
+**BREAKING CHANGES**  
+- Add generics to `bindActions()` , `connect()` , `createStore()` , `Provider` , `Store` .
+	- Default: any
+
+note:
+If using createStore() with partial initial state, it will inferred to incorrect type.
+
+```tsx
+import createStore from "redux-zero";
+
+interface ReduxState {
+  a: number;
+  b: number;
+}
+
+const store = createStore({a: 3}); // Store<{a: 3}>
+const store = createStore<ReduxState>({a: 3}); // Store<Partial<ReduxState>>
+const store = createStore<ReduxState>({a: 3, b: 3}); // Store<ReduxState>
+```
+
 ### 4.15.2
 
 - Improved `reset` function on the store, now it makes reset to `initialState`
