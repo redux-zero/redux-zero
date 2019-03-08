@@ -87,15 +87,15 @@ function replay(store: Store, message: Message): void {
   }, 0);
 }
 
-function update(message: Message) {
+function update<T extends Store>(this: T, message: Message) {
   if (message.type === "DISPATCH") {
     if (
       message.payload.type === "JUMP_TO_ACTION" ||
       message.payload.type === "JUMP_TO_STATE"
     ) {
-      (<Store>this).setState(JSON.parse(message.state));
+      this.setState(JSON.parse(message.state));
     } else if (message.payload.type === "TOGGLE_ACTION") {
-      replay(<Store>this, message);
+      replay(this, message);
     }
   }
 }

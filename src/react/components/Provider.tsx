@@ -4,7 +4,7 @@ import Props from "../../interfaces/Props";
 import propValidation from "../../utils/propsValidation";
 import Store from "../../interfaces/Store";
 
-export default class Provider extends React.Component<Props> {
+export default class Provider<S = any> extends React.Component<Props<S>> {
   static childContextTypes = {
     store: propValidation
   };

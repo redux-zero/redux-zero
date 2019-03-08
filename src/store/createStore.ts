@@ -1,10 +1,19 @@
 import Store from "../interfaces/Store";
 
-export default function createStore(
-  initialState: object = {},
+function createStore<S extends object = any>(): Store<Partial<S>>;
+function createStore<S extends object = any>(
+  initialState?: S,
+  middleware?: any
+): Store<S>;
+function createStore<S extends object = any>(
+  initialState?: Partial<S>,
+  middleware?: any
+): Store<Partial<S>>;
+function createStore<S extends object = any>(
+  initialState: Partial<S> | S = {},
   middleware: any = null
-): Store {
-  let state = initialState || {};
+): Store<S> | Store<Partial<S>> {
+  let state: Partial<S> & object = initialState || {};
   const listeners: Function[] = [];
 
   function dispatchListeners() {
@@ -13,10 +22,10 @@ export default function createStore(
 
   return {
     middleware,
-    setState(update: Function | object) {
+    setState(update: ((state: Partial<S>) => Partial<S>) | Partial<S>) {
       state = {
-        ...state,
-        ...typeof update === "function" ? update(state) : update
+        ...(state as object),
+        ...typeof update === "function" ? update(state) : update as object
       };
 
       dispatchListeners();
@@ -36,3 +45,4 @@ export default function createStore(
     }
   };
 }
+export default createStore;

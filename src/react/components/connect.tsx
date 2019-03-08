@@ -3,7 +3,7 @@ import * as React from "react";
 import shallowEqual from "../../utils/shallowEqual";
 import propValidation from "../../utils/propsValidation";
 import bindActions from "../../utils/bindActions";
-type mapToProps = (state: object, ownProps?: object) => object;
+type mapToProps<S> = (state: S, ownProps?: object) => object;
 
 export class Connect extends React.Component<any> {
   static contextTypes = {
@@ -43,7 +43,10 @@ export class Connect extends React.Component<any> {
   }
 }
 
-export default function connect(mapToProps?: mapToProps, actions = {}) {
+export default function connect<S = any>(
+  mapToProps?: mapToProps<S>,
+  actions = {}
+) {
   return (Child: any) =>
     class ConnectWrapper extends React.Component<any> {
       render() {

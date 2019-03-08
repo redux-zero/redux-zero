@@ -1,9 +1,12 @@
 import getDiff from "../../utils/getDiff";
-import bindActions from "../../utils/bindActions";
+import bindActions, { Action } from "../../utils/bindActions";
 import Store from "../../interfaces/Store";
 type mapToProps = (state: object, ownProps?: object) => object;
 
-export function getActions(store: Store, actions: Function) {
+export function getActions<S>(
+  store: Store<S>,
+  actions: { [key: string]: Action<S> }
+) {
   return bindActions(actions, store);
 }
 

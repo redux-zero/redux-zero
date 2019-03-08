@@ -1,7 +1,7 @@
-export default interface Store {
+export default interface Store<S = any> {
   middleware(...args: any[]): void;
-  setState(f: Function | object): void;
+  setState(f: ((state: S) => Partial<S>) | Partial<S>): void;
   subscribe(f: Function): () => void;
-  getState(): object;
+  getState(): S;
   reset(): void;
 };
