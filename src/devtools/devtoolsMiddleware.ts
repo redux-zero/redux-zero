@@ -131,8 +131,8 @@ const devtoolsMiddleware = (store: Store) => (next: Function, args: any) => (
 };
 
 if (typeof window === "object" && (<any>window).__REDUX_DEVTOOLS_EXTENSION__) {
-  connect = function(initialState: object) {
-    devTools.instance = (<any>window).__REDUX_DEVTOOLS_EXTENSION__.connect();
+  connect = function(initialState: object, options: object) {
+    devTools.instance = (<any>window).__REDUX_DEVTOOLS_EXTENSION__.connect(options);
     if (devTools.instance) {
       devTools.instance.send("initialState", initialState);
     }
