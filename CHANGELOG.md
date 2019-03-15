@@ -1,8 +1,12 @@
 # Changelog
 
+### 5.0.1
+
+- Added Redux-Devtools options params
+
 ### 5.0.0
 
-**BREAKING CHANGES**  
+**BREAKING CHANGES**
 - Add generics to `bindActions()` , `connect()` , `createStore()` , `Provider` , `Store` .
 	- Default: any
 
