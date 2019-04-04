@@ -8,6 +8,9 @@ export default class Provider<S = any> extends Component<Props<S>, {}> {
     return { store: this.props.store };
   }
   render() {
-    return this.props.children[0];
+    return (
+      (this.props.children && this.props.children[0]) ||
+      (this.props.children as JSX.Element)
+    );
   }
 }
