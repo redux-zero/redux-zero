@@ -1,5 +1,8 @@
 # Changelog
 
+### 5.0.2
+- Fixed Provider and connect in preact biddings so they now work for Preact X
+
 ### 5.0.1
 
 - Added Redux-Devtools options params

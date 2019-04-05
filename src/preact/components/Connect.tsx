@@ -29,7 +29,8 @@ export class Connect extends Component<any, {}> {
     }
   };
   render({ children }, state, { store }) {
-    return children[0]({ store, ...state, ...this.actions });
+    const child = (children && children[0]) || children;
+    return child({ store, ...state, ...this.actions });
   }
 }
 
