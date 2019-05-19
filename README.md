@@ -24,6 +24,7 @@
 - [Async](#async)
 - [Middleware](#middleware)
 - [DevTools](#devtools)
+- [TypeScript](#typescript)
 - [Inspiration](#inspiration)
 - [Roadmap](#roadmap)
 - [Docs](#docs)
@@ -371,6 +372,51 @@ Also, these are unofficial tools, maintained by the community:
 - [redux-zero persist middleware](https://github.com/axetroy/redux-zero-persist)
 - [redux-zero logger middleware](https://github.com/axetroy/redux-zero-logger)
 - [redux loading middleware](https://github.com/andre-araujo/redux-loading-middleware)
+
+## TypeScript
+
+You can use the `BoundActions` type to write your React component props in a type
+safe way. Example:
+
+```typescript
+import { BoundActions } from "redux-zero/types/Actions";
+
+interface State {
+  loading: boolean;
+}
+
+const actions = (store, ownProps) => ({
+  setLoading: (state, loading: boolean) => ({ loading })
+});
+
+interface StoreProps {
+  loading: boolean;
+}
+
+type Props = StoreProps & BoundActions<State, typeof actions>
+
+class Component = (props: Props) => (
+  <h1 onClick={() => props.setLoading(!props.loading)}>Stuff</h1>
+);
+
+const mapToProps = (state: State): StoreProps => ({ loading: state.loading });
+
+const ConnectedComponent = connect(
+  mapToProps,
+  actions
+)(Component);
+
+const App = () => (
+  <Provider store={store}>
+    <ConnectedComponent value={10} />
+  </Provider>
+);
+```
+
+By doing this, TypeScript will know the available actions and their types
+available on the component's props. For example, you will get a compiler error if you
+call `props.setLoding` (that action doesn't exist), or if you call it
+with incorrect argument types, like `props.setLoading(123)`.
 
 ## Inspiration
 

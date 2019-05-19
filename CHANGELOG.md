@@ -1,5 +1,9 @@
 # Changelog
 
+### 5.0.3
+
+- Added Actions typings for writing typesafe React components
+
 ### 5.0.2
 - Fixed Provider and connect in preact biddings so they now work for Preact X
 
