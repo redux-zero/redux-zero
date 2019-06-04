@@ -1,5 +1,9 @@
 # Changelog
 
+### 5.0.4
+
+- Changing from `npm` to `yarn`
+
 ### 5.0.3
 
 - Added Actions typings for writing typesafe React components
