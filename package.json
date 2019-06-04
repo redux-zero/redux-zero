@@ -1,6 +1,6 @@
 {
   "name": "redux-zero",
-  "version": "5.0.3",
+  "version": "5.0.4",
   "description": "",
   "main": "dist/redux-zero.js",
   "types": "index.d.ts",
@@ -11,14 +11,14 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "format": "prettier --write rollup.config.js \"config/**/*.js\" \"src/**/*.ts\" \"src/**/*.tsx\"",
-    "check": "npm run compile && npm run format && npm run lint && npm run test",
+    "check": "yarn run compile && yarn run format && yarn run lint && yarn run test",
     "clean": "rimraf dist coverage",
-    "prebuild": "npm run check && npm run clean",
+    "prebuild": "yarn run check && yarn run clean",
     "build:umd": "cross-env NODE_ENV=umd rollup --config",
     "build:cjs": "cross-env NODE_ENV=cjs rollup --config",
-    "build": "npm run build:umd && npm run build:cjs",
-    "prepublish": "npm run build",
-    "precommit": "npm run build"
+    "build": "yarn run build:umd && yarn run build:cjs",
+    "prepublish": "yarn run build",
+    "precommit": "yarn run build"
   },
   "author": "Matheus Lima <matheusml90@gmail.com>",
   "files": [
