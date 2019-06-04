@@ -36,6 +36,7 @@ dist/
 /react/
 /svelte/
 /interfaces/
+/types/
 /utils/
 /store/
 /vue/

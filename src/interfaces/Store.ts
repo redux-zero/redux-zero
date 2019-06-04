@@ -4,4 +4,4 @@ export default interface Store<S = any> {
   subscribe(f: Function): () => void;
   getState(): S;
   reset(): void;
-};
+}

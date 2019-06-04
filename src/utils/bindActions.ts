@@ -1,7 +1,6 @@
 import set from "./set";
 import Store from "../interfaces/Store";
-
-export type Action<S> = (state: S, ...args: any[]) => Partial<S>;
+import { Action } from "../types/Actions";
 
 export default function bindActions<S, T extends { [key: string]: Action<S> }>(
   actions: ((store: Store<S>, ownProps) => T) | T,

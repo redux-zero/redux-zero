@@ -1,5 +1,6 @@
 import getDiff from "../../utils/getDiff";
-import bindActions, { Action } from "../../utils/bindActions";
+import bindActions from "../../utils/bindActions";
+import { Action } from "../../types/Actions";
 import Store from "../../interfaces/Store";
 type mapToProps = (state: object, ownProps?: object) => object;
 
