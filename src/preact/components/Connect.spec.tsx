@@ -1,3 +1,4 @@
+/** @jsx h */
 import { h } from "preact";
 import { deep } from "preact-render-spy";
 
@@ -227,6 +228,35 @@ describe("redux-zero - preact bindings", () => {
 
       context = deep(<App />, { depth: Infinity });
       expect(context.output()).toEqual(<h1>some value</h1>);
+    });
+
+    it("should provide the state and map again when component props change", () => {
+      store.setState({
+        messages: {
+          foo: "hello",
+          bar: "bye"
+        }
+      });
+
+      const Comp = ({ message }) => <h1>{message}</h1>;
+
+      const mapToProps = ({ messages }, { name }) => ({
+        message: messages[name]
+      });
+
+      const ConnectedComp = connect(mapToProps)(Comp);
+
+      const App = ({ name }) => (
+        <Provider store={store}>
+          <ConnectedComp name={name} />
+        </Provider>
+      );
+
+      context = deep(<App name="foo" />, { depth: Infinity });
+      expect(context.output()).toEqual(<h1>hello</h1>);
+
+      context.render(<App name="bar" />);
+      expect(context.output()).toEqual(<h1>bye</h1>);
     });
   });
 

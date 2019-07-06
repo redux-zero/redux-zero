@@ -1,3 +1,4 @@
+/** @jsx h */
 import { h, Component } from "preact";
 import { deep } from "preact-render-spy";
 
