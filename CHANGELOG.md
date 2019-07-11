@@ -1,5 +1,10 @@
 # Changelog
 
+### 5.0.5
+
+- Fixed connect in preact bindings to call the `mapStateToProps` function when the component props change, 
+not just when the state store changes 
+
 ### 5.0.4
 
 - Changing from `npm` to `yarn`
