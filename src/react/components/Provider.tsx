@@ -3,6 +3,7 @@ import * as React from "react";
 import Props from "../../interfaces/Props";
 import propValidation from "../../utils/propsValidation";
 import Store from "../../interfaces/Store";
+import Context from "./Context";
 
 export default class Provider<S = any> extends React.Component<Props<S>> {
   static childContextTypes = {
@@ -13,7 +14,7 @@ export default class Provider<S = any> extends React.Component<Props<S>> {
     return { store };
   }
   render() {
-    const { children } = this.props;
-    return React.Children.only(children);
+    const { store, children } = this.props;
+    return <Context.Provider value={store}>{children}</Context.Provider>;
   }
 }
