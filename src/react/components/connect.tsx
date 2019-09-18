@@ -10,25 +10,36 @@ export class Connect extends React.Component<any> {
     store: propValidation
   };
   unsubscribe: any;
-  state = this.getProps();
-  actions = this.getActions();
+  actions: any;
+
+  constructor(props: any, context: any) {
+    super(props, context);
+    this.state = this.getProps(props, context);
+    this.actions = this.getActions();
+  }
   componentWillMount() {
     this.unsubscribe = this.context.store.subscribe(this.update);
   }
   componentWillUnmount() {
     this.unsubscribe(this.update);
   }
-  getProps() {
-    const { mapToProps } = this.props;
-    const state = (this.context.store && this.context.store.getState()) || {};
-    return mapToProps ? mapToProps(state, this.props) : state;
+  componentWillReceiveProps(nextProps: any, nextContext: any): void {
+    const mapped = this.getProps(nextProps, nextContext);
+    if (!shallowEqual(mapped, this.state)) {
+      this.setState(mapped);
+    }
+  }
+  getProps(props, context) {
+    const { mapToProps } = props;
+    const state = (context.store && context.store.getState()) || {};
+    return mapToProps ? mapToProps(state, props) : state;
   }
   getActions() {
     const { actions } = this.props;
     return bindActions(actions, this.context.store, this.props);
   }
   update = () => {
-    const mapped = this.getProps();
+    const mapped = this.getProps(this.props, this.context);
     if (!shallowEqual(mapped, this.state)) {
       this.setState(mapped);
     }
