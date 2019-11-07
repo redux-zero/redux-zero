@@ -10,10 +10,8 @@
     "lint": "tslint src/**/*.ts src/**/*.tsx",
     "test": "jest",
     "test:watch": "jest --watch",
-    "format":
-      "prettier --write rollup.config.js \"config/**/*.js\" \"src/**/*.ts\" \"src/**/*.tsx\"",
-    "check":
-      "yarn run compile && yarn run format && yarn run lint && yarn run test",
+    "format": "prettier --write rollup.config.js \"config/**/*.js\" \"src/**/*.ts\" \"src/**/*.tsx\"",
+    "check": "yarn run compile && yarn run format && yarn run lint && yarn run test",
     "clean": "rimraf dist coverage",
     "prebuild": "yarn run check && yarn run clean",
     "build:umd": "cross-env NODE_ENV=umd rollup --config",
@@ -43,12 +41,20 @@
     "url": "https://github.com/redux-zero/redux-zero"
   },
   "jest": {
-    "moduleFileExtensions": ["ts", "tsx", "js"],
-    "setupFiles": ["<rootDir>/config/testSetup.js"],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "setupFiles": [
+      "<rootDir>/config/testSetup.js"
+    ],
     "transform": {
       "^.+\\.(ts|tsx)$": "<rootDir>/config/preprocessor.js"
     },
-    "testMatch": ["<rootDir>/src/**/*.spec.(ts|tsx)"]
+    "testMatch": [
+      "<rootDir>/src/**/*.spec.(ts|tsx)"
+    ]
   },
   "devDependencies": {
     "@types/jest": "21.1.10",

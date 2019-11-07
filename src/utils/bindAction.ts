@@ -1,6 +1,6 @@
 import set from "./set";
 import Store from "../interfaces/Store";
-import { Action } from "../types/Actions";
+import { Action } from "../types";
 
 export default function bindAction<S>(action: Action<S>, store: Store<S>) {
   return (...args: any[]) => {
