@@ -1,5 +1,9 @@
 # Changelog
 
+### 5.1.1
+
+- Fixed missing types/Actions in the final bundle
+
 ### 5.1.0
 
 - Added hooks for react >= 16.8.0. The react bindings now offer a `useStore`, `useSelector` and `useAction` hooks.
@@ -22,8 +26,8 @@ const Counter = () => {
 
 ### 5.0.5
 
-- Fixed connect in preact bindings to call the `mapStateToProps` function when the component props change, 
-not just when the state store changes 
+- Fixed connect in preact bindings to call the `mapStateToProps` function when the component props change,
+not just when the state store changes
 
 ### 5.0.4
 
