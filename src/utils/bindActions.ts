@@ -1,4 +1,4 @@
-import set from "./set";
+import bindAction from "./bindAction";
 import Store from "../interfaces/Store";
 import { Action } from "../types";
 
@@ -11,15 +11,9 @@ export default function bindActions<S, T extends { [key: string]: Action<S> }>(
 
   let bound: { [key: string]: (...args: any[]) => Promise<void> | void } = {};
   for (let name in actions) {
-    bound[name] = (...args: any[]) => {
-      const action = (actions as T)[name];
+    const action = (actions as T)[name];
 
-      if (typeof store.middleware === "function") {
-        return store.middleware(store, action, args);
-      }
-
-      return set(store, action(store.getState(), ...args));
-    };
+    bound[name] = bindAction(action, store);
   }
 
   return bound as { [K in keyof T]: (...args: any[]) => Promise<void> | void };

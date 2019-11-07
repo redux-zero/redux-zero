@@ -1,8 +1,28 @@
 # Changelog
 
-### 5.0.6
+### 5.1.1
 
 - Fixed missing types/Actions in the final bundle
+
+### 5.1.0
+
+- Added hooks for react >= 16.8.0. The react bindings now offer a `useStore`, `useSelector` and `useAction` hooks.
+
+```jsx harmony
+const Counter = () => {
+  const store = useStore()
+  const count = useSelector(({ count }) => count)
+  const incrementBy = useAction(({ count }, value) => ({ count: count + value}))
+
+  return (
+    <>
+      <p>Value: {count}</p>
+      <button onClick={() => incrementBy(10)}>10 More</button>
+    </>
+  )
+}
+
+```
 
 ### 5.0.5
 
