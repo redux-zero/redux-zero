@@ -1,5 +1,9 @@
 # Changelog
 
+### 5.1.2
+
+- Fix to make sure React's `connect()` components rerender when their props change.
+
 ### 5.1.1
 
 - Fixed missing types/Actions in the final bundle
