@@ -390,19 +390,23 @@ const actions = (store, ownProps) => ({
   setLoading: (state, loading: boolean) => ({ loading })
 });
 
+interface ComponentProps {
+  value: string;
+}
+
 interface StoreProps {
   loading: boolean;
 }
 
-type Props = StoreProps & BoundActions<State, typeof actions>
+type Props = ComponentProps & StoreProps & BoundActions<State, typeof actions>
 
 class Component = (props: Props) => (
-  <h1 onClick={() => props.setLoading(!props.loading)}>Stuff</h1>
+  <h1 onClick={() => props.setLoading(!props.loading)}>{props.value}</h1>
 );
 
 const mapToProps = (state: State): StoreProps => ({ loading: state.loading });
 
-const ConnectedComponent = connect(
+const ConnectedComponent = connect<State, ComponentProps>(
   mapToProps,
   actions
 )(Component);

@@ -54,12 +54,12 @@ export class Connect extends React.Component<any> {
   }
 }
 
-export default function connect<S = any>(
+export default function connect<S = any, C = any>(
   mapToProps?: mapToProps<S>,
   actions = {}
 ) {
   return (Child: any) =>
-    class ConnectWrapper extends React.Component<any> {
+    class ConnectWrapper extends React.Component<C> {
       render() {
         const { props } = this;
 
