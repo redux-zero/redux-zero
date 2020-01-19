@@ -1,5 +1,9 @@
 # Changelog
 
+### 5.1.3
+
+- Added ComponentProps concept and updated connect method type signature to accept generic type for ComponentProps so that type safety works when a connected component is used.
+
 ### 5.1.2
 
 - Fix to make sure React's `connect()` components rerender when their props change.
