@@ -429,7 +429,10 @@ with incorrect argument types, like `props.setLoading(123)`.
 
 ## Roadmap
 
-- Add more examples (including unit tests, SSR, etc)
+- Make sure all bindings are working for latest versions of React, Vue, Preact and Svelte
+- Add time travel
+
+_Help is needed for both of these_
 
 ## Docs
 
