@@ -17,17 +17,17 @@
 
 ## Table of Contents
 
-- [Installation](#installation)
-- [How](#how)
-- [Example](#example)
-- [Actions](#actions)
-- [Async](#async)
-- [Middleware](#middleware)
-- [DevTools](#devtools)
-- [TypeScript](#typescript)
-- [Inspiration](#inspiration)
-- [Roadmap](#roadmap)
-- [Docs](#docs)
+* [Installation](#installation)
+* [How](#how)
+* [Example](#example)
+* [Actions](#actions)
+* [Async](#async)
+* [Middleware](#middleware)
+* [DevTools](#devtools)
+* [TypeScript](#typescript)
+* [Inspiration](#inspiration)
+* [Roadmap](#roadmap)
+* [Docs](#docs)
 
 ## Installation
 
@@ -116,24 +116,24 @@ Now create your component. With **Redux Zero** your component can focus 100% on 
 ```js
 /* Counter.js */
 import React from "react";
-import { connect } from "redux-zero/react";
+import { useActions, useSelector } from "redux-zero/react";
 
 import actions from "./actions";
 
-const mapToProps = ({ count }) => ({ count });
+export default function Counter(props) {
+  const count = useSelector(({ count }) => count);
+  const { decrement, increment } = useActions(actions);
 
-export default connect(
-  mapToProps,
-  actions
-)(({ count, increment, decrement }) => (
-  <div>
-    <h1>{count}</h1>
+  return (
     <div>
-      <button onClick={decrement}>decrement</button>
-      <button onClick={increment}>increment</button>
+      <h1>{count}</h1>
+      <div>
+        <button onClick={decrement}>decrement</button>
+        <button onClick={increment}>increment</button>
+      </div>
     </div>
-  </div>
-));
+  );
+}
 ```
 
 Last but not least, plug the whole thing in your index file:
@@ -169,75 +169,52 @@ store.reset();
 
 ### More examples
 
-- [React](https://github.com/redux-zero/redux-zero/tree/master/examples/react/counter)
-- [React-Router](https://github.com/redux-zero/redux-zero/tree/master/examples/react/react-router)
-- [Material-UI](https://github.com/redux-zero/redux-zero/tree/master/examples/react/material-ui-counter)
-- [Preact](https://github.com/redux-zero/redux-zero/tree/master/examples/preact/counter)
-- [React Native](https://github.com/redux-zero/redux-zero/tree/master/examples/react-native/counter)
-- [SSR](https://github.com/redux-zero/redux-zero/tree/master/examples/react/ssr)
-- [Svelte](https://github.com/redux-zero/redux-zero/tree/master/examples/svelte/counter)
-- [Vue](https://github.com/redux-zero/redux-zero/tree/master/examples/vue/counter)
+* [React](https://github.com/redux-zero/redux-zero/tree/master/examples/react/counter)
+* [React-Router](https://github.com/redux-zero/redux-zero/tree/master/examples/react/react-router)
+* [Material-UI](https://github.com/redux-zero/redux-zero/tree/master/examples/react/material-ui-counter)
+* [Preact](https://github.com/redux-zero/redux-zero/tree/master/examples/preact/counter)
+* [React Native](https://github.com/redux-zero/redux-zero/tree/master/examples/react-native/counter)
+* [SSR](https://github.com/redux-zero/redux-zero/tree/master/examples/react/ssr)
+* [Svelte](https://github.com/redux-zero/redux-zero/tree/master/examples/svelte/counter)
+* [Vue](https://github.com/redux-zero/redux-zero/tree/master/examples/vue/counter)
 
 ## Actions
 
 There are tree gotchas with Redux Zero's actions:
 
-- Passing arguments
-- Combining actions
-- Binding actions outside your application scope
+* Passing arguments
+* Combining actions
+* Binding actions outside your application scope
 
 ### Passing arguments
 
 Here's how you can pass arguments to actions:
 
 ```js
-const Component = ({ count, incrementOf }) => (
-  <h1 onClick={() => incrementOf(10)}>{count}</h1>
-);
-
-const mapToProps = ({ count }) => ({ count });
-
+/* actions.js */
 const actions = store => ({
   incrementOf: (state, value) => ({ count: state.count + value })
 });
 
-const ConnectedComponent = connect(
-  mapToProps,
-  actions
-)(Component);
+/* Counter.js */
+import React from "react";
+import { useActions, useSelector } from "redux-zero/react";
 
-const App = () => (
-  <Provider store={store}>
-    <ConnectedComponent />
-  </Provider>
-);
-```
+import actions from "./actions";
 
-### Access props in actions
+export default function Counter(props) {
+  const count = useSelector(({ count }) => count);
+  const { incrementOf } = useActions(actions);
 
-The initial component props are passed to the actions creator.
-
-```js
-const Component = ({ count, increment }) => (
-  <h1 onClick={() => increment()}>{count}</h1>
-);
-
-const mapToProps = ({ count }) => ({ count });
-
-const actions = (store, ownProps) => ({
-  increment: state => ({ count: state.count + ownProps.value })
-});
-
-const ConnectedComponent = connect(
-  mapToProps,
-  actions
-)(Component);
-
-const App = () => (
-  <Provider store={store}>
-    <ConnectedComponent value={10} />
-  </Provider>
-);
+  return (
+    <div>
+      <h1>{count}</h1>
+      <div>
+        <button onClick={() => incrementOf(10)}>increment by 10</button>
+      </div>
+    </div>
+  );
+}
 ```
 
 ### Combining actions
@@ -245,17 +222,16 @@ const App = () => (
 There's an utility function to combine actions on Redux Zero:
 
 ```js
-import { connect } from "redux-zero/react";
+import { useActions } from "redux-zero/react";
 import { combineActions } from "redux-zero/utils";
 
-import Component from "./Component";
 import firstActions from "../../actions/firstActions";
 import secondActions from "../../actions/secondActions";
 
-export default connect(
-  ({ params, moreParams }) => ({ params, moreParams }),
-  combineActions(firstActions, secondActions)
-)(Component);
+export default function Counter(props) {
+  const actions = useActions(combineActions(firstActions, secondActions);
+  /* rest of the code */
+}
 ```
 
 ### Binding actions outside your application scope
@@ -369,10 +345,10 @@ export default store;
 
 Also, these are unofficial tools, maintained by the community:
 
-- [Redux-Zero Tools](https://github.com/nyteshade/rzero-tools)
-- [redux-zero persist middleware](https://github.com/axetroy/redux-zero-persist)
-- [redux-zero logger middleware](https://github.com/axetroy/redux-zero-logger)
-- [redux loading middleware](https://github.com/andre-araujo/redux-loading-middleware)
+* [Redux-Zero Tools](https://github.com/nyteshade/rzero-tools)
+* [redux-zero persist middleware](https://github.com/axetroy/redux-zero-persist)
+* [redux-zero logger middleware](https://github.com/axetroy/redux-zero-logger)
+* [redux loading middleware](https://github.com/andre-araujo/redux-loading-middleware)
 
 ## TypeScript
 
@@ -429,15 +405,15 @@ with incorrect argument types, like `props.setLoading(123)`.
 
 ## Roadmap
 
-- Make sure all bindings are working for latest versions of React, Vue, Preact and Svelte
-- Add time travel
+* Make sure all bindings are working for latest versions of React, Vue, Preact and Svelte
+* Add time travel
 
 _Help is needed for both of these_
 
 ## Docs
 
-- [Full Docs](https://matheusml1.gitbooks.io/redux-zero-docs/content/)
-- [Contributing](https://github.com/redux-zero/redux-zero/blob/master/CONTRIBUTING.md)
-- [Changelog](https://github.com/redux-zero/redux-zero/blob/master/CHANGELOG.md)
-- [Code of Conduct](https://github.com/redux-zero/redux-zero/blob/master/CODE_OF_CONDUCT.md)
-- [License](https://github.com/redux-zero/redux-zero/blob/master/LICENSE)
+* [Full Docs](https://matheusml1.gitbooks.io/redux-zero-docs/content/)
+* [Contributing](https://github.com/redux-zero/redux-zero/blob/master/CONTRIBUTING.md)
+* [Changelog](https://github.com/redux-zero/redux-zero/blob/master/CHANGELOG.md)
+* [Code of Conduct](https://github.com/redux-zero/redux-zero/blob/master/CODE_OF_CONDUCT.md)
+* [License](https://github.com/redux-zero/redux-zero/blob/master/LICENSE)
