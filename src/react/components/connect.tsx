@@ -17,13 +17,13 @@ export class Connect extends React.Component<any> {
     this.state = this.getProps(props, context);
     this.actions = this.getActions();
   }
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.unsubscribe = this.context.store.subscribe(this.update);
   }
-  componentWillUnmount() {
+  UNSAFE_componentWillUnmount() {
     this.unsubscribe(this.update);
   }
-  componentWillReceiveProps(nextProps: any, nextContext: any): void {
+  UNSAFE_componentWillReceiveProps(nextProps: any, nextContext: any): void {
     const mapped = this.getProps(nextProps, nextContext);
     if (!shallowEqual(mapped, this.state)) {
       this.setState(mapped);

@@ -1,62 +1,68 @@
 # Changelog
 
+### 5.1.4
+
+* Removing React class method warnings
+
 ### 5.1.3
 
-- Added ComponentProps concept and updated connect method type signature to accept generic type for ComponentProps so that type safety works when a connected component is used.
+* Added ComponentProps concept and updated connect method type signature to accept generic type for ComponentProps so that type safety works when a connected component is used.
 
 ### 5.1.2
 
-- Fix to make sure React's `connect()` components rerender when their props change.
+* Fix to make sure React's `connect()` components rerender when their props change.
 
 ### 5.1.1
 
-- Fixed missing types/Actions in the final bundle
+* Fixed missing types/Actions in the final bundle
 
 ### 5.1.0
 
-- Added hooks for react >= 16.8.0. The react bindings now offer a `useStore`, `useSelector` and `useAction` hooks.
+* Added hooks for react >= 16.8.0. The react bindings now offer a `useStore`, `useSelector` and `useAction` hooks.
 
 ```jsx harmony
 const Counter = () => {
-  const store = useStore()
-  const count = useSelector(({ count }) => count)
-  const incrementBy = useAction(({ count }, value) => ({ count: count + value}))
+  const store = useStore();
+  const count = useSelector(({ count }) => count);
+  const incrementBy = useAction(({ count }, value) => ({
+    count: count + value
+  }));
 
   return (
     <>
       <p>Value: {count}</p>
       <button onClick={() => incrementBy(10)}>10 More</button>
     </>
-  )
-}
-
+  );
+};
 ```
 
 ### 5.0.5
 
-- Fixed connect in preact bindings to call the `mapStateToProps` function when the component props change,
-not just when the state store changes
+* Fixed connect in preact bindings to call the `mapStateToProps` function when the component props change,
+  not just when the state store changes
 
 ### 5.0.4
 
-- Changing from `npm` to `yarn`
+* Changing from `npm` to `yarn`
 
 ### 5.0.3
 
-- Added Actions typings for writing typesafe React components
+* Added Actions typings for writing typesafe React components
 
 ### 5.0.2
-- Fixed Provider and connect in preact biddings so they now work for Preact X
+
+* Fixed Provider and connect in preact biddings so they now work for Preact X
 
 ### 5.0.1
 
-- Added Redux-Devtools options params
+* Added Redux-Devtools options params
 
 ### 5.0.0
 
 **BREAKING CHANGES**
-- Add generics to `bindActions()` , `connect()` , `createStore()` , `Provider` , `Store` .
-	- Default: any
+
+* Add generics to `bindActions()` , `connect()` , `createStore()` , `Provider` , `Store` . - Default: any
 
 note:
 If using createStore() with partial initial state, it will inferred to incorrect type.
@@ -69,64 +75,64 @@ interface ReduxState {
   b: number;
 }
 
-const store = createStore({a: 3}); // Store<{a: 3}>
-const store = createStore<ReduxState>({a: 3}); // Store<Partial<ReduxState>>
-const store = createStore<ReduxState>({a: 3, b: 3}); // Store<ReduxState>
+const store = createStore({ a: 3 }); // Store<{a: 3}>
+const store = createStore<ReduxState>({ a: 3 }); // Store<Partial<ReduxState>>
+const store = createStore<ReduxState>({ a: 3, b: 3 }); // Store<ReduxState>
 ```
 
 ### 4.15.2
 
-- Improved `reset` function on the store, now it makes reset to `initialState`
-- Fixed `devtoolsMiddleware` imports
+* Improved `reset` function on the store, now it makes reset to `initialState`
+* Fixed `devtoolsMiddleware` imports
 
 ### 4.15.1
 
-- Simplify createStore function to improve minimization
+* Simplify createStore function to improve minimization
 
 ### 4.15.0
 
-- Added ownprops to preact actions
+* Added ownprops to preact actions
 
 ### 4.14.0
 
-- Added ownprops as optional argument to the actions creator
+* Added ownprops as optional argument to the actions creator
 
 ### 4.13.6
 
-- Better typing support
+* Better typing support
 
 ### 4.13.5
 
-- Fix deps with npm audit
-- Add typescript 3 support
+* Fix deps with npm audit
+* Add typescript 3 support
 
 ### 4.13.4
 
-- Reverting 4.13.3
+* Reverting 4.13.3
 
 ### 4.13.3
 
-- React `connect` high order component now propagate connected component statics
+* React `connect` high order component now propagate connected component statics
 
 ### 4.13.2
 
-- Adding some typings
+* Adding some typings
 
 ### 4.13.1
 
-- Adding protection to `window` for SSR on devtools
+* Adding protection to `window` for SSR on devtools
 
 ### 4.13.0
 
-- Adding `reset` function to the store
+* Adding `reset` function to the store
 
 ### 4.12.0
 
-- Pass action `args` to middleware and devtools
+* Pass action `args` to middleware and devtools
 
 ### 4.11.0
 
-- Add `combineActions` function
+* Add `combineActions` function
 
 ```js
 import { combineActions } from "redux-zero/utils";
@@ -134,31 +140,31 @@ import { combineActions } from "redux-zero/utils";
 
 ### 4.10.1
 
-- Fix bug of devtools middleware - handle async actions
+* Fix bug of devtools middleware - handle async actions
 
 ### 4.10.0
 
-- Implement connect HOC decorator for preact
+* Implement connect HOC decorator for preact
 
 ### 4.9.2
 
-- Add hot module reloading support to React `connect()` decorator
+* Add hot module reloading support to React `connect()` decorator
 
 ### 4.9.1
 
-- Disable generation of source maps
+* Disable generation of source maps
 
 ### 4.9.0
 
-- Add DevTools middleware
+* Add DevTools middleware
 
 ### 4.8.1
 
-- Fix a bug of middleware
+* Fix a bug of middleware
 
 ### 4.8.0
 
-- Add bindActions export
+* Add bindActions export
 
 ```js
 import { bindActions } from "redux-zero/utils";
@@ -166,11 +172,11 @@ import { bindActions } from "redux-zero/utils";
 
 ### 4.7.0
 
-- Add Vue.js bindings
+* Add Vue.js bindings
 
 ### 4.6.0
 
-- Adds middleware support:
+* Adds middleware support:
 
 ```js
 // a middleware
@@ -187,15 +193,15 @@ const store = createStore({}, middlewares);
 
 ### 4.5.2
 
-- Fixes bug in which ownProps were not being passed as the second argument to mapToProps inside a connect HOC
+* Fixes bug in which ownProps were not being passed as the second argument to mapToProps inside a connect HOC
 
 ### 4.5.1
 
-- Shallow clone mutated object and array in Svelte bindig
+* Shallow clone mutated object and array in Svelte bindig
 
 ### 4.5.0
 
-- Adds Thennable actions. Now we can declare actions as so:
+* Adds Thennable actions. Now we can declare actions as so:
 
 ```js
 const mapActions = ({ setState }) => ({
@@ -212,29 +218,29 @@ const mapActions = ({ setState }) => ({
 
 ### 4.4.3
 
-- Removing peerDependencies from `package.json`
+* Removing peerDependencies from `package.json`
 
 ### 4.4.2
 
-- Fix typings, remove unsubscribe from Store interface since isn't used
+* Fix typings, remove unsubscribe from Store interface since isn't used
 
 [info] Using redux-zero along with TypeScript gives an error when implementing:
 `<Provider store={store}><Whatever/></Provider>` due to the actual store object
 and the expected attribute differ.
 
-- Added Store interface as signature for createStore function.
+* Added Store interface as signature for createStore function.
 
 ### 4.4.1
 
-- Fixes Svelte connect function date object change detection
+* Fixes Svelte connect function date object change detection
 
 ### 4.4.0
 
-- Add Preact bindings
+* Add Preact bindings
 
 ### 4.3.1
 
-- Fixes binding imports with TypeScript
+* Fixes binding imports with TypeScript
 
 This is now working for both TypeScript and JavaScript:
 
@@ -244,11 +250,11 @@ import { Provider } from "redux-zero/react";
 
 ### 4.3.0
 
-- Add connect function for Svelte and usage example.
+* Add connect function for Svelte and usage example.
 
 ### 4.2.1
 
-- Let `mapToProps` function optional
+* Let `mapToProps` function optional
 
 If you don't pass `mapToProps` function to `connect` HOC or `Connect` component, it will inject all state as props at the connected component.
 
@@ -260,7 +266,7 @@ const App = connect()(({ message }) => <h1>{message}</h1>);
 
 ### 4.2.0
 
-- Binding actions instead of coupling them to the store.
+* Binding actions instead of coupling them to the store.
 
 Right now, actions must import an instance of the store in order to invoke `setState()`, as discussed [here](https://github.com/redux-zero/redux-zero/issues/16). This version solved that problem. Now it's way easier to test the actions, because they are simply pure functions:
 
@@ -269,19 +275,18 @@ const createActions = store => ({
   increment: state => ({ count: state.count + 1 })
 });
 
-const App = connect(
-  mapToProps,
-  createActions
-)(({ count, increment }) => <button onClick={increment}>{count}</button>);
+const App = connect(mapToProps, createActions)(({ count, increment }) => (
+  <button onClick={increment}>{count}</button>
+));
 ```
 
 ### 4.1.1
 
-- Fixes drawback from the latest release by making `connect` HOC and `Connect` component provide the store as a prop
+* Fixes drawback from the latest release by making `connect` HOC and `Connect` component provide the store as a prop
 
 ### 4.1.0
 
-- Include `Connect` component that can be used with a render callback as an alternative to the `connect` HOC
+* Include `Connect` component that can be used with a render callback as an alternative to the `connect` HOC
 
 ```javascript
 import { Connect } from 'redux-zero/react'
@@ -299,11 +304,11 @@ render() {
 
 ### 4.0.1
 
-- Fixed bug where unsubscribing a listener made listeners ahead be also removed.
+* Fixed bug where unsubscribing a listener made listeners ahead be also removed.
 
 ### 4.0.0
 
-- Separating `Provider` and `connect` from `createStore`. With this we'll be able to build for different frameworks:
+* Separating `Provider` and `connect` from `createStore`. With this we'll be able to build for different frameworks:
 
 ```javascript
 import createStore from "redux-zero";
@@ -312,7 +317,7 @@ import { Provider, connect } from "redux-zero/react";
 
 ### 3.0.0
 
-- Removing `unsubscribe` function from createStore. Now `subscribe` returns `unsubscribe`:
+* Removing `unsubscribe` function from createStore. Now `subscribe` returns `unsubscribe`:
 
 ```javascript
 const store = createStore();
@@ -324,7 +329,7 @@ unsubscribe();
 
 ### 2.1.0
 
-- Now you can pass a function to `setState`. Example:
+* Now you can pass a function to `setState`. Example:
 
 ```javascript
 store.setState(state => {
@@ -337,8 +342,8 @@ store.setState(state => {
 
 ### 2.0.0
 
-- Changing Provider API to accept store as a prop instead of context.
+* Changing Provider API to accept store as a prop instead of context.
 
 ### 1.1.0
 
-- Removing PropTypes
+* Removing PropTypes
