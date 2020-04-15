@@ -219,17 +219,17 @@ export default function Counter(props) {
 
 ### Combining actions
 
-There's an utility function to combine actions on Redux Zero:
+We used to use an utility function called `combineActions`, but with hooks it's easier to just:
 
 ```js
 import { useActions } from "redux-zero/react";
-import { combineActions } from "redux-zero/utils";
 
 import firstActions from "../../actions/firstActions";
 import secondActions from "../../actions/secondActions";
 
 export default function Counter(props) {
-  const actions = useActions(combineActions(firstActions, secondActions);
+  const someActions = useActions(firstActions);
+  const someMoreActions = useActions(secondActions);
   /* rest of the code */
 }
 ```
