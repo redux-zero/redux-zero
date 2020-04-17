@@ -116,15 +116,14 @@ Now create your component. With **Redux Zero** your component can focus 100% on 
 ```js
 /* Counter.js */
 import React from "react";
-import { useActions, useSelector } from "redux-zero/react";
+import { connect } from "redux-zero/react";
 
 import actions from "./actions";
 
-export default function Counter(props) {
-  const count = useSelector(({ count }) => count);
-  const { decrement, increment } = useActions(actions);
+const mapToProps = ({ count }) => ({ count });
 
-  return (
+export default connect(mapToProps, actions)(
+  ({ count, increment, decrement }) => (
     <div>
       <h1>{count}</h1>
       <div>
@@ -132,8 +131,8 @@ export default function Counter(props) {
         <button onClick={increment}>increment</button>
       </div>
     </div>
-  );
-}
+  )
+);
 ```
 
 Last but not least, plug the whole thing in your index file:
@@ -191,47 +190,65 @@ There are tree gotchas with Redux Zero's actions:
 Here's how you can pass arguments to actions:
 
 ```js
-/* actions.js */
+const Component = ({ count, incrementOf }) => (
+  <h1 onClick={() => incrementOf(10)}>{count}</h1>
+);
+
+const mapToProps = ({ count }) => ({ count });
+
 const actions = store => ({
   incrementOf: (state, value) => ({ count: state.count + value })
 });
 
-/* Counter.js */
-import React from "react";
-import { useActions, useSelector } from "redux-zero/react";
+const ConnectedComponent = connect(mapToProps, actions)(Component);
 
-import actions from "./actions";
+const App = () => (
+  <Provider store={store}>
+    <ConnectedComponent />
+  </Provider>
+);
+```
 
-export default function Counter(props) {
-  const count = useSelector(({ count }) => count);
-  const { incrementOf } = useActions(actions);
+### Access props in actions
 
-  return (
-    <div>
-      <h1>{count}</h1>
-      <div>
-        <button onClick={() => incrementOf(10)}>increment by 10</button>
-      </div>
-    </div>
-  );
-}
+The initial component props are passed to the actions creator.
+
+```js
+const Component = ({ count, increment }) => (
+  <h1 onClick={() => increment()}>{count}</h1>
+);
+
+const mapToProps = ({ count }) => ({ count });
+
+const actions = (store, ownProps) => ({
+  increment: state => ({ count: state.count + ownProps.value })
+});
+
+const ConnectedComponent = connect(mapToProps, actions)(Component);
+
+const App = () => (
+  <Provider store={store}>
+    <ConnectedComponent value={10} />
+  </Provider>
+);
 ```
 
 ### Combining actions
 
-We used to use an utility function called `combineActions`, but with hooks it's easier to just:
+There's an utility function to combine actions on Redux Zero:
 
 ```js
-import { useActions } from "redux-zero/react";
+import { connect } from "redux-zero/react";
+import { combineActions } from "redux-zero/utils";
 
+import Component from "./Component";
 import firstActions from "../../actions/firstActions";
 import secondActions from "../../actions/secondActions";
 
-export default function Counter(props) {
-  const someActions = useActions(firstActions);
-  const someMoreActions = useActions(secondActions);
-  /* rest of the code */
-}
+export default connect(
+  ({ params, moreParams }) => ({ params, moreParams }),
+  combineActions(firstActions, secondActions)
+)(Component);
 ```
 
 ### Binding actions outside your application scope
@@ -417,3 +434,4 @@ _Help is needed for both of these_
 * [Changelog](https://github.com/redux-zero/redux-zero/blob/master/CHANGELOG.md)
 * [Code of Conduct](https://github.com/redux-zero/redux-zero/blob/master/CODE_OF_CONDUCT.md)
 * [License](https://github.com/redux-zero/redux-zero/blob/master/LICENSE)
+
