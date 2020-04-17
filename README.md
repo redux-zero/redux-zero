@@ -17,17 +17,17 @@
 
 ## Table of Contents
 
-* [Installation](#installation)
-* [How](#how)
-* [Example](#example)
-* [Actions](#actions)
-* [Async](#async)
-* [Middleware](#middleware)
-* [DevTools](#devtools)
-* [TypeScript](#typescript)
-* [Inspiration](#inspiration)
-* [Roadmap](#roadmap)
-* [Docs](#docs)
+- [Installation](#installation)
+- [How](#how)
+- [Example](#example)
+- [Actions](#actions)
+- [Async](#async)
+- [Middleware](#middleware)
+- [DevTools](#devtools)
+- [TypeScript](#typescript)
+- [Inspiration](#inspiration)
+- [Roadmap](#roadmap)
+- [Docs](#docs)
 
 ## Installation
 
@@ -122,17 +122,18 @@ import actions from "./actions";
 
 const mapToProps = ({ count }) => ({ count });
 
-export default connect(mapToProps, actions)(
-  ({ count, increment, decrement }) => (
+export default connect(
+  mapToProps,
+  actions
+)(({ count, increment, decrement }) => (
+  <div>
+    <h1>{count}</h1>
     <div>
-      <h1>{count}</h1>
-      <div>
-        <button onClick={decrement}>decrement</button>
-        <button onClick={increment}>increment</button>
-      </div>
+      <button onClick={decrement}>decrement</button>
+      <button onClick={increment}>increment</button>
     </div>
-  )
-);
+  </div>
+));
 ```
 
 Last but not least, plug the whole thing in your index file:
@@ -168,22 +169,22 @@ store.reset();
 
 ### More examples
 
-* [React](https://github.com/redux-zero/redux-zero/tree/master/examples/react/counter)
-* [React-Router](https://github.com/redux-zero/redux-zero/tree/master/examples/react/react-router)
-* [Material-UI](https://github.com/redux-zero/redux-zero/tree/master/examples/react/material-ui-counter)
-* [Preact](https://github.com/redux-zero/redux-zero/tree/master/examples/preact/counter)
-* [React Native](https://github.com/redux-zero/redux-zero/tree/master/examples/react-native/counter)
-* [SSR](https://github.com/redux-zero/redux-zero/tree/master/examples/react/ssr)
-* [Svelte](https://github.com/redux-zero/redux-zero/tree/master/examples/svelte/counter)
-* [Vue](https://github.com/redux-zero/redux-zero/tree/master/examples/vue/counter)
+- [React](https://github.com/redux-zero/redux-zero/tree/master/examples/react/counter)
+- [React-Router](https://github.com/redux-zero/redux-zero/tree/master/examples/react/react-router)
+- [Material-UI](https://github.com/redux-zero/redux-zero/tree/master/examples/react/material-ui-counter)
+- [Preact](https://github.com/redux-zero/redux-zero/tree/master/examples/preact/counter)
+- [React Native](https://github.com/redux-zero/redux-zero/tree/master/examples/react-native/counter)
+- [SSR](https://github.com/redux-zero/redux-zero/tree/master/examples/react/ssr)
+- [Svelte](https://github.com/redux-zero/redux-zero/tree/master/examples/svelte/counter)
+- [Vue](https://github.com/redux-zero/redux-zero/tree/master/examples/vue/counter)
 
 ## Actions
 
 There are tree gotchas with Redux Zero's actions:
 
-* Passing arguments
-* Combining actions
-* Binding actions outside your application scope
+- Passing arguments
+- Combining actions
+- Binding actions outside your application scope
 
 ### Passing arguments
 
@@ -200,7 +201,10 @@ const actions = store => ({
   incrementOf: (state, value) => ({ count: state.count + value })
 });
 
-const ConnectedComponent = connect(mapToProps, actions)(Component);
+const ConnectedComponent = connect(
+  mapToProps,
+  actions
+)(Component);
 
 const App = () => (
   <Provider store={store}>
@@ -224,7 +228,10 @@ const actions = (store, ownProps) => ({
   increment: state => ({ count: state.count + ownProps.value })
 });
 
-const ConnectedComponent = connect(mapToProps, actions)(Component);
+const ConnectedComponent = connect(
+  mapToProps,
+  actions
+)(Component);
 
 const App = () => (
   <Provider store={store}>
@@ -362,10 +369,10 @@ export default store;
 
 Also, these are unofficial tools, maintained by the community:
 
-* [Redux-Zero Tools](https://github.com/nyteshade/rzero-tools)
-* [redux-zero persist middleware](https://github.com/axetroy/redux-zero-persist)
-* [redux-zero logger middleware](https://github.com/axetroy/redux-zero-logger)
-* [redux loading middleware](https://github.com/andre-araujo/redux-loading-middleware)
+- [Redux-Zero Tools](https://github.com/nyteshade/rzero-tools)
+- [redux-zero persist middleware](https://github.com/axetroy/redux-zero-persist)
+- [redux-zero logger middleware](https://github.com/axetroy/redux-zero-logger)
+- [redux loading middleware](https://github.com/andre-araujo/redux-loading-middleware)
 
 ## TypeScript
 
@@ -422,16 +429,15 @@ with incorrect argument types, like `props.setLoading(123)`.
 
 ## Roadmap
 
-* Make sure all bindings are working for latest versions of React, Vue, Preact and Svelte
-* Add time travel
+- Make sure all bindings are working for latest versions of React, Vue, Preact and Svelte
+- Add time travel
 
 _Help is needed for both of these_
 
 ## Docs
 
-* [Full Docs](https://matheusml1.gitbooks.io/redux-zero-docs/content/)
-* [Contributing](https://github.com/redux-zero/redux-zero/blob/master/CONTRIBUTING.md)
-* [Changelog](https://github.com/redux-zero/redux-zero/blob/master/CHANGELOG.md)
-* [Code of Conduct](https://github.com/redux-zero/redux-zero/blob/master/CODE_OF_CONDUCT.md)
-* [License](https://github.com/redux-zero/redux-zero/blob/master/LICENSE)
-
+- [Full Docs](https://matheusml1.gitbooks.io/redux-zero-docs/content/)
+- [Contributing](https://github.com/redux-zero/redux-zero/blob/master/CONTRIBUTING.md)
+- [Changelog](https://github.com/redux-zero/redux-zero/blob/master/CHANGELOG.md)
+- [Code of Conduct](https://github.com/redux-zero/redux-zero/blob/master/CODE_OF_CONDUCT.md)
+- [License](https://github.com/redux-zero/redux-zero/blob/master/LICENSE)
