@@ -1,5 +1,6 @@
 import Store from "../interfaces/Store";
 
+export type Store = Store;
 export type Action<S> = (state: S, ...args: any[]) => Partial<S>;
 export type FuncTypeWithoutFirstArg<
   T extends (...args: any[]) => any
