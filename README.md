@@ -180,7 +180,7 @@ store.reset();
 
 ## Actions
 
-There are tree gotchas with Redux Zero's actions:
+There are three gotchas with Redux Zero's actions:
 
 - Passing arguments
 - Combining actions
