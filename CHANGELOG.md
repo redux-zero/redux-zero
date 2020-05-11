@@ -1,5 +1,9 @@
 # Changelog
 
+### 5.2.0
+
+* Adding useActions hook. With this you'll be able to reuse your actions object, without the need of using `connect` or `Connect`
+
 ### 5.1.4
 
 * Removing React class method warnings
