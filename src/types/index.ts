@@ -1,6 +1,6 @@
 import Store from "../interfaces/Store";
 
-export type Action<S> = (state: S, ...args: any[]) => Partial<S>;
+export type Action<S> = (state: S, ...args: any[]) => Promise<Partial<S>> | Partial<S>;
 export type FuncTypeWithoutFirstArg<
   T extends (...args: any[]) => any
 > = T extends (arg1: infer U, ...args: infer V) => infer Q
