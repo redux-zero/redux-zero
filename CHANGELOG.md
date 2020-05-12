@@ -1,5 +1,9 @@
 # Changelog
 
+### 5.1.5
+
+* Update Action type to support promise returning actions in TypeScript
+
 ### 5.1.4
 
 * Removing React class method warnings
