@@ -1,5 +1,9 @@
 # Changelog
 
+### 5.1.6
+
+* Update `bindActions` types to preserve argument types in TypeScript
+
 ### 5.1.5
 
 * Update Action type to support promise returning actions in TypeScript
