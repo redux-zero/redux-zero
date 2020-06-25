@@ -1,5 +1,9 @@
 # Changelog
 
+### 5.1.7
+
+* Renaming `UNSAFE_componentWillUnmount` to `componentWillUnmount`
+
 ### 5.1.6
 
 * Update `bindActions` types to preserve argument types in TypeScript
