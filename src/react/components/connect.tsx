@@ -20,7 +20,7 @@ export class Connect extends React.Component<any> {
   UNSAFE_componentWillMount() {
     this.unsubscribe = this.context.store.subscribe(this.update);
   }
-  UNSAFE_componentWillUnmount() {
+  componentWillUnmount() {
     this.unsubscribe(this.update);
   }
   UNSAFE_componentWillReceiveProps(nextProps: any, nextContext: any): void {
