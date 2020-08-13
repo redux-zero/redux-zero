@@ -400,7 +400,7 @@ interface StoreProps {
 
 type Props = ComponentProps & StoreProps & BoundActions<State, typeof actions>
 
-class Component = (props: Props) => (
+const Component = (props: Props) => (
   <h1 onClick={() => props.setLoading(!props.loading)}>{props.value}</h1>
 );
 
