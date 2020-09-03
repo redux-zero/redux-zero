@@ -12,7 +12,7 @@
     "rollup-plugin-svelte": "^3.1.0",
     "rollup-plugin-typescript": "^0.8.1",
     "rollup-plugin-uglify": "^2.0.1",
-    "serve": "^6.0.6",
+    "serve": "^11.3.2",
     "typescript": "^2.5.3"
   },
   "scripts": {
