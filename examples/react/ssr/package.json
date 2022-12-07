@@ -24,7 +24,7 @@
   "webpack-node-externals": "1.6.0"
  },
  "dependencies": {
-  "express": "4.16.2",
+  "express": "4.17.3",
   "react": "16.1.1",
   "react-dom": "16.1.1",
   "redux-zero": "4.5.0"
